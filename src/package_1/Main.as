@@ -163,6 +163,7 @@ package package_1
          _loc4_.register("0","2");
          _loc4_.add(new DispatcherModel());
          stage = name_24(osgi.getService(name_24)).stage;
+         stage.showDefaultContextMenu = false;
          mainContainer = name_24(osgi.getService(name_24)).mainContainer;
          backgroundLayer = name_24(osgi.getService(name_24)).backgroundLayer;
          contentLayer = name_24(osgi.getService(name_24)).contentLayer;
