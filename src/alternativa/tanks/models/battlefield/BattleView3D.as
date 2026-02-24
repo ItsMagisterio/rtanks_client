@@ -117,8 +117,9 @@ package alternativa.tanks.models.battlefield
          this.camera = new name_735();
          this.camera.view = new View(100,100,GPUCapabilities.constrained);
          this.camera.view.hideLogo();
-         this.camera.view.contextMenu = new ContextMenu();
-         this.camera.view.contextMenu.hideBuiltInItems();
+         var _loc4_:ContextMenu = new ContextMenu();
+         _loc4_.hideBuiltInItems();
+         this.camera.view.contextMenu = _loc4_;
          this.camera.view.focusRect = false;
          this.camera.softTransparency = true;
          this.camera.softAttenuation = 80;
