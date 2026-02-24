@@ -159,6 +159,8 @@ package package_31
       private static const const_87:int = 30;
       
       private static const const_93:int = 631;
+
+      private static const FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT:String = "fullScreenInteractiveAccepted";
        
       
       private var lobbyLayoutService:name_94;
@@ -933,7 +935,7 @@ package package_31
          if(this.fullscreenService.name_49())
          {
             Main.stage.addEventListener(FullScreenEvent.FULL_SCREEN,this.method_320);
-            Main.stage.addEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_320);
+            Main.stage.addEventListener(FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT,this.method_320);
          }
       }
       
@@ -950,7 +952,7 @@ package package_31
          if(this.fullscreenService.name_49())
          {
             Main.stage.removeEventListener(FullScreenEvent.FULL_SCREEN,this.method_320);
-            Main.stage.removeEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_320);
+            Main.stage.removeEventListener(FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT,this.method_320);
          }
       }
       
