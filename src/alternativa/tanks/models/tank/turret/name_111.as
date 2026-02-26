@@ -208,6 +208,7 @@ package alternativa.tanks.models.tank.turret
          if(this.var_466)
          {
             this.var_466 = false;
+            this.var_467 = false;
             battleInputService.name_150(this);
             battleInputService.method_597(this);
             battleInputService.method_600(this);

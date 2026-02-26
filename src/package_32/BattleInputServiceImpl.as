@@ -4,6 +4,7 @@ package package_32
    import alternativa.tanks.service.settings.IBattleSettings;
    import alternativa.tanks.utils.name_1398;
    import flash.display.Stage;
+   import flash.display.StageDisplayState;
    import flash.events.Event;
    import flash.events.EventDispatcher;
    import flash.events.FullScreenEvent;
@@ -51,6 +52,8 @@ package package_32
       private var var_685:Boolean = false;
       
       private var var_684:Boolean = true;
+
+      private static const const_455:String = "fullScreenInteractiveAccepted";
       
       public function BattleInputServiceImpl(param1:Stage, param2:name_276)
       {
@@ -70,7 +73,7 @@ package package_32
          param1.addEventListener(MouseEvent.MOUSE_WHEEL,this.onMouseWheel);
          param1.addEventListener(Event.MOUSE_LEAVE,this.method_951);
          param1.addEventListener(FullScreenEvent.FULL_SCREEN,this.method_947);
-         //param1.addEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_947);
+         param1.addEventListener(const_455,this.method_947);
       }
       
       public function name_768() : void
@@ -176,7 +179,7 @@ package package_32
          }
          if(this.var_683)
          {
-            if(this.stage.mouseLock)
+            if(this.method_954())
             {
                this.method_945(this.const_453);
             }
@@ -198,7 +201,7 @@ package package_32
       
       private function method_950(param1:MouseEvent) : void
       {
-         if(this.stage.mouseLock)
+         if(this.method_954())
          {
             this.method_945(this.const_454);
          }
@@ -212,7 +215,7 @@ package package_32
       private function onMouseMove(param1:MouseEvent) : void
       {
          var _loc2_:int = 0;
-         if(this.stage.mouseLock)
+         if(this.method_954())
          {
             if(this.var_685)
             {
@@ -223,7 +226,7 @@ package package_32
                _loc2_ = 0;
                while(_loc2_ < this.const_448.length)
                {
-                  this.const_448[_loc2_].method_689(param1.movementX,param1.movementY);
+                  this.const_448[_loc2_].method_689(this.method_956(param1),this.method_957(param1));
                   _loc2_++;
                }
             }
@@ -233,7 +236,7 @@ package package_32
       private function onMouseWheel(param1:MouseEvent) : void
       {
          var _loc2_:int = 0;
-         if(this.stage.mouseLock)
+         if(this.method_954())
          {
             _loc2_ = 0;
             while(_loc2_ < this.const_449.length)
@@ -250,7 +253,7 @@ package package_32
       
       private function method_947(param1:FullScreenEvent) : void
       {
-         this.var_683 = param1.fullScreen;
+         this.var_683 = this.stage.displayState != StageDisplayState.NORMAL;
          if(this.isLocked())
          {
             return;
@@ -292,7 +295,7 @@ package package_32
          }
          if(!_loc4_ && this.name_727())
          {
-            if(this.stage.mouseLock)
+            if(this.method_954())
             {
                this.method_938(false);
             }
@@ -326,7 +329,7 @@ package package_32
                   this.method_944(_loc3_);
                }
             }
-            if(this.var_683 && !this.stage.mouseLock && this.method_939())
+            if(this.var_683 && !this.method_954() && this.method_939())
             {
                this.method_938(true);
             }
@@ -340,7 +343,7 @@ package package_32
          this.const_451.name_1404(param1.name_1405);
          if(_loc2_ && this.const_451.name_1401())
          {
-            if(this.stage.mouseLock)
+            if(this.method_954())
             {
                this.method_938(false);
             }
@@ -353,7 +356,7 @@ package package_32
          this.const_451.name_1406(param1.name_1405);
          if(_loc2_ && this.method_939())
          {
-            if(this.method_940() && this.var_683 && !this.stage.mouseLock)
+            if(this.method_940() && this.var_683 && !this.method_954())
             {
                this.method_938(true);
             }
@@ -401,7 +404,7 @@ package package_32
          if(_loc2_ < 0)
          {
             this.const_450.push(param1);
-            if(this.stage.mouseLock)
+            if(this.method_954())
             {
                param1.method_688(true);
             }
@@ -479,7 +482,7 @@ package package_32
          }
          if(this.var_683)
          {
-            this.stage.mouseLock = param1;
+            this.method_955(param1);
          }
          var _loc2_:int = 0;
          while(_loc2_ < this.const_450.length)
@@ -504,9 +507,31 @@ package package_32
          return this.var_684 && this.const_451.name_1400() && Boolean(settingsService.mouseControl);
       }
       
+
+      private function method_954() : Boolean
+      {
+         return Boolean(Object(this.stage)["mouseLock"]);
+      }
+
+      private function method_955(param1:Boolean) : void
+      {
+         Object(this.stage)["mouseLock"] = param1;
+      }
+
+      private function method_956(param1:MouseEvent) : Number
+      {
+         return Number(Object(param1)["movementX"]);
+      }
+
+      private function method_957(param1:MouseEvent) : Number
+      {
+         return Number(Object(param1)["movementY"]);
+      }
+
       public function name_1089() : void
       {
-         if(this.stage.mouseLock)
+         this.method_941(this.const_454);
+         if(this.method_954())
          {
             this.method_938(false);
          }

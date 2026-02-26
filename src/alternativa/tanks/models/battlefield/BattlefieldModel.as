@@ -728,7 +728,7 @@ package alternativa.tanks.models.battlefield
                }
                else
                {
-                  this.var_130.removeAt(_loc3_);
+                  this.var_130.splice(_loc3_,1);
                }
             }
             if(_loc3_ >= 200)

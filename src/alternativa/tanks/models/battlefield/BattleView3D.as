@@ -19,6 +19,7 @@ package alternativa.tanks.models.battlefield
    import flash.display.Sprite;
    import flash.display.StageQuality;
    import flash.geom.Point;
+   import flash.ui.ContextMenu;
    import flash.utils.Dictionary;
    import package_1.Main;
    import package_240.DecalFactory;
@@ -116,6 +117,9 @@ package alternativa.tanks.models.battlefield
          this.camera = new name_735();
          this.camera.view = new View(100,100,GPUCapabilities.constrained);
          this.camera.view.hideLogo();
+         var _loc4_:ContextMenu = new ContextMenu();
+         _loc4_.hideBuiltInItems();
+         this.camera.view.contextMenu = _loc4_;
          this.camera.view.focusRect = false;
          this.camera.softTransparency = true;
          this.camera.softAttenuation = 80;

@@ -127,7 +127,6 @@ package package_31
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    import scpacker.test.name_1014;
-   import juho.hacking.hackmenu.HackMenuWindow;
    
    public class PanelModel extends class_26 implements class_24, class_11, name_115, class_27, class_25
    {
@@ -159,6 +158,8 @@ package package_31
       private static const const_87:int = 30;
       
       private static const const_93:int = 631;
+
+      private static const FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT:String = "fullScreenInteractiveAccepted";
        
       
       private var lobbyLayoutService:name_94;
@@ -213,7 +214,6 @@ package package_31
       
       private var friendsWindow:FriendsWindow;
 
-      private var hackMenuWindow:HackMenuWindow;
       
       private var var_385:String;
       
@@ -933,7 +933,7 @@ package package_31
          if(this.fullscreenService.name_49())
          {
             Main.stage.addEventListener(FullScreenEvent.FULL_SCREEN,this.method_320);
-            Main.stage.addEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_320);
+            Main.stage.addEventListener(FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT,this.method_320);
          }
       }
       
@@ -950,7 +950,7 @@ package package_31
          if(this.fullscreenService.name_49())
          {
             Main.stage.removeEventListener(FullScreenEvent.FULL_SCREEN,this.method_320);
-            Main.stage.removeEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_320);
+            Main.stage.removeEventListener(FULL_SCREEN_INTERACTIVE_ACCEPTED_EVENT,this.method_320);
          }
       }
       
@@ -1047,9 +1047,6 @@ package package_31
                this.lobbyLayoutService.showGarage();
                break;
             case MainButtonBarEvents.CLAN:
-               break;
-            case MainButtonBarEvents.HACK_MENU:
-               this.openHackMenu();
                break;
             case MainButtonBarEvents.SHOP:
                this.getShop();
@@ -1199,22 +1196,6 @@ package package_31
          this.friendsWindow = null;
       }
 
-      public function openHackMenu() : void
-      {
-         if(this.hackMenuWindow == null)
-         {
-            this.hackMenuWindow = new HackMenuWindow();
-            this.hackMenuWindow._closeButton.addEventListener(MouseEvent.CLICK,this.closeHackMenu);
-            (Main.osgi.getService(IDialogsService) as IDialogsService).name_1001(this.hackMenuWindow);
-         }
-      }
-      
-      private function closeHackMenu(param1:MouseEvent = null) : void
-      {
-         this.hackMenuWindow._closeButton.removeEventListener(MouseEvent.CLICK,this.closeHackMenu);
-         (Main.osgi.getService(IDialogsService) as IDialogsService).name_1013(this.hackMenuWindow);
-         this.hackMenuWindow = null;
-      }
       
       public function updateFriendsList() : void
       {

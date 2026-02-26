@@ -125,7 +125,7 @@ package scpacker.networking
             }
             _loc2_++;
          }
-         listeners.removeAt(_loc2_);
+         listeners.splice(_loc2_,1);
       }
       
       private function method_134(... rest) : Array
