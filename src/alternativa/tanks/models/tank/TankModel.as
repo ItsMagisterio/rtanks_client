@@ -33,11 +33,6 @@ package alternativa.tanks.models.tank
    import flash.utils.Dictionary;
    import flash.utils.getTimer;
    import forms.name_82;
-   import juho.hacking.event.HackEventDispatcher;
-   import juho.hacking.event.LocalTankDestroyedEvent;
-   import juho.hacking.event.LocalTankInitedEvent;
-   import juho.hacking.event.TankNormalStateSettedEvent;
-   import juho.hacking.event.TankSpecificationsChangedEvent;
    import package_1.Main;
    import package_13.Long;
    import package_24.LogLevel;
@@ -486,11 +481,7 @@ package alternativa.tanks.models.tank
          {
             return;
          }
-         
-         if (_loc3_.local) {
-            HackEventDispatcher.singleton.dispatchEvent(new LocalTankDestroyedEvent());
-         }
-         
+
          this.battlefield.name_147(_loc3_);
          if(_loc3_.tank != null)
          {
@@ -647,10 +638,6 @@ package alternativa.tanks.models.tank
                }
                this.var_41[param1.id] = null;
             }
-         }
-         
-         if (param2.self) {
-            HackEventDispatcher.singleton.dispatchEvent(new LocalTankInitedEvent(_loc7_));
          }
       }
       
@@ -1460,7 +1447,6 @@ package alternativa.tanks.models.tank
          param1.tank.skin.name_144().alpha = 1;
          param1.tank.postCollisionPredicate = null;
          
-         HackEventDispatcher.singleton.dispatchEvent(new TankNormalStateSettedEvent(param1.tank));
       }
       
       public function method_28(param1:GameActionEnum, param2:Boolean) : void
@@ -1544,7 +1530,6 @@ package alternativa.tanks.models.tank
          param1.tank.setMaxTurretTurnSpeed(param2.turretRotationSpeed,param3);
          param1.tank.setTurretTurnAcceleration(param2.turretRotationSpeed);
          
-         HackEventDispatcher.singleton.dispatchEvent(new TankSpecificationsChangedEvent(param1.tank));
       }
       
       private function method_49(param1:TankData, param2:Vector3dData, param3:Vector3dData, param4:Vector3dData, param5:Vector3dData, param6:Number, param7:int, param8:Boolean) : void
