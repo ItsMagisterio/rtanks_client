@@ -2,7 +2,8 @@ package alternativa.tanks.models.battlefield
 {
    import alternativa.tanks.service.settings.SettingsService;
    import alternativa.tanks.service.settings.name_1086;
-   import flash.display.Screen;
+   import flash.system.ApplicationDomain;
+   import flash.utils.getDefinitionByName;
    import alternativa.tanks.models.battlefield.logic.class_23;
    import flash.display.Stage;
    import flash.display.StageQuality;
@@ -90,13 +91,17 @@ package alternativa.tanks.models.battlefield
       private function method_833() : int
       {
          var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
-         if(SettingsService.storageService != null)
+         if(ApplicationDomain.currentDomain.hasDefinition("flash.display.Screen"))
          {
-            _loc1_ = Number(SettingsService.storageService.getStorage().data[name_1086.const_1705.name]);
-            if(!isNaN(_loc1_))
+            _loc2_ = getDefinitionByName("flash.display.Screen");
+            _loc2_ = _loc2_["mainScreen"];
+            if(_loc2_ != null)
             {
-               return this.method_834(_loc1_);
+               _loc3_ = Number(_loc2_["refreshRate"]);
+               if(!isNaN(_loc3_) && _loc3_ > 0)
+               {
+                  return this.method_834(_loc3_);
+               }
             }
          }
          if(Screen.mainScreen != null)

@@ -7,7 +7,8 @@ package alternativa.tanks.gui.settings.tabs
    import controls.checkbox.CheckBoxBase;
    import controls.name_2873;
    import controls.TankWindowInner;
-   import flash.display.Screen;
+   import flash.system.ApplicationDomain;
+   import flash.utils.getDefinitionByName;
    import flash.events.MouseEvent;
    import flash.net.SharedObject;
    import package_1.Main;
@@ -193,12 +194,18 @@ package alternativa.tanks.gui.settings.tabs
 
       private function method_2688() : int
       {
-         if(Screen.mainScreen != null && Screen.mainScreen.refreshRate > 0)
-         {
-            return this.method_2690(int(Screen.mainScreen.refreshRate),240);
-         }
-         return 120;
-      }
+         var _loc1_:Object = null;
+         var _loc2_:Object = null;
+         var _loc3_:Number = NaN;
+         if(ApplicationDomain.currentDomain.hasDefinition("flash.display.Screen"))
+            _loc1_ = getDefinitionByName("flash.display.Screen");
+            _loc2_ = _loc1_["mainScreen"];
+            if(_loc2_ != null)
+               _loc3_ = Number(_loc2_["refreshRate"]);
+               if(!isNaN(_loc3_) && _loc3_ > 0)
+               {
+                  return this.method_2690(int(_loc3_),240);
+               }
 
       private function method_2689() : int
       {
