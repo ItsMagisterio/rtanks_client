@@ -527,6 +527,7 @@ package package_32
 
       public function name_1089() : void
       {
+         this.method_941(this.const_454);
          if(this.method_954())
          {
             this.method_938(false);
