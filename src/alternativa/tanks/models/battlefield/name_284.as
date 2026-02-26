@@ -94,8 +94,9 @@ package alternativa.tanks.models.battlefield
 
       private function method_833() : int
       {
-         var _loc1_:Number = Screen.mainScreen == null ? Number(0) : Number(Screen.mainScreen.refreshRate);
-         return _loc1_ > 0 ? int(Math.round(_loc1_)) : int(60);
+         var _loc1_:Object = Screen.mainScreen;
+         var _loc2_:Number = _loc1_ != null && "refreshRate" in _loc1_ ? Number(_loc1_["refreshRate"]) : Number(0);
+         return _loc2_ > 0 ? int(Math.round(_loc2_)) : int(60);
       }
       
       public function name_674(param1:Boolean, param2:Boolean = false) : void
