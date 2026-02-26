@@ -788,7 +788,7 @@ package package_169
       
       public static const const_289:String = "For an item that is already in the garage, 50% of the item\'s value will be credited.";
       
-      public static const RANK_NAMES:String = "Recruit,Private,Gefreiter,Corporal,Master Corporal,Sergeant,Staff Sergeant,Master Sergeant,First Sergeant," + "Sergeant-major,Warrant Officer 1,Warrant Officer 2,Warrant Officer 3,Warrant Officer 4,Warrant Officer 5,Third Lieutenant,Second Lieutenant," + "First Lieutenant,Captain,Major,Lieutenant Colonel,Colonel,Brigadier,Major General,Lieutenant General,General,Marshal,Field-marshal,Commander,Generalissimo";
+      public static const RANK_NAMES:String = "Recruit,Private,Gefreiter,Corporal,Master Corporal,Sergeant,Staff Sergeant,Master Sergeant,First Sergeant," + "Sergeant-major,Warrant Officer 1,Warrant Officer 2,Warrant Officer 3,Warrant Officer 4,Warrant Officer 5,Third Lieutenant,Second Lieutenant," + "First Lieutenant,Captain,Major,Lieutenant Colonel,Colonel,Brigadier,Major General,Lieutenant General,General,Marshal,Field-marshal,Commander,Generalissimo,Legend";
        
       
       public function name_521()
