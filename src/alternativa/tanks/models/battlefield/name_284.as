@@ -95,7 +95,48 @@ package alternativa.tanks.models.battlefield
       private function method_833() : int
       {
          var _loc1_:Object = Screen.mainScreen;
-         var _loc2_:Number = _loc1_ != null && "refreshRate" in _loc1_ ? Number(_loc1_["refreshRate"]) : Number(0);
+         var _loc2_:Number = 0;
+         var _loc3_:Object = null;
+         var _loc4_:Array = null;
+         var _loc5_:Object = null;
+         if(_loc1_ == null)
+         {
+            return 60;
+         }
+         if("refreshRate" in _loc1_)
+         {
+            _loc2_ = Number(_loc1_["refreshRate"]);
+         }
+         if(_loc2_ <= 0 && "currentMode" in _loc1_)
+         {
+            _loc3_ = _loc1_["currentMode"];
+            if(_loc3_ != null && "refreshRate" in _loc3_)
+            {
+               _loc2_ = Number(_loc3_["refreshRate"]);
+            }
+         }
+         if(_loc2_ <= 0 && "mode" in _loc1_)
+         {
+            _loc3_ = _loc1_["mode"];
+            if(_loc3_ != null && "refreshRate" in _loc3_)
+            {
+               _loc2_ = Number(_loc3_["refreshRate"]);
+            }
+         }
+         if(_loc2_ <= 0 && "modes" in _loc1_)
+         {
+            _loc4_ = _loc1_["modes"] as Array;
+            if(_loc4_ != null)
+            {
+               for each(_loc5_ in _loc4_)
+               {
+                  if(_loc5_ != null && "refreshRate" in _loc5_)
+                  {
+                     _loc2_ = Math.max(_loc2_,Number(_loc5_["refreshRate"]));
+                  }
+               }
+            }
+         }
          return _loc2_ > 0 ? int(Math.round(_loc2_)) : int(60);
       }
       
