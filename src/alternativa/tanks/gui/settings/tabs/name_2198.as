@@ -62,7 +62,7 @@ package alternativa.tanks.gui.settings.tabs
       public function name_2198()
       {
          this.storage = IStorageService(Main.osgi.getService(IStorageService)).getStorage();
-         this.var_3401 = this.method_2688();
+         this.var_3401 = 120;
          this.var_3402 = this.method_2690(this.method_2689(),this.var_3401);
          var _loc1_:int = 0;
          var _loc2_:GridLayout = null;
@@ -190,10 +190,6 @@ package alternativa.tanks.gui.settings.tabs
          super.destroy();
       }
 
-      private function method_2688() : int
-      {
-         if(isNaN(_loc1_))
-         {
             _loc1_ = this.var_3401;
          }
          return int(_loc1_);
