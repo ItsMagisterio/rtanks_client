@@ -13,6 +13,8 @@ package package_280
       
       public static const CLAN:String = "Clan";
 
+      public static const REFERAL:String = "Referal";
+
       
       public static const FRIENDS:String = "Friends";
       
@@ -37,7 +39,7 @@ package package_280
       
       public function MainButtonBarEvents(param1:int)
       {
-         this.types = ["SHOP","Battle","Garage","Settings","Sound","Help","Close","Friends","FullScreen","Quests","Clan"];
+         this.types = ["SHOP","Battle","Garage","Settings","Sound","Help","Close","Friends","FullScreen","Quests","Clan","Referal"];
          super(MainButtonBarEvents.name_1024,true,false);
          this.var_1733 = this.types[param1 - 1];
       }

@@ -14,6 +14,7 @@ package forms
    import package_446.name_2898;
    import package_446.name_2899;
    import package_446.name_2900;
+   import package_446.name_2905;
    import package_446.name_2901;
    import package_446.name_2902;
    import package_446.name_2903;
@@ -41,7 +42,8 @@ package forms
       
       public var clanButton:name_2899;
 
-      
+      public var referalButton:name_2905;
+
       public var name_1059:MainPanelConfigButton;
       
       public var name_983:CloseOrBackButton;
@@ -71,6 +73,7 @@ package forms
          this.name_980 = new name_2897();
          this.name_985 = new name_2898();
          this.clanButton = new name_2899();
+         this.referalButton = new name_2905();
          this.name_1059 = new MainPanelConfigButton();
          this.name_983 = new CloseOrBackButton();
          this.name_1055 = new name_2900();
@@ -84,6 +87,7 @@ package forms
          addChild(this.name_980);
          addChild(this.name_985);
          addChild(this.clanButton);
+         addChild(this.referalButton);
          addChild(this.var_2876);
          addChild(this.var_2877);
          addChild(this.name_1059);
@@ -105,6 +109,9 @@ package forms
          this.clanButton.label = _loc1_.getText(name_390.const_668);
          this.clanButton.addEventListener(MouseEvent.CLICK,this.method_1944);
          this.clanButton.visible = true;
+         this.referalButton.type = 12;
+         this.referalButton.label = "REFERAL";
+         this.referalButton.addEventListener(MouseEvent.CLICK,this.method_1944);
          this.var_2876.type = 10;
          this.var_2876.addEventListener(MouseEvent.CLICK,this.method_1944);
          this.var_2877.type = 8;
@@ -128,15 +135,8 @@ package forms
          this.name_980.x = this.var_2874.x + this.var_2874.width + 1;
          this.name_985.x = this.name_980.x + this.name_980.width;
          this.clanButton.x = this.name_985.x + this.name_985.width;
-         var _loc1_:Number = 8;
-         if(this.clanButton.visible)
-         {
-            _loc1_ += this.clanButton.x + this.clanButton.width;
-         }
-         else
-         {
-            _loc1_ += this.name_985.x + this.name_985.width;
-         }
+         this.referalButton.x = this.clanButton.x + (this.clanButton.visible ? this.clanButton.width : 0);
+         var _loc1_:Number = 8 + this.referalButton.x + this.referalButton.width;
          this.var_2876.x = _loc1_;
          this.var_2877.x = this.var_2876.x + (this.var_2876.visible ? this.var_2876.width : 0);
          this.name_1059.x = this.var_2877.x + this.var_2877.width;

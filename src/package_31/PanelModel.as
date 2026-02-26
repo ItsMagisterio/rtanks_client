@@ -1060,6 +1060,9 @@ package package_31
             case MainButtonBarEvents.FRIENDS:
                this.networker.send("lobby;get_friends");
                break;
+            case MainButtonBarEvents.REFERAL:
+               ((this.modelRegister.getModelsByInterface(name_989) as Vector.<IModel>)[0] as name_989).name_1051();
+               break;
             case MainButtonBarEvents.name_1046:
                this.networker.send("lobby;show_quests");
                break;
