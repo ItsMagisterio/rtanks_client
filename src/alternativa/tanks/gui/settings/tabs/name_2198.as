@@ -192,10 +192,6 @@ package alternativa.tanks.gui.settings.tabs
 
       private function method_2688() : int
       {
-         if(Main.stage != null && Main.stage.frameRate > 0)
-            return this.method_2690(int(Main.stage.frameRate),240);
-      {
-         var _loc1_:Number = Number(this.storage.data[name_1086.const_1705.name]);
          if(isNaN(_loc1_))
          {
             _loc1_ = this.var_3401;
