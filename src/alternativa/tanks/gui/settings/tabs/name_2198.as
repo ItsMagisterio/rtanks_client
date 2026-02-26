@@ -83,7 +83,7 @@ package alternativa.tanks.gui.settings.tabs
          this.var_3400 = new LabelBase();
          this.var_3400.x = 8;
          this.var_3400.y = 8;
-         this.method_2692(this.var_3402);
+         this.var_3400.text = "Предельная частота кадров: (" + this.var_3402 + ")";
          addChild(this.var_3400);
          this.var_3399 = new name_2873();
          this.var_3399.minValue = 30;
@@ -204,12 +204,7 @@ package alternativa.tanks.gui.settings.tabs
          }
          if(_loc2_ > 120)
             _loc2_ = 120;
-         settingsService.method_588(name_1086.const_1705,_loc2_);
-      }
-
-      private function method_2692(param1:int) : void
-      {
-         this.var_3400.text = "Предельная частота кадров: (" + param1 + ")";
+         this.var_3400.text = "Предельная частота кадров: (" + _loc2_ + ")";
       }
    }
 }
