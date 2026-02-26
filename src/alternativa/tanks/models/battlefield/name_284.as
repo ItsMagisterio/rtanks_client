@@ -97,7 +97,7 @@ package alternativa.tanks.models.battlefield
          var _loc1_:Object = Screen.mainScreen;
          var _loc2_:Number = 0;
          var _loc3_:Object = null;
-         var _loc4_:Array = null;
+         var _loc4_:Object = null;
          var _loc5_:Object = null;
          if(_loc1_ == null)
          {
@@ -125,7 +125,7 @@ package alternativa.tanks.models.battlefield
          }
          if(_loc2_ <= 0 && "modes" in _loc1_)
          {
-            _loc4_ = _loc1_["modes"] as Array;
+            _loc4_ = _loc1_["modes"];
             if(_loc4_ != null)
             {
                for each(_loc5_ in _loc4_)
