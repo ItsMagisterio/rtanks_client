@@ -53,7 +53,6 @@ package alternativa.tanks.gui.settings.tabs
 
       private var var_3400:LabelBase;
 
-      private var var_3401:int;
 
       private var var_3402:int;
 
@@ -62,10 +61,19 @@ package alternativa.tanks.gui.settings.tabs
       public function name_2198()
       {
          this.storage = IStorageService(Main.osgi.getService(IStorageService)).getStorage();
-         this.var_3401 = 120;
-         this.var_3402 = this.method_2690(this.method_2689(),this.var_3401);
          var _loc1_:int = 0;
          var _loc2_:GridLayout = null;
+         var _loc3_:int = 120;
+         var _loc4_:Number = Number(this.storage.data[name_1086.const_1705.name]);
+         this.var_3402 = isNaN(_loc4_) ? int(_loc3_) : int(_loc4_);
+         if(this.var_3402 < 30)
+         {
+            this.var_3402 = 30;
+         }
+         if(this.var_3402 > _loc3_)
+         {
+            this.var_3402 = _loc3_;
+         }
          super();
          this.var_2847 = new TankWindowInner(0,0,TankWindowInner.name_2114);
          this.var_2847.width = SettingsWindow.name_2112;
@@ -79,7 +87,7 @@ package alternativa.tanks.gui.settings.tabs
          addChild(this.var_3400);
          this.var_3399 = new name_2873();
          this.var_3399.minValue = 30;
-         this.var_3399.maxValue = this.var_3401;
+         this.var_3399.maxValue = _loc3_;
          this.var_3399.tickInterval = 10;
          this.var_3399.width = SettingsWindow.name_2112 - this.var_3400.x - 8;
          this.var_3399.y = this.var_3400.y + this.var_3400.height + 4;
@@ -189,30 +197,13 @@ package alternativa.tanks.gui.settings.tabs
          }
          super.destroy();
       }
-
-            _loc1_ = this.var_3401;
-         }
-         return int(_loc1_);
-      }
-
-      private function method_2690(param1:int, param2:int) : int
-      {
-         if(param1 < 30)
-         {
-            return 30;
-         }
-         if(param1 > param2)
-         {
-            return param2;
-         }
-         return param1;
-      }
-
       private function method_2691(param1:name_2872) : void
-      {
-         var _loc2_:int = this.method_2690(int(param1.value),this.var_3401);
-         this.var_3399.value = _loc2_;
-         this.method_2692(_loc2_);
+         var _loc2_:int = int(param1.currentValue);
+         if(_loc2_ < 30)
+            _loc2_ = 30;
+         }
+         if(_loc2_ > 120)
+            _loc2_ = 120;
          settingsService.method_588(name_1086.const_1705,_loc2_);
       }
 
