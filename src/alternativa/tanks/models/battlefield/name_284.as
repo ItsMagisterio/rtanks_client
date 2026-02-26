@@ -154,7 +154,7 @@ package alternativa.tanks.models.battlefield
                _loc2_ = Number(_loc3_["refreshRate"]);
             }
          }
-         if(_loc2_ <= 0 && "modes" in _loc1_)
+         if("modes" in _loc1_)
          {
             _loc4_ = _loc1_["modes"];
             if(_loc4_ != null)
