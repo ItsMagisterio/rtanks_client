@@ -4,6 +4,7 @@ package package_32
    import alternativa.tanks.service.settings.IBattleSettings;
    import alternativa.tanks.utils.name_1398;
    import flash.display.Stage;
+   import flash.display.StageDisplayState;
    import flash.events.Event;
    import flash.events.EventDispatcher;
    import flash.events.FullScreenEvent;
@@ -51,6 +52,8 @@ package package_32
       private var var_685:Boolean = false;
       
       private var var_684:Boolean = true;
+
+      private static const const_455:String = "fullScreenInteractiveAccepted";
       
       public function BattleInputServiceImpl(param1:Stage, param2:name_276)
       {
@@ -70,7 +73,7 @@ package package_32
          param1.addEventListener(MouseEvent.MOUSE_WHEEL,this.onMouseWheel);
          param1.addEventListener(Event.MOUSE_LEAVE,this.method_951);
          param1.addEventListener(FullScreenEvent.FULL_SCREEN,this.method_947);
-         //param1.addEventListener(FullScreenEvent.FULL_SCREEN_INTERACTIVE_ACCEPTED,this.method_947);
+         param1.addEventListener(const_455,this.method_947);
       }
       
       public function name_768() : void
@@ -250,7 +253,7 @@ package package_32
       
       private function method_947(param1:FullScreenEvent) : void
       {
-         this.var_683 = param1.fullScreen;
+         this.var_683 = this.stage.displayState != StageDisplayState.NORMAL;
          if(this.isLocked())
          {
             return;
