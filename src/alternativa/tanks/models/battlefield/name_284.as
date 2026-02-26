@@ -21,6 +21,8 @@ package alternativa.tanks.models.battlefield
       private static const const_409:int = 10;
       
       private static const const_412:int = 30;
+
+      private static const const_413:int = 1000;
        
       
       private var stage:Stage;
@@ -79,7 +81,7 @@ package alternativa.tanks.models.battlefield
       {
          if(this.var_609)
          {
-            this.var_604 = this.method_833();
+            this.var_604 = const_413;
             return;
          }
          if(GPUCapabilities.method_95)
