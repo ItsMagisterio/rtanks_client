@@ -73,6 +73,11 @@ package alternativa.tanks.service.settings
       {
          return this.method_1928(name_1086.name_2206,false);
       }
+
+      public function get unlockFpsByMonitorHz() : Boolean
+      {
+         return this.method_1928(name_1086.const_1705,false);
+      }
       
       public function get inverseBackDriving() : Boolean
       {

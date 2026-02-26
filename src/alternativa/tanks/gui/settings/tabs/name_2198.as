@@ -21,6 +21,8 @@ package alternativa.tanks.gui.settings.tabs
       private var var_2846:CheckBoxBase;
       
       private var var_2851:CheckBoxBase;
+
+      private var var_2861:CheckBoxBase;
       
       private var var_2848:CheckBoxBase;
       
@@ -60,6 +62,8 @@ package alternativa.tanks.gui.settings.tabs
          addChild(this.var_2846);
          this.var_2851 = method_1693(name_1086.name_2206,localeService.getText(name_390.const_1129),settingsService.adaptiveFPS);
          addChild(this.var_2851);
+         this.var_2861 = method_1693(name_1086.const_1705,"Разблокировать FPS по герцовке монитора",settingsService.unlockFpsByMonitorHz);
+         addChild(this.var_2861);
          this.var_2848 = method_1693(name_1086.name_2211,localeService.getText(name_390.const_1144),settingsService.showSkyBox);
          addChild(this.var_2848);
          this.var_2856 = method_1693(name_1086.name_2216,localeService.getText(name_390.const_1177),settingsService.mipMapping);
@@ -131,18 +135,18 @@ package alternativa.tanks.gui.settings.tabs
          this.var_2852.visible = _loc2_;
          this.var_2850.visible = _loc2_;
          this.var_2853.visible = _loc2_;
-         this.var_2847.height = _loc2_ ? Number(7 * this.var_2846.height + 8 * 8) : Number(3 * this.var_2846.height + 4 * 8);
+         this.var_2847.height = _loc2_ ? Number(8 * this.var_2846.height + 9 * 8) : Number(4 * this.var_2846.height + 5 * 8);
          this.method_2683();
       }
       
       private function method_2687(param1:GridLayout) : int
       {
-         return param1.layout([[this.var_2846,this.var_2851],[this.var_2848,this.var_2856]]);
+         return param1.layout([[this.var_2846,this.var_2851],[this.var_2861],[this.var_2848,this.var_2856]]);
       }
       
       private function method_2684(param1:GridLayout) : int
       {
-         return param1.layout([[this.var_2846,this.var_2851],[this.var_2848,this.var_2856],[this.var_2844],[this.var_2854,this.var_2852],[this.var_2850,this.var_2855],[this.var_2849,this.var_2853],[this.var_2845,this.var_2857]]);
+         return param1.layout([[this.var_2846,this.var_2851],[this.var_2861],[this.var_2848,this.var_2856],[this.var_2844],[this.var_2854,this.var_2852],[this.var_2850,this.var_2855],[this.var_2849,this.var_2853],[this.var_2845,this.var_2857]]);
       }
       
       override public function destroy() : void

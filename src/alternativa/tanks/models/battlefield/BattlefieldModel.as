@@ -380,7 +380,7 @@ package alternativa.tanks.models.battlefield
          if(_loc1_ != null)
          {
             this.var_117.skybox.visible = _loc1_.showSkyBox;
-            this.var_128.name_674(_loc1_.adaptiveFPS);
+            this.var_128.name_674(_loc1_.adaptiveFPS,_loc1_.unlockFpsByMonitorHz);
             if(this.var_117.name_664 == null && Boolean(_loc1_.bgSound) || this.var_117.name_664 != null && !_loc1_.bgSound)
             {
                this.method_172();
@@ -1304,7 +1304,7 @@ package alternativa.tanks.models.battlefield
          var _loc1_:IBattleSettings = this.method_159();
          this.var_117.name_661.visible = true;
          this.var_117.name_661.addChild(this.var_117.viewport);
-         this.var_128.name_674(_loc1_.adaptiveFPS);
+         this.var_128.name_674(_loc1_.adaptiveFPS,_loc1_.unlockFpsByMonitorHz);
          this.var_117.viewport.name_719(_loc1_.graphicsAutoQuality,this.mapResourceId);
          if(!_loc1_.graphicsAutoQuality)
          {
@@ -1344,8 +1344,8 @@ package alternativa.tanks.models.battlefield
             this.var_126.init(new const_32().bitmapData,7000,5000,180,0.75,0.15);
          }
          this.var_117.viewport.name_751(this.var_126);
-         this.var_128 = new name_284(name_24(OSGi.getInstance().getService(name_24)).stage,this.const_30);
-         this.var_128.name_674(this.method_159().adaptiveFPS);
+         this.var_128 = new name_284(name_24(OSGi.getInstance().getService(name_24)).stage,this.const_30,this.method_159().unlockFpsByMonitorHz);
+         this.var_128.name_674(this.method_159().adaptiveFPS,this.method_159().unlockFpsByMonitorHz);
          this.var_132 = new SuicideIndicator(this);
          Main.stage.focus = this.var_117.viewport;
          this.var_137 = 0;

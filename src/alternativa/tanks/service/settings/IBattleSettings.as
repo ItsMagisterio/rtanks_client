@@ -29,6 +29,8 @@ package alternativa.tanks.service.settings
       function get alternateCamera() : Boolean;
       
       function get adaptiveFPS() : Boolean;
+
+      function get unlockFpsByMonitorHz() : Boolean;
       
       function get shadows() : Boolean;
       

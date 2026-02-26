@@ -1,6 +1,7 @@
 package alternativa.tanks.models.battlefield
 {
    import alternativa.tanks.models.battlefield.logic.class_23;
+   import flash.display.Screen;
    import flash.display.Stage;
    import flash.display.StageQuality;
    import package_12.name_24;
@@ -35,12 +36,15 @@ package alternativa.tanks.models.battlefield
       private var var_607:String;
       
       private var var_605:Boolean;
+
+      private var var_609:Boolean;
       
-      public function name_284(param1:Stage, param2:name_668)
+      public function name_284(param1:Stage, param2:name_668, param3:Boolean)
       {
          super();
          this.stage = param1;
          this.var_606 = param2;
+         this.var_609 = param3;
          this.method_831();
          this.method_825();
          this.method_827();
@@ -73,6 +77,11 @@ package alternativa.tanks.models.battlefield
       
       private function method_831() : void
       {
+         if(this.var_609)
+         {
+            this.var_604 = this.method_833();
+            return;
+         }
          if(GPUCapabilities.method_95)
          {
             this.var_604 = 60;
@@ -82,9 +91,21 @@ package alternativa.tanks.models.battlefield
             this.var_604 = 40;
          }
       }
-      
-      public function name_674(param1:Boolean) : void
+
+      private function method_833() : int
       {
+         var _loc1_:Number = Screen.mainScreen == null ? Number(0) : Number(Screen.mainScreen.refreshRate);
+         return _loc1_ > 0 ? int(Math.round(_loc1_)) : int(60);
+      }
+      
+      public function name_674(param1:Boolean, param2:Boolean = false) : void
+      {
+         this.var_609 = param2;
+         this.method_831();
+         if(!this.var_605)
+         {
+            this.stage.frameRate = this.var_604;
+         }
          if(param1)
          {
             this.method_826();

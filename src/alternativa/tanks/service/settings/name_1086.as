@@ -64,6 +64,8 @@ package alternativa.tanks.service.settings
       public static const const_1701:name_1086 = new name_1086(28,"use_old_textures");
       
       public static const const_1704:name_1086 = new name_1086(29,"night_mode");
+
+      public static const const_1705:name_1086 = new name_1086(30,"unlockFpsByMonitorHz");
        
       
       public function name_1086(param1:int, param2:String)
