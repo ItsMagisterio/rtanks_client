@@ -92,9 +92,40 @@ package alternativa.tanks.models.battlefield
          }
       }
 
+      private function method_834() : Object
+      {
+         var _loc1_:Object = null;
+         var _loc2_:Object = null;
+         var _loc3_:Object = null;
+         var _loc4_:Object = null;
+         if(this.stage != null && "nativeWindow" in this.stage)
+         {
+            _loc1_ = this.stage["nativeWindow"];
+            if(_loc1_ != null && "bounds" in _loc1_)
+            {
+               _loc2_ = _loc1_["bounds"];
+               if(_loc2_ != null && "getScreensForRectangle" in Screen)
+               {
+                  _loc3_ = Screen["getScreensForRectangle"](_loc2_);
+                  if(_loc3_ != null)
+                  {
+                     for each(_loc4_ in _loc3_)
+                     {
+                        if(_loc4_ != null)
+                        {
+                           return _loc4_;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         return Screen.mainScreen;
+      }
+
       private function method_833() : int
       {
-         var _loc1_:Object = Screen.mainScreen;
+         var _loc1_:Object = this.method_834();
          var _loc2_:Number = 0;
          var _loc3_:Object = null;
          var _loc4_:Object = null;
