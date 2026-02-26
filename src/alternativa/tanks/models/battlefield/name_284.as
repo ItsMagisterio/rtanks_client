@@ -1,5 +1,8 @@
 package alternativa.tanks.models.battlefield
 {
+   import alternativa.tanks.service.settings.SettingsService;
+   import alternativa.tanks.service.settings.name_1086;
+   import flash.display.Screen;
    import alternativa.tanks.models.battlefield.logic.class_23;
    import flash.display.Stage;
    import flash.display.StageQuality;
@@ -73,14 +76,52 @@ package alternativa.tanks.models.battlefield
       
       private function method_831() : void
       {
+         var _loc1_:int = this.method_833();
          if(GPUCapabilities.method_95)
          {
-            this.var_604 = 60;
+            this.var_604 = _loc1_ < 60 ? _loc1_ : 60;
          }
          else
          {
-            this.var_604 = 40;
+            this.var_604 = _loc1_ < 40 ? _loc1_ : 40;
          }
+      }
+
+      private function method_833() : int
+      {
+         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
+         if(SettingsService.storageService != null)
+         {
+            _loc1_ = Number(SettingsService.storageService.getStorage().data[name_1086.const_1705.name]);
+            if(!isNaN(_loc1_))
+            {
+               return this.method_834(_loc1_);
+            }
+         }
+         if(Screen.mainScreen != null)
+         {
+            _loc2_ = Screen.mainScreen.refreshRate;
+            if(_loc2_ > 0)
+            {
+               return this.method_834(_loc2_);
+            }
+         }
+         return 120;
+      }
+
+      private function method_834(param1:Number) : int
+      {
+         var _loc2_:int = int(param1);
+         if(_loc2_ < 30)
+         {
+            _loc2_ = 30;
+         }
+         if(_loc2_ > 240)
+         {
+            _loc2_ = 240;
+         }
+         return _loc2_;
       }
       
       public function name_674(param1:Boolean) : void

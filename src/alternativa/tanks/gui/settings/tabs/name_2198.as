@@ -3,11 +3,15 @@ package alternativa.tanks.gui.settings.tabs
    import alternativa.tanks.gui.settings.SettingsWindow;
    import alternativa.tanks.gui.settings.controls.GridLayout;
    import alternativa.tanks.service.settings.name_1086;
+   import controls.base.LabelBase;
    import controls.checkbox.CheckBoxBase;
+   import controls.name_2873;
    import controls.TankWindowInner;
+   import flash.display.Screen;
    import flash.events.MouseEvent;
    import flash.net.SharedObject;
    import package_1.Main;
+   import package_280.name_2872;
    import package_3.GPUCapabilities;
    import package_95.IStorageService;
    import projects.tanks.clients.fp10.libraries.name_390;
@@ -45,17 +49,45 @@ package alternativa.tanks.gui.settings.tabs
       private var var_2844:CheckBoxBase;
       
       private var storage:SharedObject;
+
+      private var var_3399:name_2873;
+
+      private var var_3400:LabelBase;
+
+      private var var_3401:int;
+
+      private var var_3402:int;
+
+      private var var_3403:int;
       
       public function name_2198()
       {
          this.storage = IStorageService(Main.osgi.getService(IStorageService)).getStorage();
+         this.var_3401 = this.method_2688();
+         this.var_3402 = this.method_2690(this.method_2689(),this.var_3401);
          var _loc1_:int = 0;
+         var _loc2_:GridLayout = null;
          super();
          this.var_2847 = new TankWindowInner(0,0,TankWindowInner.name_2114);
          this.var_2847.width = SettingsWindow.name_2112;
          this.var_2847.y = 0;
          this.var_2847.x = 0;
          addChild(this.var_2847);
+         this.var_3400 = new LabelBase();
+         this.var_3400.x = 8;
+         this.var_3400.y = 8;
+         this.method_2692(this.var_3402);
+         addChild(this.var_3400);
+         this.var_3399 = new name_2873();
+         this.var_3399.minValue = 30;
+         this.var_3399.maxValue = this.var_3401;
+         this.var_3399.tickInterval = 10;
+         this.var_3399.width = SettingsWindow.name_2112 - this.var_3400.x - 8;
+         this.var_3399.y = this.var_3400.y + this.var_3400.height + 4;
+         this.var_3403 = this.var_3399.y + this.var_3399.height + 8;
+         this.var_3399.value = this.var_3402;
+         this.var_3399.addEventListener(name_2872.name_2874,this.method_2691);
+         addChild(this.var_3399);
          this.var_2846 = method_1693(name_1086.name_2215,localeService.getText(name_390.const_785),settingsService.showFPS);
          addChild(this.var_2846);
          this.var_2851 = method_1693(name_1086.name_2206,localeService.getText(name_390.const_1129),settingsService.adaptiveFPS);
@@ -64,7 +96,7 @@ package alternativa.tanks.gui.settings.tabs
          addChild(this.var_2848);
          this.var_2856 = method_1693(name_1086.name_2216,localeService.getText(name_390.const_1177),settingsService.mipMapping);
          addChild(this.var_2856);
-         var _loc2_:GridLayout = new GridLayout(8,8,SettingsWindow.name_2112 * 0.5,this.var_2846.height + 8);
+         _loc2_ = new GridLayout(8,this.var_3403,SettingsWindow.name_2112 * 0.5,this.var_2846.height + 8);
          if(this.method_2686())
          {
             this.var_2855 = method_1693(name_1086.FOG,localeService.getText(name_390.const_1183),settingsService.fog);
@@ -131,7 +163,7 @@ package alternativa.tanks.gui.settings.tabs
          this.var_2852.visible = _loc2_;
          this.var_2850.visible = _loc2_;
          this.var_2853.visible = _loc2_;
-         this.var_2847.height = _loc2_ ? Number(7 * this.var_2846.height + 8 * 8) : Number(3 * this.var_2846.height + 4 * 8);
+         this.var_2847.height = (_loc2_ ? Number(7 * this.var_2846.height + 8 * 8) : Number(3 * this.var_2846.height + 4 * 8)) + this.var_3403 - 8;
          this.method_2683();
       }
       
@@ -147,9 +179,61 @@ package alternativa.tanks.gui.settings.tabs
       
       override public function destroy() : void
       {
-         this.var_2844.removeEventListener(MouseEvent.CLICK,this.method_2681);
-         this.var_2845.removeEventListener(MouseEvent.CLICK,this.method_2682);
+         this.var_3399.removeEventListener(name_2872.name_2874,this.method_2691);
+         if(this.var_2844 != null)
+         {
+            this.var_2844.removeEventListener(MouseEvent.CLICK,this.method_2681);
+         }
+         if(this.var_2845 != null)
+         {
+            this.var_2845.removeEventListener(MouseEvent.CLICK,this.method_2682);
+         }
          super.destroy();
+      }
+
+      private function method_2688() : int
+      {
+         if(Screen.mainScreen != null && Screen.mainScreen.refreshRate > 0)
+         {
+            return this.method_2690(int(Screen.mainScreen.refreshRate),240);
+         }
+         return 120;
+      }
+
+      private function method_2689() : int
+      {
+         var _loc1_:Number = Number(this.storage.data[name_1086.const_1705.name]);
+         if(isNaN(_loc1_))
+         {
+            _loc1_ = this.var_3401;
+         }
+         return int(_loc1_);
+      }
+
+      private function method_2690(param1:int, param2:int) : int
+      {
+         if(param1 < 30)
+         {
+            return 30;
+         }
+         if(param1 > param2)
+         {
+            return param2;
+         }
+         return param1;
+      }
+
+      private function method_2691(param1:name_2872) : void
+      {
+         var _loc2_:int = this.method_2690(int(param1.value),this.var_3401);
+         this.var_3399.value = _loc2_;
+         this.method_2692(_loc2_);
+         settingsService.method_588(name_1086.const_1705,_loc2_);
+      }
+
+      private function method_2692(param1:int) : void
+      {
+         this.var_3400.text = "Предельная частота кадров: (" + param1 + ")";
       }
    }
 }
