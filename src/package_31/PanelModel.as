@@ -1061,7 +1061,7 @@ package package_31
                this.networker.send("lobby;get_friends");
                break;
             case MainButtonBarEvents.name_1046:
-               this.networker.send("lobby;show_quests");
+               this.networker.send("lobby;show_referals");
                break;
             case MainButtonBarEvents.SETTINGS:
                if(this.var_367 == null)

@@ -26,7 +26,7 @@ package package_280
       
       public static const FULL_SCREEN:String = "FullScreen";
       
-      public static const name_1046:String = "Quests";
+      public static const name_1046:String = "Referals";
       
       public static const name_1024:String = "Close";
        
@@ -37,7 +37,7 @@ package package_280
       
       public function MainButtonBarEvents(param1:int)
       {
-         this.types = ["SHOP","Battle","Garage","Settings","Sound","Help","Close","Friends","FullScreen","Quests","Clan"];
+         this.types = ["SHOP","Battle","Garage","Settings","Sound","Help","Close","Friends","FullScreen","Referals","Clan"];
          super(MainButtonBarEvents.name_1024,true,false);
          this.var_1733 = this.types[param1 - 1];
       }
