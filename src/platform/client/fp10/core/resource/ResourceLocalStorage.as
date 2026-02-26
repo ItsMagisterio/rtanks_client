@@ -430,10 +430,9 @@ class PrintIndexCommand extends ConsoleCommand
          }
          return 0;
       });
-      for each(var _loc6_ in resourceIds)
+      for each(var _loc6_:String in resourceIds)
       {
          sid = _loc6_;
-         _loc6_;
          resourceInfo = resourceIndex.getResourceInfo(sid);
       }
    }

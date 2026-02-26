@@ -58,7 +58,7 @@ package juho.hacking.hacks {
          this.localTank = null;
       }
       
-      private function tankNormalStateSettedEvent(e:TankNormalStateSettedEvent) {
+      private function tankNormalStateSettedEvent(e:TankNormalStateSettedEvent) : void {
          if (e.tank == this.localTank && this.isEnabled) {
             e.tank.postCollisionPredicate =  name_166(this.battlefield);
          }

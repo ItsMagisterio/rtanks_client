@@ -13,7 +13,7 @@ package package_446
       
       private static const WIDTH:int = 90;
       
-      private static const Button:Class = name_3366;
+      private static const BUTTON_SKIN:Class = name_3366;
       
       private static const const_2634:Class = name_3365;
       
@@ -50,7 +50,7 @@ package package_446
       
       public function class_210()
       {
-         this.var_3408 = new Bitmap(Bitmap(new Button()).bitmapData);
+         this.var_3408 = new Bitmap(Bitmap(new BUTTON_SKIN()).bitmapData);
          this.var_1235 = new Bitmap(Bitmap(new const_2634()).bitmapData);
          this.var_1238 = new Bitmap(Bitmap(new const_2636()).bitmapData);
          this.var_3409 = new Bitmap(Bitmap(new const_2635()).bitmapData);

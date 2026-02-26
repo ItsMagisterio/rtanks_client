@@ -87,9 +87,9 @@ package package_302
       override public function set mipMapping(param1:int) : void
       {
          alternativa3d::_mipMapping = 0;
-         alternativa3d::textureResource = TextureResourcesRegistry.getTextureResource(bitmap,param1,repeat,alternativa3d::_hardwareMipMaps);
+         alternativa3d::textureResource = TextureResourcesRegistry.getTextureResource(bitmap,param1 > 0,repeat,alternativa3d::_hardwareMipMaps);
          var_2836 = TextureResourcesRegistry.getTextureResource(var_2840,false,true,false);
-         var_2837 = TextureResourcesRegistry.getTextureResource(var_2839,param1,true,false);
+         var_2837 = TextureResourcesRegistry.getTextureResource(var_2839,param1 > 0,true,false);
       }
       
       override alternativa3d function drawOpaque(param1:Camera3D, param2:VertexBufferResource, param3:IndexBufferResource, param4:int, param5:int, param6:Object3D) : void
