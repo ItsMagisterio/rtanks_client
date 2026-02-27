@@ -3,7 +3,7 @@ package alternativa.tanks.models.weapons.discrete
    import package_37.Vector3;
    import package_39.Model;
    import platform.client.fp10.core.type.name_70;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.TargetPosition;
    
    public class DiscreteWeaponAdapt implements DiscreteWeapon
    {
@@ -20,11 +20,11 @@ package alternativa.tanks.models.weapons.discrete
          this.impl = param2;
       }
       
-      public function method_909(param1:int, param2:Vector3, param3:Vector.<name_1378>) : void
+      public function method_909(param1:int, param2:Vector3, param3:Vector.<TargetPosition>) : void
       {
          var clientTime:int = param1;
          var direction:Vector3 = param2;
-         var targets:Vector.<name_1378> = param3;
+         var targets:Vector.<TargetPosition> = param3;
          try
          {
             Model.object = this.object;

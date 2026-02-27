@@ -8,7 +8,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.discre
    import package_38.name_860;
    import package_67.Vector3d;
    import platform.client.fp10.core.model.name_66;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.TargetPosition;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -46,16 +46,16 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.discre
       
       public function method_910(param1:int, param2:Vector3d) : void
       {
-         this.method_909(param1,param2,new Vector.<name_1378>());
+         this.method_909(param1,param2,new Vector.<TargetPosition>());
       }
       
-      public function method_909(param1:int, param2:Vector3d, param3:Vector.<name_1378>) : void
+      public function method_909(param1:int, param2:Vector3d, param3:Vector.<TargetPosition>) : void
       {
          var _loc4_:Object = this.method_2304(param1, param2, param3);
          Network(OSGi.getInstance().getService(INetworker)).send("battle;fire;" + JSON.stringify(_loc4_));
       }
       
-      private function method_2304(param1:int, param2:Vector3d, param3:Vector.<name_1378>) : Object
+      private function method_2304(param1:int, param2:Vector3d, param3:Vector.<TargetPosition>) : Object
       {
          var _loc4_:Object = new Object();
          _loc4_.direction = param2;
@@ -80,11 +80,11 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.discre
          return _loc4_;
       }
       
-      private function method_1004(param1:Vector.<name_1378>) : Vector.<TargetHit>
+      private function method_1004(param1:Vector.<TargetPosition>) : Vector.<TargetHit>
       {
          var _loc2_:Dictionary = new Dictionary();
          var _loc3_:Vector.<TargetHit> = new Vector.<TargetHit>();
-         var _loc4_:name_1378 = null;
+         var _loc4_:TargetPosition = null;
          var _loc5_:TargetHit = null;
          for each(_loc4_ in param1)
          {

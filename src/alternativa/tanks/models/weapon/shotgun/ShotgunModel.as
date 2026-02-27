@@ -39,7 +39,7 @@ package alternativa.tanks.models.weapon.shotgun
    import alternativa.tanks.models.weapon.shared.shot.DiscreteShotModel;
    import platform.client.fp10.core.registry.name_29;
    import platform.client.fp10.core.type.name_70;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.TargetPosition;
    
    public class ShotgunModel extends DiscreteShotModel implements IShotModelBase, class_11, IWeaponController, DiscreteWeaponListener
    {
@@ -188,7 +188,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private function shoot(param1:int) : void
       {
-         var _loc2_:Vector.<name_1378> = null;
+         var _loc2_:Vector.<TargetPosition> = null;
          var _loc3_:class_20 = this.name_106.tank;
          if(!this.var_729 && --this.var_723 == 0)
          {
@@ -224,11 +224,11 @@ package alternativa.tanks.models.weapon.shotgun
          this.method_1003(_loc4_,this.name_106);
       }
       
-      private function method_1004(param1:Vector.<name_1378>) : Vector.<TargetHit>
+      private function method_1004(param1:Vector.<TargetPosition>) : Vector.<TargetHit>
       {
          var _loc2_:Dictionary = new Dictionary();
          var _loc3_:Vector.<TargetHit> = new Vector.<TargetHit>();
-         var _loc4_:name_1378 = null;
+         var _loc4_:TargetPosition = null;
          var _loc5_:TargetHit = null;
          for each(_loc4_ in param1)
          {

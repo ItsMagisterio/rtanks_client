@@ -13,7 +13,7 @@ package alternativa.tanks.battle
    import package_42.name_73;
    import package_61.RayHit;
    import package_67.Vector3d;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.TargetPosition;
    
    public class BattleUtils
    {
@@ -130,9 +130,9 @@ package alternativa.tanks.battle
          return false;
       }
       
-      public static function method_1895(param1:Tank) : name_1378
+      public static function method_1895(param1:Tank) : TargetPosition
       {
-         var _loc2_:name_1378 = new name_1378();
+         var _loc2_:TargetPosition = new TargetPosition();
          _loc2_.target = param1;
          _loc2_.position = BattleUtils.getVector3d(param1.method_456().state.position);
          param1.method_456().state.orientation.name_182(var_351);
@@ -141,9 +141,9 @@ package alternativa.tanks.battle
          return _loc2_;
       }
       
-      public static function method_1896(param1:Vector.<Tank>) : Vector.<name_1378>
+      public static function method_1896(param1:Vector.<Tank>) : Vector.<TargetPosition>
       {
-         var _loc2_:Vector.<name_1378> = new Vector.<name_1378>(param1.length);
+         var _loc2_:Vector.<TargetPosition> = new Vector.<TargetPosition>(param1.length);
          var _loc3_:int = 0;
          while(_loc3_ < param1.length)
          {

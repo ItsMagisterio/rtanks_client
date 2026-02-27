@@ -3,7 +3,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common
    import alternativa.tanks.vehicles.tanks.Tank;
    import package_67.Vector3d;
    
-   public class name_1378
+   public class TargetPosition
    {
        
       
@@ -17,7 +17,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common
       
       private var var_2077:Vector3d;
       
-      public function name_1378(param1:Vector3d = null, param2:Vector3d = null, param3:Tank = null, param4:Number = 0, param5:Vector3d = null)
+      public function TargetPosition(param1:Vector3d = null, param2:Vector3d = null, param3:Tank = null, param4:Number = 0, param5:Vector3d = null)
       {
          super();
          this.const_4 = param1;
