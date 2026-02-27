@@ -1,0 +1,5 @@
+# old_name,new_name
+# Example entries:
+# method_50,updateTankSpeed
+# method_49,applyTankTransform
+# var_26,controlFlags
