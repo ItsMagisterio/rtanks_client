@@ -5,7 +5,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    import alternativa.tanks.models.tank.ITank;
    import alternativa.tanks.models.weapon.name_903;
    import alternativa.tanks.models.weapon.name_911;
-   import alternativa.tanks.models.weapon.shotgun.name_1247;
+   import alternativa.tanks.models.weapon.shotgun.ShotgunObject;
    import alternativa.tanks.vehicles.tanks.Tank;
    import package_37.Vector3;
    import package_4.ClientObject;
@@ -27,7 +27,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
       
       private var var_557:name_903;
       
-      private var var_556:name_1247;
+      private var var_556:ShotgunObject;
       
       public function ShotgunSFXModel()
       {
@@ -92,11 +92,11 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          return _loc1_;
       }
       
-      private function method_799(param1:ClientObject) : name_1247
+      private function method_799(param1:ClientObject) : ShotgunObject
       {
          if(this.var_556 == null)
          {
-            this.var_556 = new name_1247(param1);
+            this.var_556 = new ShotgunObject(param1);
          }
          else
          {

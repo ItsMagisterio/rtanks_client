@@ -55,7 +55,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_2189:int;
       
-      private var var_2178:Vector.<name_2504>;
+      private var var_2178:Vector.<ShotgunTargetingDirection>;
       
       private var var_2190:PelletDirectionCalculator;
       
@@ -83,7 +83,7 @@ package alternativa.tanks.models.weapon.shotgun
          this.var_2190 = param2;
          this.var_2189 = 1;
          this.var_2187 = method_2238(this.var_2181.name_1618.value,param1) + method_2238(this.var_2181.name_1614.value,param1) + 1;
-         this.var_2178 = new Vector.<name_2504>(this.var_2187);
+         this.var_2178 = new Vector.<ShotgunTargetingDirection>(this.var_2187);
          this.var_2182 = (this.var_2181.name_1618.value + this.var_2181.name_1614.value) / (method_2238(this.var_2181.name_1618.value,param1) + method_2238(this.var_2181.name_1614.value,param1));
          this.var_2188 = param3.coneVerticalAngle / this.var_2182;
          this.var_2186 = new Vector.<int>(this.var_2188);
@@ -107,7 +107,7 @@ package alternativa.tanks.models.weapon.shotgun
       public function name_1453(param1:name_903, param2:Body, param3:Vector3) : Vector.<name_1378>
       {
          var _loc4_:Number = NaN;
-         var _loc5_:name_2504 = null;
+         var _loc5_:ShotgunTargetingDirection = null;
          param3.copy(param1.direction);
          this.var_2183 = param2;
          var _loc6_:int = 0;
@@ -122,7 +122,7 @@ package alternativa.tanks.models.weapon.shotgun
             _loc5_ = this.var_2178[_loc6_];
             if(_loc5_ == null)
             {
-               _loc5_ = new name_2504(direction,_loc4_);
+               _loc5_ = new ShotgunTargetingDirection(direction,_loc4_);
             }
             else
             {
@@ -230,7 +230,7 @@ package alternativa.tanks.models.weapon.shotgun
             }
             _loc8_++;
          }
-         var _loc9_:name_2504 = this.var_2178[this.var_2186[_loc7_ >> 1]];
+         var _loc9_:ShotgunTargetingDirection = this.var_2178[this.var_2186[_loc7_ >> 1]];
          if(_loc9_.name_2507() > 0)
          {
             param1.copy(_loc9_.name_1755());

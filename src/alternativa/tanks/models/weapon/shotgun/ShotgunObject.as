@@ -5,11 +5,11 @@ package alternativa.tanks.models.weapon.shotgun
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponObject;
    import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
    
-   public class name_1247 extends DiscreteWeaponObject
+   public class ShotgunObject extends DiscreteWeaponObject
    {
        
       
-      public function name_1247(param1:ClientObject)
+      public function ShotgunObject(param1:ClientObject)
       {
          super(param1);
       }

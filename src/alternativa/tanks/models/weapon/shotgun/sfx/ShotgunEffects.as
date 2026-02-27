@@ -6,7 +6,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    import alternativa.tanks.models.sfx.name_1096;
    import alternativa.tanks.models.sfx.name_1716;
    import alternativa.tanks.models.weapon.name_903;
-   import alternativa.tanks.models.weapon.shotgun.name_1247;
+   import alternativa.tanks.models.weapon.shotgun.ShotgunObject;
    import alternativa.tanks.sfx.Sound3D;
    import alternativa.tanks.sfx.Sound3DEffect;
    import alternativa.tanks.sfx.class_177;
@@ -44,7 +44,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          this.var_2080 = param1;
       }
       
-      public function name_1249(param1:name_1247, param2:name_903, param3:class_20, param4:Vector3) : void
+      public function name_1249(param1:ShotgunObject, param2:name_903, param3:class_20, param4:Vector3) : void
       {
          this.method_2190(param1,param2,param3,param4);
          this.method_79(param2);
@@ -57,7 +57,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          battleService.name_195(Sound3DEffect.create(battleService.getObjectPool(),null,param1.name_1421,_loc2_));
       }
       
-      private function method_2190(param1:name_1247, param2:name_903, param3:class_20, param4:Vector3) : void
+      private function method_2190(param1:ShotgunObject, param2:name_903, param3:class_20, param4:Vector3) : void
       {
          var _loc5_:ShotgunShotEffect = ShotgunShotEffect(battleService.getObjectPool().getObject(ShotgunShotEffect));
          _loc5_.init(param1,param2,param3,param4,this.var_2080,this.var_2081);

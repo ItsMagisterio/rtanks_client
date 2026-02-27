@@ -3,7 +3,7 @@ package alternativa.tanks.models.weapon.shotgun
    import mx.utils.StringUtil;
    import package_37.Vector3;
    
-   public class name_2504
+   public class ShotgunTargetingDirection
    {
        
       
@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_2433:Number;
       
-      public function name_2504(param1:Vector3, param2:Number)
+      public function ShotgunTargetingDirection(param1:Vector3, param2:Number)
       {
          this.direction = new Vector3();
          super();

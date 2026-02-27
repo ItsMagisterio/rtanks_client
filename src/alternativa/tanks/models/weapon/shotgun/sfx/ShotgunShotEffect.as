@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    import alternativa.tanks.models.weapon.name_2505;
    import alternativa.tanks.models.weapon.name_903;
    import alternativa.tanks.models.weapon.shotgun.PelletDirectionCalculator;
-   import alternativa.tanks.models.weapon.shotgun.name_1247;
+   import alternativa.tanks.models.weapon.shotgun.ShotgunObject;
    import alternativa.tanks.sfx.AnimatedPlane;
    import alternativa.tanks.sfx.name_2500;
    import alternativa.tanks.sfx.name_657;
@@ -384,7 +384,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          this.var_170.removeChild(this.smoke);
       }
       
-      public function init(param1:name_1247, param2:name_903, param3:class_20, param4:Vector3, param5:ShotgunSFXData, param6:Boolean) : void
+      public function init(param1:ShotgunObject, param2:name_903, param3:class_20, param4:Vector3, param5:ShotgunSFXData, param6:Boolean) : void
       {
          this.var_2080 = param5;
          this.var_2081 = param6;
@@ -430,7 +430,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          this.var_3102 = 5000;
       }
       
-      private function method_2877(param1:name_1247, param2:name_903, param3:Vector3, param4:Body) : void
+      private function method_2877(param1:ShotgunObject, param2:name_903, param3:Vector3, param4:Body) : void
       {
          var _loc5_:Vector3 = null;
          var _loc6_:Vector.<Vector3> = this.method_2882(param1,param2,param3);
@@ -451,7 +451,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          }
       }
       
-      private function method_2882(param1:name_1247, param2:name_903, param3:Vector3) : Vector.<Vector3>
+      private function method_2882(param1:ShotgunObject, param2:name_903, param3:Vector3) : Vector.<Vector3>
       {
          var _loc4_:PelletDirectionCalculator = param1.method_2196();
          _loc4_.next();

@@ -69,7 +69,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var targeting:ShotgunRicochetTargetingSystem;
       
-      private var method_799:name_1247;
+      private var method_799:ShotgunObject;
       
       private var var_725:Boolean;
       
@@ -151,7 +151,7 @@ package alternativa.tanks.models.weapon.shotgun
          Model.method_38();
          this.var_11.method_147(name_653.create(param1,WeaponsManager.var_495[param1.turret.id],null,null,null));
          this.effects = ShotgunSFX(param1.object.name_176(ShotgunSFX)).getEffects();
-         this.method_799 = new name_1247(param1.turret);
+         this.method_799 = new ShotgunObject(param1.turret);
          this.targeting = ShotgunAiming(param1.object.name_176(ShotgunAiming)).createTargetingSystem();
       }
       
