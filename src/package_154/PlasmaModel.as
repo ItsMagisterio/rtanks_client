@@ -32,10 +32,10 @@ package package_154
    import package_52.WeaponsManager;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_92.WeaponCommonModel;
-   import package_92.name_1188;
-   import package_92.name_1451;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -57,7 +57,7 @@ package package_154
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var modelService:name_32;
       
@@ -71,7 +71,7 @@ package package_154
       
       private var targetSystem:CommonTargetSystem;
       
-      private var hitInfo:name_1699;
+      private var hitInfo:HitInfo;
       
       private var var_1016:name_911;
       
@@ -110,7 +110,7 @@ package package_154
       public function PlasmaModel()
       {
          this.var_1071 = new Dictionary();
-         this.hitInfo = new name_1699();
+         this.hitInfo = new HitInfo();
          this.var_1016 = name_911.getInstance();
          this.nextReadyTime = new name_1288("twins nextReadyTime");
          this.currentTime = new name_1288("twins currentTime");
@@ -173,7 +173,7 @@ package package_154
       {
          var _loc6_:ClientObject = null;
          var _loc7_:TankData = null;
-         var _loc8_:name_1451 = null;
+         var _loc8_:WeaponCommonData = null;
          this.objectLoaded(null);
          try
          {
@@ -217,7 +217,7 @@ package package_154
          var shot:PlasmaShot = null;
          var affectedTankObject:ClientObject = null;
          var affectedTankData:TankData = null;
-         var commonData:name_1451 = null;
+         var commonData:WeaponCommonData = null;
          var clientObject:ClientObject = param1;
          var firingTankId:String = param2;
          var shotId:int = param3;
@@ -478,7 +478,7 @@ package package_154
             this.modelService = name_32(Main.osgi.getService(name_32));
             this.var_11 = IBattleField(Main.osgi.getService(IBattleField));
             this.var_13 = Main.osgi.getService(ITank) as TankModel;
-            this.var_728 = Main.osgi.getService(name_1188) as WeaponCommonModel;
+            this.var_728 = Main.osgi.getService(IWeaponCommonModel) as WeaponCommonModel;
             this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
          }
       }

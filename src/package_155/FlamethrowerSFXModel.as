@@ -25,8 +25,8 @@ package package_155
    import package_163.name_1729;
    import package_359.class_77;
    import package_359.class_78;
-   import package_360.StreamWeaponGraphicEffect;
-   import package_360.name_1715;
+   import alternativa.tanks.models.weapon.shared.streamweapon.StreamWeapon;
+   import alternativa.tanks.models.weapon.shared.streamweapon.StreamWeaponEffects;
    import package_37.Vector3;
    import package_4.ClientObject;
    import package_52.WeaponsManager;
@@ -64,7 +64,7 @@ package package_155
          {
             this.battlefield = IBattleField(Main.osgi.getService(IBattleField));
          }
-         var _loc5_:name_1715 = new name_1715();
+         var _loc5_:StreamWeaponEffects = new StreamWeaponEffects();
          _loc5_.name_1725 = this.method_1238(param2);
          _loc5_.name_1727 = this.method_1236(param3);
          _loc5_.name_1721 = param4;
@@ -92,8 +92,8 @@ package package_155
       {
          var _loc5_:name_1595 = name_1595(Main.osgi.getService(name_1595));
          var _loc6_:name_1729 = _loc5_.name_1735(param1.turret);
-         var _loc7_:name_1715 = this.getData(param1.turret);
-         var _loc8_:StreamWeaponGraphicEffect = StreamWeaponGraphicEffect(var_138.objectPool.getObject(StreamWeaponGraphicEffect));
+         var _loc7_:StreamWeaponEffects = this.getData(param1.turret);
+         var _loc8_:StreamWeapon = StreamWeapon(var_138.objectPool.getObject(StreamWeapon));
          _loc8_.init(param1.tank,_loc6_.range.value,_loc6_.coneAngle.value,name_1713.name_1720,param2,param3,_loc7_,this.battlefield.getBattlefieldData().name_247,name_1713.name_1728,name_1713.name_1719,name_1713.name_1733,name_1713.name_1722,name_1713.name_1732,name_1713.name_1731,false);
          this.method_1237(param2,param3,param1.turret);
          var _loc9_:Sound3D = Sound3D.create(_loc7_.name_1721,name_89.name_191,name_89.name_229,name_89.name_250,1);
@@ -121,7 +121,7 @@ package package_155
       public function objectLoaded(param1:ClientObject) : void
       {
          var _loc2_:name_32 = name_32(Main.osgi.getService(name_32));
-         var _loc3_:name_1715 = this.getData(param1);
+         var _loc3_:StreamWeaponEffects = this.getData(param1);
          var _loc4_:Vector.<name_1594> = WeaponsManager.colorTransform[param1.id];
          if(_loc4_ != null)
          {
@@ -132,7 +132,7 @@ package package_155
       
       public function objectUnloaded(param1:ClientObject) : void
       {
-         var _loc2_:name_1715 = this.getData(param1);
+         var _loc2_:StreamWeaponEffects = this.getData(param1);
          var _loc3_:TextureMaterial = null;
          var _loc4_:Array = _loc2_.name_1730();
          var _loc5_:int = 0;
@@ -144,9 +144,9 @@ package package_155
          }
       }
       
-      private function getData(param1:ClientObject) : name_1715
+      private function getData(param1:ClientObject) : StreamWeaponEffects
       {
-         return param1.method_16(FlamethrowerSFXModel) as name_1715;
+         return param1.method_16(FlamethrowerSFXModel) as StreamWeaponEffects;
       }
    }
 }

@@ -28,8 +28,8 @@ package package_158
    import package_52.WeaponsManager;
    import package_7.name_32;
    import package_79.class_36;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -53,7 +53,7 @@ package package_158
       
       private var var_13:ITank;
       
-      private var var_1008:name_1188;
+      private var var_1008:IWeaponCommonModel;
       
       private var name_106:TankData;
       
@@ -61,7 +61,7 @@ package package_158
       
       private var var_1083:name_1796;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var var_1016:name_911;
       
@@ -125,7 +125,7 @@ package package_158
             this.modelService = Main.osgi.getService(name_32) as name_32;
             this.var_11 = Main.osgi.getService(IBattleField) as BattlefieldModel;
             this.var_13 = Main.osgi.getService(ITank) as ITank;
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
          if(var_1001 == null)
          {
@@ -166,9 +166,9 @@ package package_158
          }
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
-         var _loc5_:name_1451 = this.var_1008.name_1457(_loc4_.turret);
+         var _loc5_:WeaponCommonData = this.var_1008.name_1457(_loc4_.turret);
          this.var_1016.name_1702(_loc4_.tank.skin.name_200,_loc5_.muzzles[0],this.var_1043,this.var_1042);
          var _loc6_:name_1798 = WeaponsManager.createRailgunSFXModel(_loc4_.turret);
          var _loc7_:name_1796 = this.method_1289(_loc4_.turret);
@@ -194,7 +194,7 @@ package package_158
       public function fire(param1:ClientObject, param2:String, param3:Array, param4:Array) : void
       {
          var _loc6_:TankData = null;
-         var _loc7_:name_1451 = null;
+         var _loc7_:WeaponCommonData = null;
          var _loc8_:name_1796 = null;
          var _loc9_:Vector3 = null;
          var _loc11_:Vector3dData = null;
@@ -215,7 +215,7 @@ package package_158
          }
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
          if(this.var_11 == null)
          {
@@ -371,7 +371,7 @@ package package_158
          return param1.method_16(RailgunModel) as name_1796;
       }
       
-      private function method_1287(param1:name_1451, param2:TankData, param3:int) : void
+      private function method_1287(param1:WeaponCommonData, param2:TankData, param3:int) : void
       {
          var _loc7_:name_657 = null;
          var _loc8_:int = 0;

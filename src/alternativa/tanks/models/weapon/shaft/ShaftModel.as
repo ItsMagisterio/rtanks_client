@@ -45,11 +45,11 @@ package alternativa.tanks.models.weapon.shaft
    import package_52.WeaponsManager;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_71.name_277;
+   import alternativa.tanks.models.weapon.laser.LaserPointer;
    import package_76.name_735;
    import package_78.name_281;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -121,7 +121,7 @@ package alternativa.tanks.models.weapon.shaft
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var modelService:name_32;
       
@@ -133,7 +133,7 @@ package alternativa.tanks.models.weapon.shaft
       
       private var name_247:TanksCollisionDetector;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_1023:Number = 100000;
       
@@ -185,7 +185,7 @@ package alternativa.tanks.models.weapon.shaft
       
       private var var_1082:ShaftShotResult;
       
-      private var var_1008:name_1188;
+      private var var_1008:IWeaponCommonModel;
       
       private var var_2105:Boolean;
       
@@ -296,9 +296,9 @@ package alternativa.tanks.models.weapon.shaft
             this.modelService = name_32(Main.osgi.getService(name_32));
             this.var_11 = Main.osgi.getService(IBattleField) as BattlefieldModel;
             this.var_13 = Main.osgi.getService(ITank) as TankModel;
-            this.var_728 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_728 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
             this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
             this.var_2101 = this.var_11.var_117.viewport.const_393;
             this.var_2098 = new SetControllerForTemporaryItems(this.var_2101);
             this.name_247 = TanksCollisionDetector(this.var_11.var_117.name_678.name_247);
@@ -343,7 +343,7 @@ package alternativa.tanks.models.weapon.shaft
       {
          var _loc3_:int = 0;
          var _loc4_:Vector3 = null;
-         var _loc5_:name_1451 = null;
+         var _loc5_:WeaponCommonData = null;
          var _loc6_:Tank = null;
          var _loc7_:BitmapData = null;
          var _loc8_:name_735 = null;
@@ -518,7 +518,7 @@ package alternativa.tanks.models.weapon.shaft
          var _loc2_:TankData = null;
          var _loc3_:Tank = null;
          var _loc4_:TankData = TankData.localTankData;
-         var _loc5_:name_1451 = this.var_1008.name_1457(_loc4_.turret);
+         var _loc5_:WeaponCommonData = this.var_1008.name_1457(_loc4_.turret);
          var _loc6_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(TankData.localTankData.turret);
          this.var_1016.method_797(_loc4_.tank.skin.name_200,_loc5_.muzzles[0],const_1481.name_1421,var_1006,this.var_1012,const_1481.direction);
          this.var_2107.name_1705(_loc4_,var_1006,const_1481.direction,this.var_1012,this.var_11.getBattlefieldData().tanks,this.var_1082);
@@ -572,9 +572,9 @@ package alternativa.tanks.models.weapon.shaft
          }
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
-         var _loc11_:name_1451 = this.var_1008.name_1457(_loc10_.turret);
+         var _loc11_:WeaponCommonData = this.var_1008.name_1457(_loc10_.turret);
          var _loc12_:name_1268 = _loc10_.turret.method_16(name_1268) as name_1268;
          this.var_1016.name_1702(_loc10_.tank.skin.name_200,_loc11_.muzzles[0],const_1481.name_1421,const_1481.direction);
          var _loc13_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(_loc10_.turret);
@@ -623,9 +623,9 @@ package alternativa.tanks.models.weapon.shaft
          }
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
-         var _loc8_:name_1451 = this.var_1008.name_1457(_loc7_.turret);
+         var _loc8_:WeaponCommonData = this.var_1008.name_1457(_loc7_.turret);
          this.var_1016.name_1702(_loc7_.tank.skin.name_200,_loc8_.muzzles[0],const_1481.name_1421,const_1481.direction);
          var _loc9_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(_loc7_.turret);
          _loc9_.method_2103(_loc7_.turret,_loc7_.tank.skin.name_909.name_929,_loc7_.tank.skin.name_200);
@@ -655,7 +655,7 @@ package alternativa.tanks.models.weapon.shaft
       {
          var _loc2_:Object = null;
          var _loc3_:Tank = null;
-         var _loc4_:name_1451 = this.var_728.name_1457(TankData.localTankData.turret);
+         var _loc4_:WeaponCommonData = this.var_728.name_1457(TankData.localTankData.turret);
          var _loc5_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(TankData.localTankData.turret);
          var _loc6_:int = this.var_11.name_165().method_923();
          _loc5_.method_2100(TankData.localTankData.user);
@@ -690,9 +690,9 @@ package alternativa.tanks.models.weapon.shaft
          var _loc4_:TankData = this.var_13.getTankData(param1);
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
-         var _loc5_:name_1451 = this.var_1008.name_1457(_loc4_.turret);
+         var _loc5_:WeaponCommonData = this.var_1008.name_1457(_loc4_.turret);
          this.var_1016.name_1702(_loc4_.tank.skin.name_200,_loc5_.muzzles[0],const_1481.name_1421,const_1481.direction);
          var _loc6_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(_loc4_.turret);
          _loc6_.method_2102(_loc4_.turret,_loc4_.user,null,param2,const_1481.name_1421,const_1481.direction,param3);
@@ -703,9 +703,9 @@ package alternativa.tanks.models.weapon.shaft
          var _loc4_:TankData = this.var_13.getTankData(param1);
          if(this.var_1008 == null)
          {
-            this.var_1008 = Main.osgi.getService(name_1188) as name_1188;
+            this.var_1008 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          }
-         var _loc5_:name_1451 = this.var_1008.name_1457(_loc4_.turret);
+         var _loc5_:WeaponCommonData = this.var_1008.name_1457(_loc4_.turret);
          this.var_1016.name_1702(_loc4_.tank.skin.name_200,_loc5_.muzzles[0],const_1481.name_1421,const_1481.direction);
          var _loc6_:ShaftSFXModel = WeaponsManager.createShaftSFXModel(_loc4_.turret);
          _loc6_.method_2102(_loc4_.turret,_loc4_.user,param2,null,const_1481.name_1421,const_1481.direction,param3);
@@ -714,7 +714,7 @@ package alternativa.tanks.models.weapon.shaft
       public function method_2202() : Boolean
       {
          var _loc1_:Object3D = null;
-         var _loc2_:name_1451 = this.var_728.name_1457(TankData.localTankData.turret);
+         var _loc2_:WeaponCommonData = this.var_728.name_1457(TankData.localTankData.turret);
          this.name_106.tank.method_491(const_1481,_loc2_.muzzles);
          var _loc3_:Vector3 = TankData.localTankData.tank.state.position;
          _direction.diff(const_1481.name_1422,_loc3_);
@@ -731,9 +731,9 @@ package alternativa.tanks.models.weapon.shaft
          return false;
       }
       
-      public function method_2197() : name_277
+      public function method_2197(): LaserPointer
       {
-         return name_277(this.name_106.object.name_176(name_277));
+         return LaserPointer(this.name_106.object.name_176(LaserPointer));
       }
       
       private function method_2206() : void
@@ -866,7 +866,7 @@ package alternativa.tanks.models.weapon.shaft
       
       private function method_2203(param1:Tank, param2:Object3D, param3:Vector3) : Boolean
       {
-         var _loc4_:name_1451 = null;
+         var _loc4_:WeaponCommonData = null;
          var _loc5_:TankSkin = param1.skin;
          if(_loc5_.name_200 == param2)
          {

@@ -46,8 +46,8 @@ package package_151
    import package_6.ObjectRegister;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -61,7 +61,7 @@ package package_151
       private static var var_138:IObjectPoolService;
        
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_1014:IWeaponWeakeningModel;
       
@@ -79,7 +79,7 @@ package package_151
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var var_764:Boolean;
       
@@ -144,7 +144,7 @@ package package_151
          {
             return;
          }
-         var _loc10_:name_1451 = this.var_728.name_1457(_loc9_.turret);
+         var _loc10_:WeaponCommonData = this.var_728.name_1457(_loc9_.turret);
          this.var_1077.reset(param3.x,param3.y,param3.z);
          this.var_1075.reset(param4 / 32767,param5 / 32767,param6 / 32767).vNormalize();
          this.battlefield.method_144(_loc8_,this.var_1075,param7 * _loc10_.name_1498);
@@ -171,7 +171,7 @@ package package_151
             this.var_1076 = WeaponsManager.createRicochetSFXModel(_loc6_.turret);
          }
          var _loc7_:name_1792 = name_1792(_loc6_.turret.method_16(name_1792));
-         var _loc8_:name_1451 = this.var_728.name_1457(_loc6_.turret);
+         var _loc8_:WeaponCommonData = this.var_728.name_1457(_loc6_.turret);
          var _loc9_:name_1793 = this.var_1076.method_1264(_loc6_.turret);
          var _loc10_:Vector3 = _loc8_.muzzles[0];
          this.var_1016.method_797(_loc6_.tank.skin.name_200,_loc10_,this.var_1007,this.var_1006,this.var_1012,this.var_1004);
@@ -186,7 +186,7 @@ package package_151
          {
             return;
          }
-         var _loc5_:name_1451 = this.var_728.name_1457(param1);
+         var _loc5_:WeaponCommonData = this.var_728.name_1457(param1);
          var _loc6_:name_1793 = this.var_1076.method_1264(param1);
          var _loc7_:Vector3 = _loc5_.muzzles[0];
          this.var_1016.method_797(_loc4_.tank.skin.name_200,_loc7_,this.var_1007,this.var_1006,this.var_1012,this.var_1004);
@@ -203,7 +203,7 @@ package package_151
             _loc9_ = name_32(Main.osgi.getService(name_32));
             this.battlefield = BattlefieldModel(Main.osgi.getService(IBattleField));
             this.var_13 = TankModel(Main.osgi.getService(ITank));
-            this.var_728 = name_1188(_loc9_.getModelsByInterface(name_1188)[0]);
+            this.var_728 = IWeaponCommonModel(_loc9_.getModelsByInterface(IWeaponCommonModel)[0]);
          }
          this.objectLoaded(param1);
       }
@@ -352,7 +352,7 @@ package package_151
          this.battlefield.name_217(_loc3_);
       }
       
-      private function method_1287(param1:name_1451) : void
+      private function method_1287(param1:WeaponCommonData) : void
       {
          var _loc3_:int = 0;
          var _loc4_:Vector3 = null;
@@ -411,7 +411,7 @@ package package_151
          Network(Main.osgi.getService(INetworker)).send("battle;start_fire;" + JSON.stringify(_loc6_));
       }
       
-      private function name_1249(param1:TankData, param2:name_1792, param3:name_1793, param4:name_1451, param5:Vector3, param6:Vector3, param7:Vector3, param8:Vector3) : RicochetShot
+      private function name_1249(param1:TankData, param2:name_1792, param3:name_1793, param4:WeaponCommonData, param5:Vector3, param6:Vector3, param7:Vector3, param8:Vector3) : RicochetShot
       {
          var _loc11_:Sound3D = null;
          var _loc12_:Sound3DEffect = null;
@@ -441,7 +441,7 @@ package package_151
          this.battlefield.name_217(_loc4_);
       }
       
-      private function method_1283(param1:TankData, param2:name_1793, param3:name_1451, param4:int, param5:Vector3, param6:Vector3) : void
+      private function method_1283(param1:TankData, param2:name_1793, param3:WeaponCommonData, param4:int, param5:Vector3, param6:Vector3) : void
       {
          var _loc9_:Sound3D = null;
          var _loc10_:Sound3DEffect = null;

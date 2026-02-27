@@ -34,9 +34,9 @@ package package_164
    import package_6.ObjectRegister;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -58,7 +58,7 @@ package package_164
       
       private var var_123:TankModel;
       
-      private var var_1008:name_1188;
+      private var var_1008:IWeaponCommonModel;
       
       private var var_1014:IWeaponWeakeningModel;
       
@@ -70,7 +70,7 @@ package package_164
       
       private var var_1002:name_1698;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var var_1011:Boolean;
       
@@ -78,7 +78,7 @@ package package_164
       
       private var targetSystem:CommonTargetSystem;
       
-      private var hitInfo:name_1699;
+      private var hitInfo:HitInfo;
       
       private var var_1003:Vector3;
       
@@ -124,7 +124,7 @@ package package_164
       {
          this.var_1016 = name_911.getInstance();
          this.nextReadyTime = new name_1288("nextReadyTime.value thunder");
-         this.hitInfo = new name_1699();
+         this.hitInfo = new HitInfo();
          this.var_1003 = new Vector3();
          this.var_1005 = new Vector3();
          this.var_1017 = new Vector3();
@@ -179,7 +179,7 @@ package package_164
                return;
             }
          }
-         var _loc10_:name_1451 = this.var_1008.name_1457(_loc9_.turret);
+         var _loc10_:WeaponCommonData = this.var_1008.name_1457(_loc9_.turret);
          this.var_1016.name_1702(_loc9_.tank.skin.name_200,_loc10_.muzzles[0],this.var_1007,this.var_1004);
          this.name_1249(_loc9_,_loc10_.muzzles[0]);
          this.var_1000.vCopy(this.var_1004).vScale(-_loc10_.kickback);
@@ -431,7 +431,7 @@ package package_164
             this.modelService = name_32(Main.osgi.getService(name_32));
             this.var_11 = IBattleField(Main.osgi.getService(IBattleField));
             this.var_123 = Main.osgi.getService(ITank) as TankModel;
-            this.var_1008 = name_1188(this.modelService.getModelsByInterface(name_1188)[0]);
+            this.var_1008 = IWeaponCommonModel(this.modelService.getModelsByInterface(IWeaponCommonModel)[0]);
             this.var_1014 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
             this.nextReadyTime.value = 0;
          }
@@ -488,7 +488,7 @@ package package_164
          this.var_11.name_195(_loc3_.name_1494);
       }
       
-      private function method_1219(param1:Tank, param2:name_1699, param3:name_1083) : Boolean
+      private function method_1219(param1:Tank, param2:HitInfo, param3:name_1083) : Boolean
       {
          var _loc7_:Vector3 = null;
          var _loc4_:Number = 0.75 * param1.var_339.hs.y;

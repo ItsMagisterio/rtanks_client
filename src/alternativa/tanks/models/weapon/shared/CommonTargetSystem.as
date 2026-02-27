@@ -5,7 +5,7 @@ package alternativa.tanks.models.weapon.shared
    import package_37.Matrix3;
    import package_37.Vector3;
    import package_61.RayHit;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    
    public class CommonTargetSystem
    {
@@ -68,7 +68,7 @@ package alternativa.tanks.models.weapon.shared
          this.var_689 = param7;
       }
       
-      public function name_670(param1:Vector3, param2:Vector3, param3:Vector3, param4:Body, param5:name_1699) : Boolean
+      public function name_670(param1:Vector3, param2:Vector3, param3:Vector3, param4:Body, param5:HitInfo) : Boolean
       {
          var _loc6_:Body = null;
          this.var_2433 = 0;

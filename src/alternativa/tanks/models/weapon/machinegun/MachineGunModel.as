@@ -32,9 +32,9 @@ package alternativa.tanks.models.weapon.machinegun
    import package_52.WeaponsManager;
    import package_6.ObjectRegister;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -48,7 +48,7 @@ package alternativa.tanks.models.weapon.machinegun
       
       private var var_13:TankModel;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_730:IWeaponWeakeningModel;
       
@@ -56,7 +56,7 @@ package alternativa.tanks.models.weapon.machinegun
       
       private var var_1031:name_1708;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var currentEnergy:name_905;
       
@@ -76,7 +76,7 @@ package alternativa.tanks.models.weapon.machinegun
       
       private var var_689:name_1709;
       
-      private var hitInfo:name_1699;
+      private var hitInfo:HitInfo;
       
       private var var_1043:Vector3;
       
@@ -122,7 +122,7 @@ package alternativa.tanks.models.weapon.machinegun
          this.var_1012 = new Vector3();
          this.var_1043 = new Vector3();
          this.var_1042 = new Vector3();
-         this.hitInfo = new name_1699();
+         this.hitInfo = new HitInfo();
          this.var_1044 = null;
          this.var_1039 = 0;
          this.var_1034 = 0;
@@ -153,7 +153,7 @@ package alternativa.tanks.models.weapon.machinegun
          this.modelService = name_32(Main.osgi.getService(name_32));
          this.var_11 = Main.osgi.getService(IBattleField) as IBattleField;
          this.var_13 = Main.osgi.getService(ITank) as TankModel;
-         this.var_728 = Main.osgi.getService(name_1188) as name_1188;
+         this.var_728 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
          this.var_11.name_165().name_212(this);
       }
@@ -423,7 +423,7 @@ package alternativa.tanks.models.weapon.machinegun
          }
       }
       
-      public function method_1231(param1:int, param2:int, param3:Boolean, param4:TankData, param5:MachineGunEffects, param6:Number, param7:name_1699, param8:CommonTargetSystem, param9:Number, param10:Number) : void
+      public function method_1231(param1:int, param2:int, param3:Boolean, param4:TankData, param5:MachineGunEffects, param6:Number, param7:HitInfo, param8:CommonTargetSystem, param9:Number, param10:Number) : void
       {
          var _loc18_:name_128 = null;
          var _loc19_:TankData = null;
@@ -434,7 +434,7 @@ package alternativa.tanks.models.weapon.machinegun
          {
             return;
          }
-         var _loc11_:name_1451 = this.var_728.name_1457(param4.turret);
+         var _loc11_:WeaponCommonData = this.var_728.name_1457(param4.turret);
          var _loc12_:Vector3 = new Vector3();
          var _loc13_:Vector3 = new Vector3();
          var _loc14_:Vector3 = new Vector3();
@@ -556,7 +556,7 @@ package alternativa.tanks.models.weapon.machinegun
 import alternativa.tanks.models.tank.TankData;
 import alternativa.tanks.models.weapon.machinegun.MachineGunEffects;
 import alternativa.tanks.models.weapon.shared.CommonTargetSystem;
-import package_92.name_1699;
+import alternativa.tanks.models.weapon.common.HitInfo;
 
 class ShooterData
 {
@@ -570,7 +570,7 @@ class ShooterData
    
    public var state:Number;
    
-   public var hitInfo:name_1699;
+   public var hitInfo:HitInfo;
    
    public var targetSystem:CommonTargetSystem;
    
@@ -585,7 +585,7 @@ class ShooterData
       this.machineGunEffects = param2;
       this.active = param3;
       this.state = 0;
-      this.hitInfo = new name_1699();
+      this.hitInfo = new HitInfo();
       this.targetSystem = null;
       this.maxTurretTurnSpeed = param1.tank.method_495().name_1159();
       this.maxTurretAcceleration = param1.tank.method_495().name_1276();

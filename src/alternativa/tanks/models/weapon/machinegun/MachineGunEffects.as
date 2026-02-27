@@ -22,7 +22,7 @@ package alternativa.tanks.models.weapon.machinegun
    import package_440.name_2689;
    import package_7.name_11;
    import package_7.name_32;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    
    public class MachineGunEffects
    {
@@ -72,7 +72,7 @@ package alternativa.tanks.models.weapon.machinegun
       
       private var tankData:TankData;
       
-      private var var_2448:name_1451;
+      private var var_2448:WeaponCommonData;
       
       private var var_2447:Vector3;
       
@@ -134,7 +134,7 @@ package alternativa.tanks.models.weapon.machinegun
          }
       }
       
-      public function update(param1:int, param2:Number, param3:Boolean, param4:TankData, param5:name_1451, param6:TankSkin, param7:Vector3, param8:Vector3, param9:Number, param10:Number) : void
+      public function update(param1:int, param2:Number, param3:Boolean, param4:TankData, param5:WeaponCommonData, param6:TankSkin, param7:Vector3, param8:Vector3, param9:Number, param10:Number) : void
       {
          var _loc13_:String = null;
          if(this.var_2442 != null)
