@@ -1,9 +1,9 @@
-package package_93
+package projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete
 {
    import package_67.Vector3d;
    import platform.client.fp10.core.type.name_70;
    
-   public class name_1243
+   public class TargetHit
    {
        
       
@@ -15,7 +15,7 @@ package package_93
       
       private var _target:name_70;
       
-      public function name_1243(param1:Vector3d = null, param2:Vector3d = null, param3:int = 0, param4:name_70 = null)
+      public function TargetHit(param1:Vector3d = null, param2:Vector3d = null, param3:int = 0, param4:name_70 = null)
       {
          super();
          this._direction = param1;

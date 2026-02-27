@@ -1,19 +1,19 @@
-package package_70
+package alternativa.tanks.models.weapons.discrete
 {
    import package_37.Vector3;
    import package_39.Model;
    import platform.client.fp10.core.type.name_70;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
    
-   public class name_318 implements name_278
+   public class DiscreteWeaponAdapt implements DiscreteWeapon
    {
        
       
       private var object:name_70;
       
-      private var impl:name_278;
+      private var impl:DiscreteWeapon;
       
-      public function name_318(param1:name_70, param2:name_278)
+      public function DiscreteWeaponAdapt(param1:name_70, param2:DiscreteWeapon)
       {
          super();
          this.object = param1;

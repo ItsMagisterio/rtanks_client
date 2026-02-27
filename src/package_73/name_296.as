@@ -9,17 +9,17 @@ package package_73
    import alternativa.tanks.vehicles.tanks.Tank;
    import package_37.Vector3;
    import package_4.ClientObject;
-   import package_70.name_273;
+   import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListener;
    import package_91.ShotgunSFXModelBase;
    import package_91.name_1246;
    import package_91.name_288;
-   import package_93.name_1243;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
    import platform.client.fp10.core.type.name_70;
    
-   public class name_296 extends ShotgunSFXModelBase implements name_288, name_282, name_273
+   public class name_296 extends ShotgunSFXModelBase implements name_288, name_282, DiscreteWeaponListener
    {
       
       public static var battleService:IBattleField;
@@ -50,7 +50,7 @@ package package_73
          param1.method_12(name_1246,_loc11_);
       }
       
-      public function method_796(param1:name_70, param2:Vector3, param3:Vector.<name_1243>) : void
+      public function method_796(param1:name_70, param2:Vector3, param3:Vector.<TargetHit>) : void
       {
          this.method_798(param1,param2);
       }

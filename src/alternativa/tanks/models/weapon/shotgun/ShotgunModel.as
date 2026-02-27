@@ -29,19 +29,19 @@ package alternativa.tanks.models.weapon.shotgun
    import package_52.WeaponsManager;
    import package_63.name_162;
    import package_7.name_32;
-   import package_70.name_273;
+   import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListener;
    import package_72.name_280;
    import package_73.name_1244;
    import package_73.name_282;
    import package_92.name_1188;
    import package_92.name_1451;
-   import package_93.name_1243;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
    import package_98.name_304;
    import platform.client.fp10.core.registry.name_29;
    import platform.client.fp10.core.type.name_70;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
    
-   public class ShotgunModel extends name_304 implements IShotModelBase, class_11, IWeaponController, name_273
+   public class ShotgunModel extends name_304 implements IShotModelBase, class_11, IWeaponController, DiscreteWeaponListener
    {
       
       protected static const var_557:name_903 = new name_903();
@@ -220,35 +220,35 @@ package alternativa.tanks.models.weapon.shotgun
             this.method_799.name_1449().method_910(param1,this.var_722);
          }
          this.effects.name_1249(this.method_799,var_557,_loc3_,this.var_722);
-         var _loc4_:Vector.<name_1243> = this.method_1004(_loc2_);
+         var _loc4_:Vector.<TargetHit> = this.method_1004(_loc2_);
          this.method_1003(_loc4_,this.name_106);
       }
       
-      private function method_1004(param1:Vector.<name_1378>) : Vector.<name_1243>
+      private function method_1004(param1:Vector.<name_1378>) : Vector.<TargetHit>
       {
          var _loc2_:Dictionary = new Dictionary();
-         var _loc3_:Vector.<name_1243> = new Vector.<name_1243>();
+         var _loc3_:Vector.<TargetHit> = new Vector.<TargetHit>();
          var _loc4_:name_1378 = null;
-         var _loc5_:name_1243 = null;
+         var _loc5_:TargetHit = null;
          for each(_loc4_ in param1)
          {
             if(_loc2_[_loc4_.target] == null)
             {
-               _loc5_ = new name_1243(_loc4_.orientation,_loc4_.localHitPoint,1,_loc4_.target.tankData.object);
+               _loc5_ = new TargetHit(_loc4_.orientation,_loc4_.localHitPoint,1,_loc4_.target.tankData.object);
                _loc2_[_loc4_.target] = _loc5_;
                _loc3_.push(_loc5_);
             }
             else
             {
-               ++name_1243(_loc2_[_loc4_.target]).numberHits;
+               ++TargetHit(_loc2_[_loc4_.target]).numberHits;
             }
          }
          return _loc3_;
       }
       
-      private function method_1003(param1:Vector.<name_1243>, param2:TankData) : void
+      private function method_1003(param1:Vector.<TargetHit>, param2:TankData) : void
       {
-         var _loc3_:name_1243 = null;
+         var _loc3_:TargetHit = null;
          var _loc4_:ITank = null;
          var _loc5_:Tank = null;
          var _loc6_:Vector3 = null;
@@ -284,7 +284,7 @@ package alternativa.tanks.models.weapon.shotgun
          return this.var_725;
       }
       
-      public function method_796(param1:name_70, param2:Vector3, param3:Vector.<name_1243>) : void
+      public function method_796(param1:name_70, param2:Vector3, param3:Vector.<TargetHit>) : void
       {
          var _loc4_:ITank = ITank(param1.name_176(ITank));
          var _loc5_:Tank = _loc4_.getTank();

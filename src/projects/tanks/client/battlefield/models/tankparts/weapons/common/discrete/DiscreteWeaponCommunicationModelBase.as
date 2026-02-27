@@ -1,4 +1,4 @@
-package package_93
+package projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete
 {
    import alternativa.osgi.OSGi;
    import package_13.Long;
@@ -18,7 +18,7 @@ package package_93
       
       protected var server:DiscreteWeaponCommunicationModelServer;
       
-      private var client:name_303;
+      private var client:IDiscreteWeaponCommunicationModelBase;
       
       private var var_25:Long;
       
@@ -33,7 +33,7 @@ package package_93
       public function DiscreteWeaponCommunicationModelBase()
       {
          this.var_531 = name_840(OSGi.getInstance().getService(name_840));
-         this.client = name_303(this);
+         this.client = IDiscreteWeaponCommunicationModelBase(this);
          this.var_25 = Long.getLong(486222912,-663069007);
          this.var_645 = Long.getLong(1666638426,-1858765435);
          super();
@@ -50,7 +50,7 @@ package package_93
          switch(param1)
          {
             case this.var_645:
-               this.client.shoot(name_70(this.var_648.decode(param2)),Vector3d(this.var_647.decode(param2)),this.var_646.decode(param2) as Vector.<name_1243>);
+               this.client.shoot(name_70(this.var_648.decode(param2)),Vector3d(this.var_647.decode(param2)),this.var_646.decode(param2) as Vector.<TargetHit>);
          }
       }
       

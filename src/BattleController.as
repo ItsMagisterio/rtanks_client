@@ -106,13 +106,13 @@ package
    import package_67.DamageType;
    import package_67.Vector3d;
    import package_7.name_32;
-   import package_70.name_301;
+   import alternativa.tanks.models.weapons.discrete.DiscreteWeaponCommunicationModel;
    import alternativa.tanks.models.weapon.laser.LaserPointerModel;
    import package_74.name_272;
    import package_79.CTFModel;
    import package_86.ServerBattleMinesModel;
    import package_88.name_695;
-   import package_93.name_1243;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
    import package_97.BonusCache;
    import platform.client.fp10.core.model.name_141;
    import platform.client.fp10.core.registry.ResourceRegistry;
@@ -1397,14 +1397,14 @@ package
       {
          var _loc5_:Object = null;
          var _loc6_:TankData = null;
-         var _loc3_:name_301 = name_301(modelRegistry.getModel(Long.getLong(486222912,-663069007)));
-         var _loc4_:Vector.<name_1243> = new Vector.<name_1243>();
+         var _loc3_:DiscreteWeaponCommunicationModel = DiscreteWeaponCommunicationModel(modelRegistry.getModel(Long.getLong(486222912,-663069007)));
+         var _loc4_:Vector.<TargetHit> = new Vector.<TargetHit>();
          for each(_loc5_ in param2.targets)
          {
             _loc6_ = TankModel(Main.osgi.getService(ITank)).getTankData(tankClientObjectByTankId[_loc5_.target] as ClientObject);
             if(!(_loc6_ == null || _loc6_.turret == null || _loc6_.turret.id == null))
             {
-               _loc4_.push(new name_1243(new package_67.Vector3d(_loc5_.dir.x,_loc5_.dir.y,_loc5_.dir.z),new package_67.Vector3d(_loc5_.localHitPoint.x,_loc5_.localHitPoint.y,_loc5_.localHitPoint.z),_loc5_.numberHits,_loc6_.object));
+               _loc4_.push(new TargetHit(new package_67.Vector3d(_loc5_.dir.x,_loc5_.dir.y,_loc5_.dir.z),new package_67.Vector3d(_loc5_.localHitPoint.x,_loc5_.localHitPoint.y,_loc5_.localHitPoint.z),_loc5_.numberHits,_loc6_.object));
             }
          }
          Model.object = param1.object;

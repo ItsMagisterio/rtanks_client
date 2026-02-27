@@ -1,9 +1,9 @@
-package package_70
+package alternativa.tanks.models.weapons.discrete
 {
    import package_37.Vector3;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
    
-   public interface name_278
+   public interface DiscreteWeapon
    {
        
       

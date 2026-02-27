@@ -2,10 +2,10 @@ package alternativa.tanks.models.weapon.shotgun
 {
    import package_39.Model;
    import package_4.ClientObject;
-   import package_70.class_178;
+   import alternativa.tanks.models.weapons.discrete.DiscreteWeaponObject;
    import package_72.name_280;
    
-   public class name_1247 extends class_178
+   public class name_1247 extends DiscreteWeaponObject
    {
        
       

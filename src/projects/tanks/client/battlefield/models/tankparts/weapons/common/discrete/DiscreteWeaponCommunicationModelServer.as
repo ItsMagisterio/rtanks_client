@@ -1,4 +1,4 @@
-package package_93
+package projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete
 {
    import alternativa.osgi.OSGi;
    import flash.utils.Dictionary;
@@ -61,9 +61,9 @@ package package_93
          _loc4_.direction = param2;
          var _loc5_:Array = new Array();
          var _loc6_:int = 0;
-         var _loc7_:Vector.<name_1243> = this.method_1004(param3);
+         var _loc7_:Vector.<TargetHit> = this.method_1004(param3);
          var _loc8_:Object = null;
-         var _loc9_:name_1243 = null;
+         var _loc9_:TargetHit = null;
          while(_loc6_ < _loc7_.length)
          {
             _loc9_ = _loc7_[_loc6_];
@@ -80,23 +80,23 @@ package package_93
          return _loc4_;
       }
       
-      private function method_1004(param1:Vector.<name_1378>) : Vector.<name_1243>
+      private function method_1004(param1:Vector.<name_1378>) : Vector.<TargetHit>
       {
          var _loc2_:Dictionary = new Dictionary();
-         var _loc3_:Vector.<name_1243> = new Vector.<name_1243>();
+         var _loc3_:Vector.<TargetHit> = new Vector.<TargetHit>();
          var _loc4_:name_1378 = null;
-         var _loc5_:name_1243 = null;
+         var _loc5_:TargetHit = null;
          for each(_loc4_ in param1)
          {
             if(_loc2_[_loc4_.target] == null)
             {
-               _loc5_ = new name_1243(_loc4_.orientation,_loc4_.localHitPoint,1,_loc4_.target.tankData.object);
+               _loc5_ = new TargetHit(_loc4_.orientation,_loc4_.localHitPoint,1,_loc4_.target.tankData.object);
                _loc2_[_loc4_.target] = _loc5_;
                _loc3_.push(_loc5_);
             }
             else
             {
-               ++name_1243(_loc2_[_loc4_.target]).numberHits;
+               ++TargetHit(_loc2_[_loc4_.target]).numberHits;
             }
          }
          return _loc3_;
