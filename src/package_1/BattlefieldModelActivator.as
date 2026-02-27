@@ -71,7 +71,7 @@ package package_1
    import package_72.name_314;
    import package_72.name_316;
    import package_73.ShotgunSFXEvents;
-   import package_73.name_282;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
    import package_73.name_296;
    import package_73.name_302;
    import package_74.LightingEffectsService;

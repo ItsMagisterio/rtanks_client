@@ -25,8 +25,8 @@ package package_163
    import package_41.Vector3dData;
    import package_52.WeaponsManager;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -40,7 +40,7 @@ package package_163
       
       private var var_123:TankModel;
       
-      private var var_1008:name_1188;
+      private var var_1008:IWeaponCommonModel;
       
       private var var_1014:IWeaponWeakeningModel;
       
@@ -72,7 +72,7 @@ package package_163
       
       private var var_1052:name_1729;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var var_1051:Number = 0;
       
@@ -116,7 +116,7 @@ package package_163
             this.modelService = Main.osgi.getService(name_32) as name_32;
             this.battlefield = Main.osgi.getService(IBattleField) as IBattleField;
             this.var_123 = Main.osgi.getService(ITank) as TankModel;
-            this.var_1008 = this.modelService.getModelsByInterface(name_1188)[0] as name_1188;
+            this.var_1008 = this.modelService.getModelsByInterface(IWeaponCommonModel)[0] as IWeaponCommonModel;
             this.var_1014 = this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0] as IWeaponWeakeningModel;
          }
          var _loc8_:name_1729 = new name_1729();
@@ -309,7 +309,7 @@ package package_163
          }
       }
       
-      private function method_1241(param1:name_1451, param2:TankData) : void
+      private function method_1241(param1:WeaponCommonData, param2:TankData) : void
       {
          var _loc3_:class_76 = WeaponsManager.createFlamethrowerSFXModel(param2.turret);
          var _loc4_:name_1497 = _loc3_.method_1235(param2,param1.muzzles[param1.currBarrel],param2.tank.skin.name_200,this.var_1014);

@@ -1,8 +1,8 @@
-package package_149
+package alternativa.tanks.models.weapon.freeze
 {
    import package_278.name_1288;
    
-   public class name_1703
+   public class FreezeEffectsParams
    {
       
       private static var i:int = 0;
@@ -20,7 +20,7 @@ package package_149
       
       public var weaponTickMsec:name_1288;
       
-      public function name_1703(param1:Number, param2:Number, param3:int, param4:int, param5:int, param6:int)
+      public function FreezeEffectsParams(param1:Number, param2:Number, param3:int, param4:int, param5:int, param6:int)
       {
          this.weaponTickMsec = new name_1288("WeaponTickMsec" + i,0);
          super();

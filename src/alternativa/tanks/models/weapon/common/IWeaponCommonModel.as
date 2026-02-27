@@ -1,4 +1,4 @@
-package package_92
+package alternativa.tanks.models.weapon.common
 {
    import alternativa.engine3d.core.Camera3D;
    import alternativa.tanks.models.tank.TankData;
@@ -6,11 +6,11 @@ package package_92
    import package_37.Vector3;
    import package_4.ClientObject;
    
-   public interface name_1188
+   public interface IWeaponCommonModel
    {
        
       
-      function name_1457(param1:ClientObject) : name_1451;
+      function name_1457(param1:ClientObject) : WeaponCommonData;
       
       function name_1249(param1:ClientObject, param2:Tank, param3:int, param4:Vector3, param5:Vector3) : void;
       

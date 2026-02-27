@@ -1,4 +1,4 @@
-package package_149
+package alternativa.tanks.models.weapon.freeze
 {
    import alternativa.model.IModel;
    import alternativa.tanks.models.battlefield.IBattleField;
@@ -24,12 +24,12 @@ package package_149
    import package_52.WeaponsManager;
    import package_6.ObjectRegister;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
-   public class FreezeModel extends class_72 implements class_71, IWeaponController, class_70
+   public class FreezeModel extends class_72 implements class_71, IWeaponController, IFreezeModel
    {
        
       
@@ -39,17 +39,17 @@ package package_149
       
       private var var_13:TankModel;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_730:IWeaponWeakeningModel;
       
-      private var var_564:name_1707;
+      private var var_564:IFreezeSFXModel;
       
       private var name_106:TankData;
       
-      private var var_1024:name_1703;
+      private var var_1024:FreezeEffectsParams;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var currentEnergy:name_905;
       
@@ -97,7 +97,7 @@ package package_149
          this.var_1027 = new Vector3();
          this.var_1030 = new Vector3();
          super();
-         _interfaces.push(IModel,IWeaponController,class_70);
+         _interfaces.push(IModel,IWeaponController,IFreezeModel);
       }
       
       public function name_1436() : ItemProperty
@@ -126,13 +126,13 @@ package package_149
       public function initObject(param1:ClientObject, param2:Number, param3:Number, param4:int, param5:int, param6:int, param7:int) : void
       {
          this.method_1223();
-         var _loc8_:name_1703 = new name_1703(param2,100 * param3,param4,param5,param6,param7);
+         var _loc8_:FreezeEffectsParams = new FreezeEffectsParams(param2,100 * param3,param4,param5,param6,param7);
          param1.method_12(FreezeModel,_loc8_);
       }
       
-      public function method_1220(param1:ClientObject) : name_1703
+      public function method_1220(param1:ClientObject) : FreezeEffectsParams
       {
-         return name_1703(param1.method_16(FreezeModel));
+         return FreezeEffectsParams(param1.method_16(FreezeModel));
       }
       
       public function method_999(param1:TankData) : void
@@ -230,7 +230,7 @@ package package_149
          return this.currentEnergy.value / this.var_1024.energyCapacity;
       }
       
-      private function method_1224(param1:name_1451, param2:TankData) : void
+      private function method_1224(param1:WeaponCommonData, param2:TankData) : void
       {
          var _loc6_:int = 0;
          var _loc7_:Tank = null;
@@ -283,7 +283,7 @@ package package_149
          Network(Main.osgi.getService(INetworker)).send("battle;fire;" + JSON.stringify(_loc6_));
       }
       
-      private function method_739(param1:TankData, param2:name_1451) : void
+      private function method_739(param1:TankData, param2:WeaponCommonData) : void
       {
          if(this.var_564 == null)
          {
@@ -314,7 +314,7 @@ package package_149
             this.modelService = name_32(Main.osgi.getService(name_32));
             this.var_11 = IBattleField(Main.osgi.getService(IBattleField));
             this.var_13 = TankModel(Main.osgi.getService(ITank));
-            this.var_728 = name_1188(this.modelService.getModelsByInterface(name_1188)[0]);
+            this.var_728 = IWeaponCommonModel(this.modelService.getModelsByInterface(IWeaponCommonModel)[0]);
             this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
          }
       }

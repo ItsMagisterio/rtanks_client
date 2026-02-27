@@ -9,8 +9,8 @@ package alternativa.tanks.models.weapon
    import package_161.WeaponWeakeningModel;
    import package_4.ClientObject;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    
    public class WeaponObject extends EventDispatcher
    {
@@ -26,14 +26,14 @@ package alternativa.tanks.models.weapon
          this.object = param1;
       }
       
-      public function commonData() : name_1451
+      public function commonData() : WeaponCommonData
       {
          return this.method_2193().name_1457(this.method_2192().turret);
       }
       
-      public function method_2193() : name_1188
+      public function method_2193() : IWeaponCommonModel
       {
-         return OSGi.getInstance().getService(name_1188) as name_1188;
+         return OSGi.getInstance().getService(IWeaponCommonModel) as IWeaponCommonModel;
       }
       
       public function name_1456() : WeaponWeakeningModel

@@ -1,9 +1,9 @@
-package package_92
+package alternativa.tanks.models.weapon.common
 {
    import alternativa.physics.Body;
    import package_37.Vector3;
    
-   public class name_1699
+   public class HitInfo
    {
        
       
@@ -17,7 +17,7 @@ package package_92
       
       public var normal:Vector3;
       
-      public function name_1699()
+      public function HitInfo()
       {
          this.position = new Vector3();
          this.direction = new Vector3();

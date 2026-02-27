@@ -1,4 +1,4 @@
-package package_149
+package alternativa.tanks.models.weapon.freeze
 {
    import alternativa.engine3d.core.Object3D;
    import alternativa.engine3d.materials.TextureMaterial;
@@ -36,9 +36,9 @@ package package_149
    import package_4.ClientObject;
    import package_7.name_11;
    import package_7.name_32;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    
-   public class FreezeSFXModel extends class_80 implements class_79, class_11, name_1707
+   public class FreezeSFXModel extends class_80 implements class_79, class_11, IFreezeSFXModel
    {
       
       private static const const_1479:Number = 2;
@@ -52,7 +52,7 @@ package package_149
       
       private var battlefield:IBattleField;
       
-      private var var_1048:class_70;
+      private var var_1048:IFreezeModel;
       
       private var name_694:Dictionary;
       
@@ -70,7 +70,7 @@ package package_149
          this.var_1047 = new Dictionary();
          this.var_421 = Main.osgi.getService(IBattleField) as BattlefieldModel;
          super();
-         _interfaces.push(IModel,class_11,name_1707);
+         _interfaces.push(IModel,class_11,IFreezeSFXModel);
          var_58 = IMaterialRegistry(Main.osgi.getService(IMaterialRegistry));
          var_138 = IObjectPoolService(Main.osgi.getService(IObjectPoolService));
       }
@@ -89,7 +89,7 @@ package package_149
       private function method_1238(param1:BitmapData) : name_1072
       {
          var _loc2_:name_1072 = GraphicsUtils.name_1073(var_58.textureMaterialRegistry as TextureMaterialRegistry,param1,128,128,13);
-         _loc2_.material.resolution = name_1736.name_1722 / 128;
+         _loc2_.material.resolution = FreezeEffects.name_1722 / 128;
          _loc2_.fps = 25;
          return _loc2_;
       }
@@ -97,12 +97,12 @@ package package_149
       private function method_1236(param1:BitmapData) : name_1072
       {
          var _loc2_:name_1072 = GraphicsUtils.name_1073(var_58.textureMaterialRegistry as TextureMaterialRegistry,param1,256,150,11);
-         _loc2_.material.resolution = name_1736.name_1719 / 256;
+         _loc2_.material.resolution = FreezeEffects.name_1719 / 256;
          _loc2_.fps = 15;
          return _loc2_;
       }
       
-      public function method_739(param1:TankData, param2:name_1451) : void
+      public function method_739(param1:TankData, param2:WeaponCommonData) : void
       {
          var _loc3_:String = null;
          var _loc4_:Sound3D = null;
@@ -114,7 +114,7 @@ package package_149
             name_11.log(LogLevel.name_79,_loc3_);
             throw new Error(_loc3_);
          }
-         var _loc7_:name_1703 = this.var_1048.method_1220(param1.turret);
+         var _loc7_:FreezeEffectsParams = this.var_1048.method_1220(param1.turret);
          if(_loc7_ == null)
          {
             _loc3_ = "Freeze data not found";
@@ -122,7 +122,7 @@ package package_149
             throw new Error(_loc3_);
          }
          var _loc8_:StreamWeaponGraphicEffect = StreamWeaponGraphicEffect(var_138.objectPool.getObject(StreamWeaponGraphicEffect));
-         _loc8_.init(param1.tank,_loc7_.damageAreaRange,_loc7_.damageAreaConeAngle,name_1736.name_1720,param2.muzzles[0],param1.tank.skin.name_200,_loc6_,this.battlefield.getBattlefieldData().name_247,name_1736.name_1728,name_1736.name_1719,name_1736.name_1733,name_1736.name_1722,name_1736.name_1740,name_1736.name_1739,false);
+         _loc8_.init(param1.tank,_loc7_.damageAreaRange,_loc7_.damageAreaConeAngle,FreezeEffects.name_1720,param2.muzzles[0],param1.tank.skin.name_200,_loc6_,this.battlefield.getBattlefieldData().name_247,FreezeEffects.name_1728,FreezeEffects.name_1719,FreezeEffects.name_1733,FreezeEffects.name_1722,FreezeEffects.name_1740,FreezeEffects.name_1739,false);
          this.method_1237(param2.muzzles[0],param1.tank.skin.name_200,param1.turret);
          this.battlefield.name_217(_loc8_);
          this.name_694[param1] = _loc8_;
@@ -223,7 +223,7 @@ package package_149
          {
             _loc1_ = name_32(Main.osgi.getService(name_32));
             this.battlefield = IBattleField(Main.osgi.getService(IBattleField));
-            this.var_1048 = class_70(_loc1_.getModelsByInterface(class_70)[0]);
+            this.var_1048 = IFreezeModel(_loc1_.getModelsByInterface(IFreezeModel)[0]);
          }
       }
       

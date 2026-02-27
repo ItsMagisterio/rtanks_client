@@ -33,8 +33,8 @@ package alternativa.tanks.models.weapon.shotgun
    import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
    import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunEffects;
    import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunSFX;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
    import alternativa.tanks.models.weapon.shared.shot.DiscreteShotModel;
    import platform.client.fp10.core.registry.name_29;
@@ -53,7 +53,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_13:TankModel;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_730:IWeaponWeakeningModel;
       
@@ -61,7 +61,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var var_722:Vector3;
       
@@ -107,7 +107,7 @@ package alternativa.tanks.models.weapon.shotgun
          this.modelService = name_32(OSGi.getInstance().getService(name_32));
          this.var_11 = OSGi.getInstance().getService(IBattleField) as IBattleField;
          this.var_13 = OSGi.getInstance().getService(ITank) as TankModel;
-         this.var_728 = OSGi.getInstance().getService(name_1188) as name_1188;
+         this.var_728 = OSGi.getInstance().getService(IWeaponCommonModel) as IWeaponCommonModel;
          this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
       }
       

@@ -27,10 +27,10 @@ package package_333
    import package_52.WeaponsManager;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_92.WeaponCommonModel;
-   import package_92.name_1188;
-   import package_92.name_1451;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -48,7 +48,7 @@ package package_333
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var modelService:name_32;
       
@@ -62,7 +62,7 @@ package package_333
       
       private var targetSystem:CommonTargetSystem;
       
-      private var hitInfo:name_1699;
+      private var hitInfo:HitInfo;
       
       private var var_1016:name_911;
       
@@ -101,7 +101,7 @@ package package_333
       public function SnowmanModel()
       {
          this.var_1071 = new Dictionary();
-         this.hitInfo = new name_1699();
+         this.hitInfo = new HitInfo();
          this.var_1016 = name_911.getInstance();
          this.nextReadyTime = new name_1288("twins nextReadyTime");
          this.currentTime = new name_1288("twins currentTime");
@@ -157,7 +157,7 @@ package package_333
       {
          var _loc5_:ClientObject = null;
          var _loc6_:TankData = null;
-         var _loc7_:name_1451 = null;
+         var _loc7_:WeaponCommonData = null;
          this.objectLoaded(null);
          try
          {
@@ -199,7 +199,7 @@ package package_333
          var _loc10_:SnowmanShot = null;
          var _loc11_:ClientObject = null;
          var _loc12_:TankData = null;
-         var _loc13_:name_1451 = null;
+         var _loc13_:WeaponCommonData = null;
          var _loc7_:ClientObject = BattleController.tankClientObjectByTankId[param2];
          if(_loc7_ == null)
          {
@@ -437,7 +437,7 @@ package package_333
             this.modelService = name_32(Main.osgi.getService(name_32));
             this.var_11 = IBattleField(Main.osgi.getService(IBattleField));
             this.var_13 = Main.osgi.getService(ITank) as TankModel;
-            this.var_728 = Main.osgi.getService(name_1188) as WeaponCommonModel;
+            this.var_728 = Main.osgi.getService(IWeaponCommonModel) as WeaponCommonModel;
             this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
          }
       }

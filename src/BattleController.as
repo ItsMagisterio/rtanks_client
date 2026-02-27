@@ -42,7 +42,7 @@ package
    import package_13.Long;
    import package_138.ServerBonusModel;
    import package_143.name_396;
-   import package_149.FreezeModel;
+   import alternativa.tanks.models.weapon.freeze.FreezeModel;
    import package_151.RicochetModel;
    import package_154.PlasmaModel;
    import package_158.RailgunModel;

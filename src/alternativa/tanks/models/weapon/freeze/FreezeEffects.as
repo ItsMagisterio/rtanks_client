@@ -1,6 +1,6 @@
-package package_149
+package alternativa.tanks.models.weapon.freeze
 {
-   public class name_1736
+   public class FreezeEffects
    {
       
       public static const name_1719:int = 350;
@@ -22,7 +22,7 @@ package package_149
       public static const const_2019:int = 1500;
        
       
-      public function name_1736()
+      public function FreezeEffects()
       {
          super();
       }

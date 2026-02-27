@@ -1,4 +1,4 @@
-package package_92
+package alternativa.tanks.models.weapon.common
 {
    import alternativa.engine3d.core.Camera3D;
    import alternativa.engine3d.core.Object3D;
@@ -32,7 +32,7 @@ package package_92
    import platform.client.fp10.core.registry.ResourceRegistry;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
-   public class WeaponCommonModel extends class_45 implements class_2, class_46, class_11, name_1188, name_213, class_3
+   public class WeaponCommonModel extends class_45 implements class_2, class_46, class_11, IWeaponCommonModel, name_213, class_3
    {
       
       public static var battleInputService:name_245;
@@ -46,7 +46,7 @@ package package_92
       
       private var localUserData:TankData;
       
-      private var var_766:name_1451;
+      private var var_766:WeaponCommonData;
       
       public var var_760:IWeaponController;
       
@@ -68,7 +68,7 @@ package package_92
       {
          this.var_763 = new Vector3();
          super();
-         _interfaces.push(IModel,class_46,class_11,name_1188,name_213);
+         _interfaces.push(IModel,class_46,class_11,IWeaponCommonModel,name_213);
       }
       
       public function getWeaponController() : IWeaponController
@@ -84,7 +84,7 @@ package package_92
             this.battlefield = Main.osgi.getService(IBattleField) as IBattleField;
             this.var_13 = Main.osgi.getService(ITank) as ITank;
          }
-         var _loc6_:name_1451 = new name_1451();
+         var _loc6_:WeaponCommonData = new WeaponCommonData();
          var _loc7_:Number = name_1495.name_1499;
          _loc6_.kickback = param3 * _loc7_;
          _loc6_.name_1498 = param2;
@@ -98,7 +98,7 @@ package package_92
       
       public function objectLoaded(param1:ClientObject) : void
       {
-         var _loc2_:name_1451 = this.name_1457(param1);
+         var _loc2_:WeaponCommonData = this.name_1457(param1);
          _loc2_.name_1493 = BattleController.getWeaponController(param1);
       }
       
@@ -120,14 +120,14 @@ package package_92
          }
       }
       
-      public function name_1457(param1:ClientObject) : name_1451
+      public function name_1457(param1:ClientObject) : WeaponCommonData
       {
-         return name_1451(param1.method_16(WeaponCommonModel));
+         return WeaponCommonData(param1.method_16(WeaponCommonModel));
       }
       
       public function name_1249(param1:ClientObject, param2:Tank, param3:int, param4:Vector3, param5:Vector3) : void
       {
-         var _loc6_:name_1451 = this.name_1457(param1);
+         var _loc6_:WeaponCommonData = this.name_1457(param1);
          param2.method_432(param4,param5,-_loc6_.kickback);
          var _loc7_:name_1187 = WeaponsManager.method_721(WeaponsManager.name_185(param1.id));
          if(_loc7_ == null)
@@ -203,7 +203,7 @@ package package_92
       public function name_161(param1:ClientObject) : void
       {
          var _loc2_:TankData = this.var_13.getTankData(param1);
-         var _loc3_:name_1451 = this.name_1457(_loc2_.turret);
+         var _loc3_:WeaponCommonData = this.name_1457(_loc2_.turret);
          if(_loc3_.name_1493 != null)
          {
             _loc3_.name_1493.method_999(_loc2_);
@@ -226,7 +226,7 @@ package package_92
       public function name_126(param1:ClientObject) : void
       {
          var _loc2_:TankData = this.var_13.getTankData(param1);
-         var _loc3_:name_1451 = this.name_1457(_loc2_.turret);
+         var _loc3_:WeaponCommonData = this.name_1457(_loc2_.turret);
          if(_loc3_.name_1493 != null)
          {
             _loc3_.name_1493.method_999(_loc2_);
