@@ -4,7 +4,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun
    import package_38.name_840;
    import platform.client.fp10.core.model.name_66;
    
-   public class name_1396
+   public class ShotgunHittingModelServer
    {
        
       
@@ -14,7 +14,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun
       
       private var model:name_66;
       
-      public function name_1396(param1:name_66)
+      public function ShotgunHittingModelServer(param1:name_66)
       {
          super();
          this.model = param1;

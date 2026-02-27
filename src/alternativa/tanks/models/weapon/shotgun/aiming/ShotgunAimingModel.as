@@ -5,9 +5,9 @@ package alternativa.tanks.models.weapon.shotgun.aiming
    import alternativa.tanks.models.weapon.shotgun.PelletDirectionCalculator;
    import alternativa.tanks.models.weapon.shotgun.ShotgunRicochetTargetingSystem;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.ShotgunHittingModelBase;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.name_289;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.IShotgunHittingModelBase;
    
-   public class ShotgunAimingModel extends ShotgunHittingModelBase implements name_289, ShotgunAiming
+   public class ShotgunAimingModel extends ShotgunHittingModelBase implements IShotgunHittingModelBase, ShotgunAiming
    {
        
       

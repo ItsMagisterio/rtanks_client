@@ -95,7 +95,7 @@ package package_1
    import package_88.BonusRegionService;
    import package_89.ResistanceServiceImpl;
    import package_90.name_308;
-   import package_91.name_288;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.IShotgunHittingModelBase;
    import package_92.WeaponCommonModel;
    import alternativa.tanks.models.weapon.shared.shot.DiscreteShotModel;
    import package_94.name_293;
@@ -212,7 +212,7 @@ package package_1
          _loc3_.add(new ShotgunModel(),Vector.<Class>([DiscreteShotModel,DiscreteWeaponListener]));
          _loc3_.name_275(ShotgunAiming,ShotgunAimingAdapt);
          _loc3_.name_270(ShotgunAiming,ShotgunAimingEvents);
-         _loc3_.add(new ShotgunAimingModel(),Vector.<Class>([name_289,ShotgunAiming]));
+         _loc3_.add(new ShotgunAimingModel(),Vector.<Class>([IShotgunHittingModelBase,ShotgunAiming]));
          _loc3_.name_275(ShotgunSFX,ShotgunSFXAdapt);
          _loc3_.name_270(ShotgunSFX,ShotgunSFXEvents);
          _loc3_.add(new ShotgunSFXModel(),Vector.<Class>([IShotgunSFXModelBase,ShotgunSFX,DiscreteWeaponListener]));
