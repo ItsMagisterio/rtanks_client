@@ -1,11 +1,11 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import alternativa.engine3d.core.Vertex;
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.engine3d.objects.Mesh;
    import package_37.Vector3;
    
-   public class name_3072 extends Mesh
+   public class PelletTrail extends Mesh
    {
        
       
@@ -23,9 +23,9 @@ package package_73
       
       public var position:Vector3;
       
-      public var name_3073:Boolean = false;
+      public var animated:Boolean = false;
       
-      public function name_3072()
+      public function PelletTrail()
       {
          this.direction = new Vector3();
          this.position = new Vector3();
@@ -59,7 +59,7 @@ package package_73
       public function clear() : void
       {
          setMaterialToAllFaces(null);
-         this.name_3073 = false;
+         this.animated = false;
       }
    }
 }

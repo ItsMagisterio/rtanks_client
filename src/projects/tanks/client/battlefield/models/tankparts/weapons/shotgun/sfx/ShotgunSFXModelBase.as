@@ -1,4 +1,4 @@
-package package_91
+package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
 {
    import alternativa.osgi.OSGi;
    import package_13.Long;
@@ -13,16 +13,16 @@ package package_91
       
       private var var_531:name_840;
       
-      protected var server:name_1245;
+      protected var server:ShotgunSFXModelServer;
       
-      private var client:name_288;
+      private var client:IShotgunSFXModelBase;
       
       private var var_25:Long;
       
       public function ShotgunSFXModelBase()
       {
          this.var_531 = name_840(OSGi.getInstance().getService(name_840));
-         this.client = name_288(this);
+         this.client = IShotgunSFXModelBase(this);
          this.var_25 = Long.getLong(179431987,214974876);
          super();
          this.method_770();
@@ -30,12 +30,12 @@ package package_91
       
       protected function method_770() : void
       {
-         this.server = new name_1245(name_66(this));
+         this.server = new ShotgunSFXModelServer(name_66(this));
       }
       
-      protected function method_771() : name_1246
+      protected function method_771() : ShotgunSFXCC
       {
-         return name_1246(var_19[Model.object]);
+         return ShotgunSFXCC(var_19[Model.object]);
       }
       
       override public function invoke(param1:Long, param2:name_69) : void

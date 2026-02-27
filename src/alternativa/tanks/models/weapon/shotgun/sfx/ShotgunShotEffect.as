@@ -1,4 +1,4 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.engine3d.objects.Sprite3D;
@@ -83,9 +83,9 @@ package package_73
       
       private var smoke:AnimatedSprite3D;
       
-      private var var_3099:Vector.<name_3072>;
+      private var var_3099:Vector.<PelletTrail>;
       
-      private var var_3100:Vector.<name_3072>;
+      private var var_3100:Vector.<PelletTrail>;
       
       private var var_3101:Vector.<Sprite3D>;
       
@@ -108,8 +108,8 @@ package package_73
          this.var_3098 = new AnimatedPlane(270,270,0,270 / 2,0);
          this.var_3096 = new AnimatedPlane(270,270,0,0,0);
          this.smoke = new AnimatedSprite3D(200,200);
-         this.var_3099 = new Vector.<name_3072>();
-         this.var_3100 = new Vector.<name_3072>();
+         this.var_3099 = new Vector.<PelletTrail>();
+         this.var_3100 = new Vector.<PelletTrail>();
          this.var_3101 = new Vector.<Sprite3D>();
          this.name_1421 = new Vector3();
          this.var_3097 = new Vector3();
@@ -197,9 +197,9 @@ package package_73
          this.var_3096.z = this.name_1421.z + this.var_3097.z * _loc2_;
       }
       
-      private function method_2881(param1:name_735, param2:Vector.<name_3072>) : void
+      private function method_2881(param1:name_735, param2:Vector.<PelletTrail>) : void
       {
-         var _loc3_:name_3072 = null;
+         var _loc3_:PelletTrail = null;
          var _loc4_:Number = this.time / 0.3;
          for each(_loc3_ in param2)
          {
@@ -207,7 +207,7 @@ package package_73
          }
       }
       
-      private function method_2868(param1:name_3072, param2:Number, param3:name_735) : Number
+      private function method_2868(param1:PelletTrail, param2:Number, param3:name_735) : Number
       {
          var _loc4_:Number = NaN;
          _loc4_ = NaN;
@@ -219,13 +219,13 @@ package package_73
          return _loc4_;
       }
       
-      private function method_2870(param1:name_735, param2:Vector.<name_3072>) : void
+      private function method_2870(param1:name_735, param2:Vector.<PelletTrail>) : void
       {
-         var _loc3_:name_3072 = null;
+         var _loc3_:PelletTrail = null;
          var _loc4_:Number = (this.time - 0.05) / 0.3;
          for each(_loc3_ in param2)
          {
-            if(!_loc3_.name_3073)
+            if(!_loc3_.animated)
             {
                return;
             }
@@ -291,8 +291,8 @@ package package_73
       
       private function method_2878() : void
       {
-         var _loc1_:name_3072 = null;
-         var _loc2_:name_3072 = null;
+         var _loc1_:PelletTrail = null;
+         var _loc2_:PelletTrail = null;
          var _loc3_:Sprite3D = null;
          if(this.time > 0.3)
          {
@@ -471,9 +471,9 @@ package package_73
          this.var_3101.push(_loc1_);
       }
       
-      private function method_2867() : name_3072
+      private function method_2867() : PelletTrail
       {
-         var _loc1_:name_3072 = new name_3072();
+         var _loc1_:PelletTrail = new PelletTrail();
          _loc1_.blendMode = BlendMode.ADD;
          _loc1_.shadowMapAlphaThreshold = 2;
          _loc1_.useShadowMap = false;
@@ -488,7 +488,7 @@ package package_73
          var _loc7_:Sprite3D = null;
          var _loc8_:Boolean = param2.raycast(param4,param3,name_73.WEAPON,param5,var_2184,var_397);
          var _loc9_:Number = 5000;
-         var _loc10_:name_3072 = this.var_3099[param1];
+         var _loc10_:PelletTrail = this.var_3099[param1];
          _loc10_.position.copy(this.name_1421);
          if(_loc8_)
          {
@@ -519,8 +519,8 @@ package package_73
          const_2320.addScaled(0.1,const_2321);
          var _loc6_:Number = 5000;
          var _loc7_:Boolean = param4.raycast(const_2320,const_2321,name_73.WEAPON,_loc6_,null,var_397);
-         var _loc8_:name_3072 = this.var_3100[param1];
-         _loc8_.name_3073 = true;
+         var _loc8_:PelletTrail = this.var_3100[param1];
+         _loc8_.animated = true;
          _loc8_.position.copy(const_2320);
          if(_loc7_)
          {
@@ -544,7 +544,7 @@ package package_73
          this.method_2866(_loc8_,_loc6_);
       }
       
-      private function method_2876(param1:Vector3, param2:Number, param3:name_3072, param4:Boolean) : Number
+      private function method_2876(param1:Vector3, param2:Number, param3:PelletTrail, param4:Boolean) : Number
       {
          var _loc5_:Number = param1.distanceTo(var_397.position);
          var _loc6_:Number = param1.distanceTo(this.name_1421);
@@ -563,7 +563,7 @@ package package_73
          return param2;
       }
       
-      private function method_2879(param1:Vector3, param2:name_3072, param3:Boolean) : Number
+      private function method_2879(param1:Vector3, param2:PelletTrail, param3:Boolean) : Number
       {
          if(!param3)
          {
@@ -572,7 +572,7 @@ package package_73
          return param1.distanceTo(var_397.position);
       }
       
-      private function method_2866(param1:name_3072, param2:Number) : void
+      private function method_2866(param1:PelletTrail, param2:Number) : void
       {
          var _loc3_:Number = 3 + Math.random() * 8;
          var _loc4_:Number = 0.3 + Math.random() * 0.3;

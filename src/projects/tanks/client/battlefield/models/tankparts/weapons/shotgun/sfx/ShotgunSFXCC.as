@@ -1,10 +1,10 @@
-package package_91
+package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
 {
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
    
-   public class name_1246
+   public class ShotgunSFXCC
    {
        
       
@@ -26,7 +26,7 @@ package package_91
       
       private var var_2083:ImageResource;
       
-      public function name_1246(param1:Vector.<ImageResource> = null, param2:SoundResource = null, param3:ImageResource = null, param4:SoundResource = null, param5:MultiframeImageResource = null, param6:MultiframeImageResource = null, param7:SoundResource = null, param8:MultiframeImageResource = null, param9:ImageResource = null)
+      public function ShotgunSFXCC(param1:Vector.<ImageResource> = null, param2:SoundResource = null, param3:ImageResource = null, param4:SoundResource = null, param5:MultiframeImageResource = null, param6:MultiframeImageResource = null, param7:SoundResource = null, param8:MultiframeImageResource = null, param9:ImageResource = null)
       {
          super();
          this.var_2084 = param1;

@@ -1,9 +1,9 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import package_39.Model;
    import platform.client.fp10.core.type.name_70;
    
-   public class ShotgunSFXEvents implements name_282
+   public class ShotgunSFXEvents implements ShotgunSFX
    {
        
       
@@ -18,18 +18,18 @@ package package_73
          this.impl = param2;
       }
       
-      public function getEffects() : name_1244
+      public function getEffects() : ShotgunEffects
       {
-         var result:name_1244 = null;
+         var result:ShotgunEffects = null;
          var i:int = 0;
-         var m:name_282 = null;
+         var m:ShotgunSFX = null;
          try
          {
             Model.object = this.object;
             i = 0;
             while(i < this.impl.length)
             {
-               m = name_282(this.impl[i]);
+               m = ShotgunSFX(this.impl[i]);
                result = m.getEffects();
                i++;
             }

@@ -1,4 +1,4 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import alternativa.tanks.models.battlefield.IBattleField;
    import alternativa.tanks.models.sfx.LightDataManager;
@@ -10,16 +10,16 @@ package package_73
    import package_37.Vector3;
    import package_4.ClientObject;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListener;
-   import package_91.ShotgunSFXModelBase;
-   import package_91.name_1246;
-   import package_91.name_288;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXCC;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.IShotgunSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
    import platform.client.fp10.core.type.name_70;
    
-   public class name_296 extends ShotgunSFXModelBase implements name_288, name_282, DiscreteWeaponListener
+   public class ShotgunSFXModel extends ShotgunSFXModelBase implements IShotgunSFXModelBase, ShotgunSFX, DiscreteWeaponListener
    {
       
       public static var battleService:IBattleField;
@@ -29,7 +29,7 @@ package package_73
       
       private var var_556:name_1247;
       
-      public function name_296()
+      public function ShotgunSFXModel()
       {
          this.var_557 = new name_903();
          super();
@@ -37,7 +37,7 @@ package package_73
       
       public function initObject(param1:ClientObject, param2:Vector.<ImageResource>, param3:ImageResource, param4:MultiframeImageResource, param5:MultiframeImageResource, param6:MultiframeImageResource, param7:ImageResource, param8:SoundResource, param9:SoundResource, param10:SoundResource) : void
       {
-         var _loc11_:name_1246 = new name_1246();
+         var _loc11_:ShotgunSFXCC = new ShotgunSFXCC();
          _loc11_.explosionMarkTextures = param2;
          _loc11_.pelletTrailTexture = param3;
          _loc11_.shotAcrossTexture = param4;
@@ -47,7 +47,7 @@ package package_73
          _loc11_.magazineReloadSound = param8;
          _loc11_.reloadSound = param9;
          _loc11_.shotSound = param10;
-         param1.method_12(name_1246,_loc11_);
+         param1.method_12(ShotgunSFXCC,_loc11_);
       }
       
       public function method_796(param1:name_70, param2:Vector3, param3:Vector.<TargetHit>) : void
@@ -74,19 +74,19 @@ package package_73
          name_911.getInstance().name_920(_loc3_.name_144(),_loc3_.method_463(),this.var_557);
       }
       
-      public function getEffects() : name_1244
+      public function getEffects() : ShotgunEffects
       {
-         var _loc1_:name_1244 = name_1244(getData(name_1244));
+         var _loc1_:ShotgunEffects = ShotgunEffects(getData(ShotgunEffects));
          var _loc2_:ITank = null;
          var _loc3_:ShotgunSFXData = null;
-         var _loc4_:name_1246 = null;
+         var _loc4_:ShotgunSFXCC = null;
          if(_loc1_ == null)
          {
             _loc2_ = ITank(object.name_176(ITank));
-            _loc4_ = name_1246(_loc2_.getTank().tankData.turret.method_16(name_1246));
+            _loc4_ = ShotgunSFXCC(_loc2_.getTank().tankData.turret.method_16(ShotgunSFXCC));
             _loc3_ = new ShotgunSFXData(_loc4_,LightDataManager.name_1250("smoky_m0"));
-            _loc1_ = new name_1244(_loc3_);
-            putData(name_1244,_loc1_);
+            _loc1_ = new ShotgunEffects(_loc3_);
+            putData(ShotgunEffects,_loc1_);
             putData(ShotgunSFXData,_loc3_);
          }
          return _loc1_;

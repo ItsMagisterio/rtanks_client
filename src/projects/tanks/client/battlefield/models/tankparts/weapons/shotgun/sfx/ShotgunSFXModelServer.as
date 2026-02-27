@@ -1,4 +1,4 @@
-package package_91
+package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
 {
    import alternativa.osgi.OSGi;
    import flash.utils.ByteArray;
@@ -7,7 +7,7 @@ package package_91
    import package_38.name_840;
    import platform.client.fp10.core.model.name_66;
    
-   public class name_1245
+   public class ShotgunSFXModelServer
    {
        
       
@@ -17,7 +17,7 @@ package package_91
       
       private var model:name_66;
       
-      public function name_1245(param1:name_66)
+      public function ShotgunSFXModelServer(param1:name_66)
       {
          super();
          this.model = param1;

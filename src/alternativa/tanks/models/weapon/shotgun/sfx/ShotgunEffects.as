@@ -1,4 +1,4 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import alternativa.engine3d.core.Object3D;
    import alternativa.osgi.OSGi;
@@ -20,7 +20,7 @@ package package_73
    import package_37.Vector3;
    import platform.client.fp10.core.type.AutoClosable;
    
-   public class name_1244 implements AutoClosable, class_177
+   public class ShotgunEffects implements AutoClosable, class_177
    {
       
       public static var battleService:IBattleField = IBattleField(OSGi.getInstance().getService(IBattleField));
@@ -38,7 +38,7 @@ package package_73
       
       private var var_2081:Boolean = false;
       
-      public function name_1244(param1:ShotgunSFXData)
+      public function ShotgunEffects(param1:ShotgunSFXData)
       {
          super();
          this.var_2080 = param1;

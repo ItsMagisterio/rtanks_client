@@ -1,4 +1,4 @@
-package package_73
+package alternativa.tanks.models.weapon.shotgun.sfx
 {
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.osgi.OSGi;
@@ -9,7 +9,7 @@ package package_73
    import alternativa.tanks.services.materialregistry.IMaterialRegistry;
    import alternativa.tanks.utils.GraphicsUtils;
    import flash.media.Sound;
-   import package_91.name_1246;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXCC;
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.type.AutoClosable;
@@ -40,7 +40,7 @@ package package_73
       
       public var name_2468:LightAnimation;
       
-      public function ShotgunSFXData(param1:name_1246, param2:LightAnimation)
+      public function ShotgunSFXData(param1:ShotgunSFXCC, param2:LightAnimation)
       {
          var _loc3_:ImageResource = null;
          var _loc4_:TextureMaterial = null;

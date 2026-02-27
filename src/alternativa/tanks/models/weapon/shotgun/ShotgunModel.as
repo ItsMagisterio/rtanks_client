@@ -31,8 +31,8 @@ package alternativa.tanks.models.weapon.shotgun
    import package_7.name_32;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListener;
    import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
-   import package_73.name_1244;
-   import package_73.name_282;
+   import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunEffects;
+   import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunSFX;
    import package_92.name_1188;
    import package_92.name_1451;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
@@ -65,7 +65,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_722:Vector3;
       
-      private var effects:name_1244;
+      private var effects:ShotgunEffects;
       
       private var targeting:ShotgunRicochetTargetingSystem;
       
@@ -150,7 +150,7 @@ package alternativa.tanks.models.weapon.shotgun
          _loc2_.getModel(Long.getLong(1519945329,-715940911)).method_18(param1.turret.method_16(name_162));
          Model.method_38();
          this.var_11.method_147(name_653.create(param1,WeaponsManager.var_495[param1.turret.id],null,null,null));
-         this.effects = name_282(param1.object.name_176(name_282)).getEffects();
+         this.effects = ShotgunSFX(param1.object.name_176(ShotgunSFX)).getEffects();
          this.method_799 = new name_1247(param1.turret);
          this.targeting = ShotgunAiming(param1.object.name_176(ShotgunAiming)).createTargetingSystem();
       }

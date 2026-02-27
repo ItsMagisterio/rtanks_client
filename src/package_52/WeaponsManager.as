@@ -20,7 +20,7 @@ package package_52
    import package_301.SnowmanSFXModel;
    import package_4.ClientObject;
    import package_6.ClientClass;
-   import package_73.name_296;
+   import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunSFXModel;
    import package_92.WeaponCommonModel;
    import package_92.name_1188;
    import platform.client.fp10.core.registry.ResourceRegistry;
@@ -119,10 +119,10 @@ package package_52
          return _loc3_;
       }
       
-      public static function createShotGunSFXModel(param1:ClientObject, param2:Object = null) : name_296
+      public static function createShotGunSFXModel(param1:ClientObject, param2:Object = null): ShotgunSFXModel
       {
-         var _loc3_:name_296 = null;
-         _loc3_ = name_296(modelRegister.getModel(Long.getLong(179431987,214974876)));
+         var _loc3_:ShotgunSFXModel = null;
+         _loc3_ = ShotgunSFXModel(modelRegister.getModel(Long.getLong(179431987,214974876)));
          var _loc4_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunSmokeTexture)));
          var _loc5_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunShotAlongTexture)));
          var _loc6_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunShotAcrossTexture)));
