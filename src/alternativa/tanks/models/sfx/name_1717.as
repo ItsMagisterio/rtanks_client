@@ -106,7 +106,7 @@ package alternativa.tanks.models.sfx
       {
          this.turret = null;
          this.name_247 = null;
-         method_584;
+         method_584();
       }
       
       override protected function getClass() : Class

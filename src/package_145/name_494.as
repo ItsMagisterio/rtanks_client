@@ -85,7 +85,7 @@ package package_145
          var _loc2_:String = this.method_1185();
          if(_loc2_ == null)
          {
-            return null;
+            return false;
          }
          return _loc2_.toLocaleLowerCase() == param1.toLocaleLowerCase();
       }

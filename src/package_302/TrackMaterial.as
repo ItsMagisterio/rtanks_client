@@ -205,7 +205,7 @@ package package_302
       override public function set mipMapping(param1:int) : void
       {
          alternativa3d::_mipMapping = param1;
-         alternativa3d::textureResource = TextureResourcesRegistry.getTextureResource(bitmap,alternativa3d::_mipMapping,repeat,alternativa3d::_hardwareMipMaps);
+         alternativa3d::textureResource = TextureResourcesRegistry.getTextureResource(bitmap,alternativa3d::_mipMapping > 0,repeat,alternativa3d::_hardwareMipMaps);
       }
    }
 }

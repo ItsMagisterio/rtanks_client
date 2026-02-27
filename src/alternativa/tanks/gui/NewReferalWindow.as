@@ -38,19 +38,19 @@ package alternativa.tanks.gui
    public class NewReferalWindow extends Sprite
    {
       
-      private static const const_1682:Class;
+      private static var const_1682:Class;
       
       private static const const_1681:BitmapData = new const_1682().bitmapData;
       
-      private static const const_1684:Class;
+      private static var const_1684:Class;
       
       private static const const_1680:BitmapData = new const_1684().bitmapData;
       
-      private static const const_1683:Class;
+      private static var const_1683:Class;
       
       private static const const_1678:BitmapData = new const_1683().bitmapData;
       
-      private static const const_1685:Class;
+      private static var const_1685:Class;
       
       private static const const_1679:BitmapData = new const_1685().bitmapData;
        

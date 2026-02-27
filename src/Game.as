@@ -11,7 +11,6 @@ package
    import flash.display.StageAlign;
    import flash.display.StageScaleMode;
    import flash.events.Event;
-   import juho.hacking.HackRegistry;
    import package_1.BattlefieldModelActivator;
    import package_1.Main;
    import package_1.TanksServicesActivator;
@@ -132,7 +131,6 @@ package
       
       public function SUPER(param1:Stage, param2:DisplayObjectContainer, param3:Object = null) : void
       {
-         new HackRegistry();
          if(var_2)
          {
             return;

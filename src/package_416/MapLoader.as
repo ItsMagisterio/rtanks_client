@@ -54,7 +54,7 @@ package package_416
       
       private static const const_2292:name_888 = new name_888(0,1);
       
-      public static const const_2295:Class;
+      public static var const_2295:Class;
       
       private static const const_2293:int = 255;
       

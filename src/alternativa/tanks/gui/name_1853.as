@@ -17,9 +17,9 @@ package alternativa.tanks.gui
    public class name_1853 extends Sprite
    {
       
-      private static const Watches3Hours:Class;
+      private static var Watches3Hours:Class;
       
-      private static const Watches5Hours:Class;
+      private static var Watches5Hours:Class;
        
       
       private var window:name_1922;
