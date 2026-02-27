@@ -87,12 +87,12 @@ public class Auth extends AuthComandsConst {
     }
 
     private void handleSystem(Command command) throws Exception {
-        String arg0 = command.args[0];
+        String op = command.args[0];
 
-        if ("get_aes_data".equals(arg0)) {
-            if (command.args.length > 1) {
+        if ("get_aes_data".equals(op)) {
+            if (command.args.length > 1 && command.args[1] != null && !command.args[1].isEmpty()) {
                 try {
-                    this.localization = Localization.valueOf(command.args[1]);
+                    this.localization = Localization.valueOf(command.args[1].toUpperCase());
                 } catch (Exception ignored) {
                     this.localization = Localization.EN;
                 }
@@ -102,22 +102,36 @@ public class Auth extends AuthComandsConst {
                 this.transfer.closeConnection();
                 return;
             }
-            this.transfer.num = arg0.length();
+            this.transfer.num = op.length();
             this.transfer.send(Type.SYSTEM, "set_aes_data", AES_DATA);
+            this.transfer.send(Type.SYSTEM, "init_auth");
             return;
         }
 
-        if ("init_location".equals(arg0) && command.args.length > 1) {
-            this.localization = Localization.valueOf(command.args[1]);
+        if ("init_location".equals(op) && command.args.length > 1) {
+            try {
+                this.localization = Localization.valueOf(command.args[1].toUpperCase());
+            } catch (Exception ignored) {
+                this.localization = Localization.EN;
+            }
             return;
         }
 
-        if ("c01".equals(arg0)) {
+        if ("c01".equals(op)) {
             this.transfer.closeConnection();
         }
     }
 
+
     private void handleAuth(Command command) throws Exception {
+        if (command.args.length > 0 && "login".equals(command.args[0])) {
+            if (command.args.length < 3) {
+                this.transfer.send(Type.AUTH, "denied");
+                return;
+            }
+            command.args = new String[]{command.args[1], command.args[2]};
+        }
+
         String op = command.args[0];
         if ("refresh_captcha".equals(op)) {
             this.refreshCaptcha("REGISTER");
@@ -150,6 +164,7 @@ public class Auth extends AuthComandsConst {
 
         this.onPasswordAccept(user);
     }
+
 
     private void handleRegistration(Command command) throws Exception {
         String op = command.args[0];
