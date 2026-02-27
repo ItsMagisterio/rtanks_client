@@ -31,6 +31,9 @@ public class ProtocolTransfer {
     public LobbyManager lobby;
     public Auth auth;
 
+    // поле оставлено для совместимости со старым Auth/System-handshake
+    public int num = 1;
+
     private final Channel channel;
     private final ChannelHandlerContext context;
 
@@ -164,6 +167,10 @@ public class ProtocolTransfer {
     // =========== SEND =============
     // ===============================
     public boolean send(Type type, String... args) throws IOException {
+        if (args == null || args.length == 0) {
+            return false;
+        }
+
         StringBuilder request = new StringBuilder();
         request.append(type.toString().toLowerCase()).append(";");
 
