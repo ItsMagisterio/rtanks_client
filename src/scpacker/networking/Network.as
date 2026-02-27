@@ -17,6 +17,10 @@ package scpacker.networking
       
       private var var_108:Socket;
       
+      private var var_109:Array;
+      
+      private var var_110:int = 1;
+      
       public var var_111:*;
       
       public var var_112:String = "F54BF833E76C15A12B7977CF5858FB96";
@@ -27,6 +31,7 @@ package scpacker.networking
       
       public function Network()
       {
+         this.var_109 = new Array(1,2,3,4,5,6,7,8,9);
          super();
          this.var_108 = new Socket();
       }
@@ -66,6 +71,7 @@ package scpacker.networking
          var str:String = param1;
          try
          {
+            str = this.var_111 == null ? this.method_137(str) : String(this.var_111.encrypt(str,this.var_112));
             str += "end~";
             this.var_108.writeUTFBytes(str);
             this.var_108.flush();
@@ -74,6 +80,24 @@ package scpacker.networking
          {
             OSGi.clientLog.log("NETWORK_SERVICE",e.message + "\n" + e.getStackTrace());
          }
+      }
+      
+      private function method_137(param1:String) : String
+      {
+         var _loc2_:int = (this.var_110 + 1) % this.var_109.length;
+         if(_loc2_ <= 0)
+         {
+            _loc2_ = 1;
+         }
+         this.var_110 = _loc2_;
+         var _loc3_:Array = param1.split("");
+         var _loc4_:int = 0;
+         while(_loc4_ < param1.length)
+         {
+            _loc3_[_loc4_] = String.fromCharCode(param1.charCodeAt(_loc4_) + (_loc2_ + 1));
+            _loc4_++;
+         }
+         return _loc2_ + _loc3_.join("");
       }
       
       private function method_1(param1:Event) : void
