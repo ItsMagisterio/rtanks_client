@@ -1,11 +1,11 @@
-package package_360
+package alternativa.tanks.models.weapon.shared.streamweapon
 {
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.tanks.engine3d.name_1072;
    import flash.media.Sound;
    import package_159.name_1594;
    
-   public class name_1715
+   public class StreamWeaponEffects
    {
        
       
@@ -23,7 +23,7 @@ package package_360
       
       public var name_1724:Number;
       
-      public function name_1715()
+      public function StreamWeaponEffects()
       {
          super();
       }

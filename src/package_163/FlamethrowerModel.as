@@ -9,6 +9,7 @@ package package_163
    import alternativa.tanks.models.weapon.name_911;
    import alternativa.tanks.models.weapon.shared.ConicAreaTargetSystem;
    import alternativa.tanks.models.weapon.shared.name_1742;
+   import alternativa.tanks.models.weapon.shared.streamweapon.DefaultConicAreaTargetValidator;
    import alternativa.tanks.sfx.name_1497;
    import alternativa.tanks.vehicles.tanks.Tank;
    import flash.utils.Dictionary;
@@ -99,7 +100,7 @@ package package_163
          this.var_1057 = new Vector3();
          this.var_1053 = new Dictionary();
          this.var_1016 = name_911.getInstance();
-         this.var_1056 = new name_1704();
+         this.var_1056 = new DefaultConicAreaTargetValidator();
          super();
          _interfaces.push(IModel,class_86,name_1595,IWeaponController);
       }

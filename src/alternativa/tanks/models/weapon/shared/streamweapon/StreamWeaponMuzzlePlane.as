@@ -1,4 +1,4 @@
-package package_360
+package alternativa.tanks.models.weapon.shared.streamweapon
 {
    import alternativa.tanks.engine3d.name_1072;
    import alternativa.tanks.engine3d.name_1773;

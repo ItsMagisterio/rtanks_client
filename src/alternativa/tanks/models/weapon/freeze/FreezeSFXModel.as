@@ -30,8 +30,8 @@ package alternativa.tanks.models.weapon.freeze
    import package_24.LogLevel;
    import package_357.class_79;
    import package_357.class_80;
-   import package_360.StreamWeaponGraphicEffect;
-   import package_360.name_1715;
+   import alternativa.tanks.models.weapon.shared.streamweapon.StreamWeapon;
+   import alternativa.tanks.models.weapon.shared.streamweapon.StreamWeaponEffects;
    import package_37.Vector3;
    import package_4.ClientObject;
    import package_7.name_11;
@@ -78,7 +78,7 @@ package alternativa.tanks.models.weapon.freeze
       public function initObject(param1:ClientObject, param2:BitmapData, param3:BitmapData, param4:Sound) : void
       {
          this.method_1223();
-         var _loc5_:name_1715 = new name_1715();
+         var _loc5_:StreamWeaponEffects = new StreamWeaponEffects();
          _loc5_.name_1725 = this.method_1238(param2);
          _loc5_.name_1727 = this.method_1236(param3);
          _loc5_.name_1724 = 100;
@@ -107,7 +107,7 @@ package alternativa.tanks.models.weapon.freeze
          var _loc3_:String = null;
          var _loc4_:Sound3D = null;
          var _loc5_:name_1718 = null;
-         var _loc6_:name_1715 = this.method_1239(param1.turret);
+         var _loc6_:StreamWeaponEffects = this.method_1239(param1.turret);
          if(_loc6_ == null)
          {
             _loc3_ = "SFX data not found";
@@ -121,7 +121,7 @@ package alternativa.tanks.models.weapon.freeze
             name_11.log(LogLevel.name_79,_loc3_);
             throw new Error(_loc3_);
          }
-         var _loc8_:StreamWeaponGraphicEffect = StreamWeaponGraphicEffect(var_138.objectPool.getObject(StreamWeaponGraphicEffect));
+         var _loc8_:StreamWeapon = StreamWeapon(var_138.objectPool.getObject(StreamWeapon));
          _loc8_.init(param1.tank,_loc7_.damageAreaRange,_loc7_.damageAreaConeAngle,FreezeEffects.name_1720,param2.muzzles[0],param1.tank.skin.name_200,_loc6_,this.battlefield.getBattlefieldData().name_247,FreezeEffects.name_1728,FreezeEffects.name_1719,FreezeEffects.name_1733,FreezeEffects.name_1722,FreezeEffects.name_1740,FreezeEffects.name_1739,false);
          this.method_1237(param2.muzzles[0],param1.tank.skin.name_200,param1.turret);
          this.battlefield.name_217(_loc8_);
@@ -187,7 +187,7 @@ package alternativa.tanks.models.weapon.freeze
       public function objectLoaded(param1:ClientObject) : void
       {
          var _loc2_:Vector.<name_1594> = null;
-         var _loc3_:name_1715 = null;
+         var _loc3_:StreamWeaponEffects = null;
          var _loc4_:name_32 = name_32(Main.osgi.getService(name_32));
          var _loc5_:name_1737 = name_1737(_loc4_.method_260(param1,name_1737));
          if(_loc5_ != null)
@@ -205,7 +205,7 @@ package alternativa.tanks.models.weapon.freeze
       public function objectUnloaded(param1:ClientObject) : void
       {
          var _loc2_:TextureMaterial = null;
-         var _loc3_:name_1715 = this.method_1239(param1);
+         var _loc3_:StreamWeaponEffects = this.method_1239(param1);
          var _loc4_:Array = _loc3_.name_1730();
          var _loc5_:int = 0;
          while(_loc5_ < _loc4_.length)
@@ -227,9 +227,9 @@ package alternativa.tanks.models.weapon.freeze
          }
       }
       
-      private function method_1239(param1:ClientObject) : name_1715
+      private function method_1239(param1:ClientObject) : StreamWeaponEffects
       {
-         return name_1715(param1.method_16(FreezeSFXModel));
+         return StreamWeaponEffects(param1.method_16(FreezeSFXModel));
       }
    }
 }

@@ -1,4 +1,4 @@
-package package_360
+package alternativa.tanks.models.weapon.shared.streamweapon
 {
    import alternativa.engine3d.core.Object3D;
    import alternativa.physics.collision.name_1083;
@@ -22,7 +22,7 @@ package package_360
    import package_68.name_175;
    import package_76.name_735;
    
-   public class StreamWeaponGraphicEffect extends class_30 implements name_657
+   public class StreamWeapon extends class_30 implements name_657
    {
       
       private static const const_442:name_1391 = new name_1388(1000);
@@ -68,7 +68,7 @@ package package_360
       
       private var turret:Object3D;
       
-      private var sfxData:name_1715;
+      private var sfxData:StreamWeaponEffects;
       
       private var name_247:name_1083;
       
@@ -106,7 +106,7 @@ package package_360
       
       private var var_2455:int;
       
-      public function StreamWeaponGraphicEffect(param1:ObjectPool)
+      public function StreamWeapon(param1:ObjectPool)
       {
          this.var_2453 = new Vector3();
          this.var_2452 = new Vector.<StreamWeaponParticle>(50);
@@ -114,7 +114,7 @@ package package_360
          this.var_2449 = new StreamWeaponMuzzlePlane();
       }
       
-      public function init(param1:Body, param2:Number, param3:Number, param4:Number, param5:Vector3, param6:Object3D, param7:name_1715, param8:name_1083, param9:Number, param10:Number, param11:Number, param12:Number, param13:Number, param14:Number, param15:Boolean) : void
+      public function init(param1:Body, param2:Number, param3:Number, param4:Number, param5:Vector3, param6:Object3D, param7:StreamWeaponEffects, param8:name_1083, param9:Number, param10:Number, param11:Number, param12:Number, param13:Number, param14:Number, param15:Boolean) : void
       {
          this.var_2183 = param1;
          this.var_2465 = Math.tan(0.5 * param3);
@@ -150,7 +150,7 @@ package package_360
          this.var_2464 = 1000 * param1 / (this.var_2455 * this.name_1724);
       }
       
-      private function method_2476(param1:name_1715) : void
+      private function method_2476(param1:StreamWeaponEffects) : void
       {
          var _loc2_:name_1594 = null;
          var _loc3_:ColorTransform = null;
@@ -193,7 +193,7 @@ package package_360
       
       override protected function getClass() : Class
       {
-         return StreamWeaponGraphicEffect;
+         return StreamWeapon;
       }
       
       public function play(param1:int, param2:name_735) : Boolean

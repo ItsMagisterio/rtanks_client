@@ -1,14 +1,14 @@
-package package_163
+package alternativa.tanks.models.weapon.shared.streamweapon
 {
    import alternativa.physics.Body;
    import alternativa.tanks.models.weapon.shared.name_1742;
    import alternativa.tanks.vehicles.tanks.Tank;
    
-   public class name_1704 implements name_1742
+   public class DefaultConicAreaTargetValidator implements name_1742
    {
        
       
-      public function name_1704()
+      public function DefaultConicAreaTargetValidator()
       {
          super();
       }

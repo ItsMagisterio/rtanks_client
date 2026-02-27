@@ -12,7 +12,7 @@ package alternativa.tanks.models.weapon.freeze
    import flash.utils.getTimer;
    import package_1.Main;
    import package_161.IWeaponWeakeningModel;
-   import package_163.name_1704;
+   import alternativa.tanks.models.weapon.shared.streamweapon.DefaultConicAreaTargetValidator;
    import package_278.name_1288;
    import package_278.name_905;
    import package_357.class_71;
@@ -156,7 +156,7 @@ package alternativa.tanks.models.weapon.freeze
          this.var_727 = this.var_728.name_1457(param1.turret);
          this.currentEnergy.value = this.var_1024.energyCapacity;
          this.lastUpdateTime.value = 0;
-         this.targetSystem = new ConicAreaTargetSystem(this.var_1024.damageAreaRange,this.var_1024.damageAreaConeAngle,5,6,this.var_11.getBattlefieldData().name_247,new name_1704());
+         this.targetSystem = new ConicAreaTargetSystem(this.var_1024.damageAreaRange,this.var_1024.damageAreaConeAngle,5,6,this.var_11.getBattlefieldData().name_247,new DefaultConicAreaTargetValidator());
       }
       
       public function method_1000() : void
