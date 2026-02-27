@@ -3,7 +3,7 @@ package alternativa.tanks.models.weapon.shotgun
    import package_39.Model;
    import package_4.ClientObject;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponObject;
-   import package_72.name_280;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
    
    public class name_1247 extends DiscreteWeaponObject
    {
@@ -16,7 +16,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       public function method_2196() : PelletDirectionCalculator
       {
-         var _loc1_:name_280 = name_280(Model.object.name_176(name_280));
+         var _loc1_:ShotgunAiming = ShotgunAiming(Model.object.name_176(ShotgunAiming));
          return _loc1_.method_881();
       }
    }

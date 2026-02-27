@@ -1,11 +1,11 @@
-package package_72
+package alternativa.tanks.models.weapon.shotgun.aiming
 {
    import alternativa.tanks.models.weapon.shotgun.PelletDirectionCalculator;
    import alternativa.tanks.models.weapon.shotgun.ShotgunRicochetTargetingSystem;
    import package_39.Model;
    import platform.client.fp10.core.type.name_70;
    
-   public class ShotgunAimingEvents implements name_280
+   public class ShotgunAimingEvents implements ShotgunAiming
    {
        
       
@@ -24,14 +24,14 @@ package package_72
       {
          var result:ShotgunRicochetTargetingSystem = null;
          var i:int = 0;
-         var m:name_280 = null;
+         var m:ShotgunAiming = null;
          try
          {
             Model.object = this.object;
             i = 0;
             while(i < this.impl.length)
             {
-               m = name_280(this.impl[i]);
+               m = ShotgunAiming(this.impl[i]);
                result = m.createTargetingSystem();
                i++;
             }
@@ -47,14 +47,14 @@ package package_72
       {
          var result:PelletDirectionCalculator = null;
          var i:int = 0;
-         var m:name_280 = null;
+         var m:ShotgunAiming = null;
          try
          {
             Model.object = this.object;
             i = 0;
             while(i < this.impl.length)
             {
-               m = name_280(this.impl[i]);
+               m = ShotgunAiming(this.impl[i]);
                result = m.method_881();
                i++;
             }

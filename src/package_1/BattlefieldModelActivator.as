@@ -57,10 +57,10 @@ package package_1
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListenerAdapt;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponCommunicationModel;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponAdapt;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.IDiscreteWeaponCommunicationModelBase;
-   import package_70.name_278;
-   import package_70.name_297;
-   import package_70.name_301;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAimingEvents;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAimingAdapt;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAimingModel;
    import package_70.name_318;
    import alternativa.tanks.models.weapon.laser.LaserPointerEvents;
    import alternativa.tanks.models.weapon.laser.LaserPointer;
@@ -210,9 +210,9 @@ package package_1
          _loc3_.add(new TankResistancesModel(),Vector.<Class>([name_309,name_112,name_141]));
          _loc3_.add(new LaserPointerModel(),Vector.<Class>([LaserPointer,ILaserPointerModelBase]));
          _loc3_.add(new ShotgunModel(),Vector.<Class>([DiscreteShotModel,DiscreteWeaponListener]));
-         _loc3_.name_275(name_280,name_314);
-         _loc3_.name_270(name_280,ShotgunAimingEvents);
-         _loc3_.add(new name_316(),Vector.<Class>([name_289,name_280]));
+         _loc3_.name_275(ShotgunAiming,ShotgunAimingAdapt);
+         _loc3_.name_270(ShotgunAiming,ShotgunAimingEvents);
+         _loc3_.add(new ShotgunAimingModel(),Vector.<Class>([name_289,ShotgunAiming]));
          _loc3_.name_275(name_282,name_302);
          _loc3_.name_270(name_282,ShotgunSFXEvents);
          _loc3_.add(new name_296(),Vector.<Class>([name_288,name_282,DiscreteWeaponListener]));

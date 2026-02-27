@@ -1,9 +1,9 @@
-package package_72
+package alternativa.tanks.models.weapon.shotgun.aiming
 {
    import alternativa.tanks.models.weapon.shotgun.PelletDirectionCalculator;
    import alternativa.tanks.models.weapon.shotgun.ShotgunRicochetTargetingSystem;
    
-   public interface name_280
+   public interface ShotgunAiming
    {
        
       

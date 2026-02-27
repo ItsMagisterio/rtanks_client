@@ -30,7 +30,7 @@ package alternativa.tanks.models.weapon.shotgun
    import package_63.name_162;
    import package_7.name_32;
    import alternativa.tanks.models.weapons.discrete.DiscreteWeaponListener;
-   import package_72.name_280;
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
    import package_73.name_1244;
    import package_73.name_282;
    import package_92.name_1188;
@@ -152,7 +152,7 @@ package alternativa.tanks.models.weapon.shotgun
          this.var_11.method_147(name_653.create(param1,WeaponsManager.var_495[param1.turret.id],null,null,null));
          this.effects = name_282(param1.object.name_176(name_282)).getEffects();
          this.method_799 = new name_1247(param1.turret);
-         this.targeting = name_280(param1.object.name_176(name_280)).createTargetingSystem();
+         this.targeting = ShotgunAiming(param1.object.name_176(ShotgunAiming)).createTargetingSystem();
       }
       
       public function method_1000() : void

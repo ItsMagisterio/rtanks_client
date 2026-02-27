@@ -1,4 +1,4 @@
-package package_72
+package alternativa.tanks.models.weapon.shotgun.aiming
 {
    import alternativa.tanks.models.tank.ITank;
    import alternativa.tanks.models.weapon.WeaponObject;
@@ -7,11 +7,11 @@ package package_72
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.ShotgunHittingModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.name_289;
    
-   public class name_316 extends ShotgunHittingModelBase implements name_289, name_280
+   public class ShotgunAimingModel extends ShotgunHittingModelBase implements name_289, ShotgunAiming
    {
        
       
-      public function name_316()
+      public function ShotgunAimingModel()
       {
          super();
       }
