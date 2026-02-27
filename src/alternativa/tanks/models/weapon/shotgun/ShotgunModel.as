@@ -36,12 +36,12 @@ package alternativa.tanks.models.weapon.shotgun
    import package_92.name_1188;
    import package_92.name_1451;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.TargetHit;
-   import package_98.name_304;
+   import alternativa.tanks.models.weapon.shared.shot.DiscreteShotModel;
    import platform.client.fp10.core.registry.name_29;
    import platform.client.fp10.core.type.name_70;
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
    
-   public class ShotgunModel extends name_304 implements IShotModelBase, class_11, IWeaponController, DiscreteWeaponListener
+   public class ShotgunModel extends DiscreteShotModel implements IShotModelBase, class_11, IWeaponController, DiscreteWeaponListener
    {
       
       protected static const var_557:name_903 = new name_903();

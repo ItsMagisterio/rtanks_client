@@ -97,7 +97,7 @@ package package_1
    import package_90.name_308;
    import package_91.name_288;
    import package_92.WeaponCommonModel;
-   import package_93.name_303;
+   import alternativa.tanks.models.weapon.shared.shot.DiscreteShotModel;
    import package_94.name_293;
    import package_95.IStorageService;
    import package_96.name_311;
@@ -209,7 +209,7 @@ package package_1
          _loc3_.name_270(name_112,TankResistancesEvents);
          _loc3_.add(new TankResistancesModel(),Vector.<Class>([name_309,name_112,name_141]));
          _loc3_.add(new LaserPointerModel(),Vector.<Class>([LaserPointer,ILaserPointerModelBase]));
-         _loc3_.add(new ShotgunModel(),Vector.<Class>([name_304,DiscreteWeaponListener]));
+         _loc3_.add(new ShotgunModel(),Vector.<Class>([DiscreteShotModel,DiscreteWeaponListener]));
          _loc3_.name_275(name_280,name_314);
          _loc3_.name_270(name_280,ShotgunAimingEvents);
          _loc3_.add(new name_316(),Vector.<Class>([name_289,name_280]));
