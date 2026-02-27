@@ -18,7 +18,7 @@ package package_213
    import package_26.ClanNotificationsManager;
    import package_27.ClanMembersListEvent;
    import package_393.name_2002;
-   import package_395.NewClanMemberIndicator;
+   import clan.notifications.NewClanMemberIndicator;
    import package_54.name_102;
    import projects.tanks.clients.fp10.libraries.name_390;
    import utils.name_1952;

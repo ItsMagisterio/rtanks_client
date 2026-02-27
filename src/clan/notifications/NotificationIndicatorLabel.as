@@ -1,13 +1,13 @@
-package package_395
+package clan.notifications
 {
    import alternativa.tanks.gui.class_144;
    import controls.base.LabelBase;
    
-   public class name_2051 extends LabelBase implements class_144
+   public class NotificationIndicatorLabel extends LabelBase implements class_144
    {
        
       
-      public function name_2051()
+      public function NotificationIndicatorLabel()
       {
          super();
       }

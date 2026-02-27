@@ -10,7 +10,8 @@ package package_209
    import flash.utils.setInterval;
    import forms.name_1139;
    import package_13.Long;
-   import package_395.name_2048;
+   import clan.notifications.ClanJoinButton;
+   import clan.notifications.ClanUserNotificationIndicator;
    import package_54.name_102;
    import platform.client.fp10.core.type.name_70;
    import projects.tanks.clients.fp10.libraries.name_390;
@@ -21,9 +22,9 @@ package package_209
       public static var localeService:name_102;
        
       
-      private var var_1377:name_2049;
+      private var var_1377:ClanJoinButton;
       
-      public var newIndicator:name_2048;
+      public var newIndicator:ClanUserNotificationIndicator;
       
       private var restrictionTime:int;
       
@@ -31,7 +32,7 @@ package package_209
       
       public function name_641(param1:Long)
       {
-         this.var_1377 = new name_2049();
+         this.var_1377 = new ClanJoinButton();
          this.newIndicator = this.method_1599(param1);
          super(param1);
       }
@@ -76,10 +77,10 @@ package package_209
          this.var_1377.y = var_1324.y;
       }
       
-      private function method_1599(param1:Long) : name_2048
+      private function method_1599(param1:Long) : ClanUserNotificationIndicator
       {
-         var _loc2_:name_2048 = null;
-         _loc2_ = new name_2048(param1);
+         var _loc2_:ClanUserNotificationIndicator = null;
+         _loc2_ = new ClanUserNotificationIndicator(param1);
          _loc2_.autoSize = TextFieldAutoSize.LEFT;
          _loc2_.align = TextFormatAlign.LEFT;
          _loc2_.color = name_1139.name_1894;

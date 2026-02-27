@@ -1,9 +1,9 @@
-package package_395
+package clan.notifications
 {
    import package_13.Long;
    import package_26.ClanNotificationsManager;
    
-   public class name_2050 extends name_2051
+   public class ClanMemberNotificationIndicator extends NotificationIndicatorLabel
    {
        
       
@@ -11,7 +11,7 @@ package package_395
       
       private var var_2702:Boolean = true;
       
-      public function name_2050(param1:Long)
+      public function ClanMemberNotificationIndicator(param1:Long)
       {
          super();
          this.userId = param1;

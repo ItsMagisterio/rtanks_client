@@ -1,13 +1,13 @@
-package package_209
+package clan.notifications
 {
    import mx.core.BitmapAsset;
    
    [Embed(source="/_assets/762.png")]
-   public class name_2788 extends BitmapAsset
+   public class ClanJoinButtonIcon extends BitmapAsset
    {
        
       
-      public function name_2788()
+      public function ClanJoinButtonIcon()
       {
          super();
       }

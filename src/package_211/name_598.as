@@ -12,8 +12,8 @@ package package_211
    import package_26.name_62;
    import package_27.ClanMembersListEvent;
    import package_394.name_2045;
-   import package_395.name_2050;
-   import package_395.name_2051;
+   import clan.notifications.ClanMemberNotificationIndicator;
+   import clan.notifications.NotificationIndicatorLabel;
    import package_54.name_102;
    import projects.tanks.clients.fp10.libraries.name_390;
    
@@ -25,7 +25,7 @@ package package_211
       public static var localeService:name_102;
        
       
-      public var newIndicator:name_2051;
+      public var newIndicator:NotificationIndicatorLabel;
       
       private var userId:Long;
       
@@ -50,9 +50,9 @@ package package_211
          this.onResize();
       }
       
-      private function method_1599() : name_2050
+      private function method_1599() : ClanMemberNotificationIndicator
       {
-         var _loc1_:name_2050 = new name_2050(this.userId);
+         var _loc1_:ClanMemberNotificationIndicator = new ClanMemberNotificationIndicator(this.userId);
          _loc1_.autoSize = TextFieldAutoSize.LEFT;
          _loc1_.align = TextFormatAlign.LEFT;
          _loc1_.color = name_1139.name_1894;

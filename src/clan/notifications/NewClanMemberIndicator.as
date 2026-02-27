@@ -1,9 +1,9 @@
-package package_395
+package clan.notifications
 {
    import package_13.Long;
    import package_26.ClanNotificationsManager;
    
-   public class NewClanMemberIndicator extends name_2051
+   public class NewClanMemberIndicator extends NotificationIndicatorLabel
    {
        
       

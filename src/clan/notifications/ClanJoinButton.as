@@ -1,18 +1,18 @@
-package package_209
+package clan.notifications
 {
    import base.class_122;
    import flash.display.Bitmap;
    import flash.display.BitmapData;
    
-   public class name_2049 extends class_122
+   public class ClanJoinButton extends class_122
    {
       
-      private static var var_2701:Class = name_2788;
+      private static var var_2701:Class = ClanJoinButtonIcon;
       
       private static var var_2700:BitmapData = Bitmap(new var_2701()).bitmapData;
        
       
-      public function name_2049()
+      public function ClanJoinButton()
       {
          super();
          this.tabChildren = false;
