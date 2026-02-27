@@ -10,7 +10,7 @@ package alternativa.tanks.gui.clanmanagement
    import package_13.Long;
    import package_190.name_571;
    import package_191.name_579;
-   import package_212.name_587;
+   import alternativa.tanks.gui.clanmanagement.buttons.ClanUsersActionButton;
    import package_228.ClanAction;
    import package_25.name_52;
    import package_26.ClanInfoUpdateEvent;
@@ -21,7 +21,7 @@ package alternativa.tanks.gui.clanmanagement
    import platform.client.fp10.core.type.name_70;
    import projects.tanks.clients.fp10.libraries.name_390;
    
-   public class name_566 extends class_122
+   public class ClanInfoPanel extends class_122
    {
       
       public static var clanService:name_62;
@@ -55,7 +55,7 @@ package alternativa.tanks.gui.clanmanagement
       
       private var var_1225:name_1922;
       
-      private var var_1226:name_587;
+      private var var_1226:ClanUsersActionButton;
       
       private var var_1223:name_1921;
       
@@ -75,14 +75,14 @@ package alternativa.tanks.gui.clanmanagement
       
       private var description:name_1923;
       
-      public function name_566(param1:name_70)
+      public function ClanInfoPanel(param1:name_70)
       {
          var _loc2_:Long = null;
          this.var_1234 = name_1926;
          this.var_1231 = name_1924;
          this.var_1233 = name_1925;
          this.var_1232 = name_1927;
-         this.var_1226 = new name_587(ClanAction.EDIT_PROFILE);
+         this.var_1226 = new ClanUsersActionButton(ClanAction.EDIT_PROFILE);
          super();
          this.clanInfo = name_571(param1.name_176(name_571));
          this.var_1224 = new name_1922();
@@ -136,7 +136,7 @@ package alternativa.tanks.gui.clanmanagement
          new ClanEditProfileDialog(this.clanInfo,this.var_1230,this);
       }
       
-      public function method_1468(param1:ClanInfoUpdateEvent) : void
+      public function applyClanInfoUpdate(param1:ClanInfoUpdateEvent) : void
       {
          dispatchEvent(param1);
          this.description.name_1928(param1.name_1929);
@@ -180,17 +180,17 @@ package alternativa.tanks.gui.clanmanagement
          this.var_1223.setValue(clanService.membersCount.toString());
       }
       
-      public function name_1875() : void
+      public function incrementMembersCount() : void
       {
          this.method_1433();
       }
       
-      public function name_1874() : void
+      public function decrementMembersCount() : void
       {
          this.method_1433();
       }
       
-      public function name_1375(param1:ClanInfoUpdateEvent) : void
+      public function setPendingClanInfoUpdate(param1:ClanInfoUpdateEvent) : void
       {
          this.var_1230 = param1;
          this.onResize();

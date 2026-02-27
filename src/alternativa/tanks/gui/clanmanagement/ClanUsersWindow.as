@@ -10,8 +10,8 @@ package alternativa.tanks.gui.clanmanagement
    import package_124.name_42;
    import package_13.Long;
    import package_191.name_579;
-   import package_212.name_2029;
-   import package_212.name_587;
+   import alternativa.tanks.gui.clanmanagement.buttons.AddToClanButton;
+   import alternativa.tanks.gui.clanmanagement.buttons.ClanUsersActionButton;
    import package_213.ClanMembersList;
    import package_228.ClanAction;
    import package_25.name_52;
@@ -56,9 +56,9 @@ package alternativa.tanks.gui.clanmanagement
       
       private var list:ClanMembersList;
       
-      private var var_1329:name_587;
+      private var var_1329:ClanUsersActionButton;
       
-      private var var_1328:name_2029;
+      private var var_1328:AddToClanButton;
       
       private var _width:int;
       
@@ -86,8 +86,8 @@ package alternativa.tanks.gui.clanmanagement
          this.list.method_1479(_loc4_);
          this.list.addEventListener(ClanMembersListEvent.REMOVE_USER,this.method_1558);
          this.var_1330.addChild(this.list);
-         this.var_1329 = new name_587(ClanAction.INVITE_TO_CLAN);
-         this.var_1328 = new name_2029(this.var_1329,this);
+         this.var_1329 = new ClanUsersActionButton(ClanAction.INVITE_TO_CLAN);
+         this.var_1328 = new AddToClanButton(this.var_1329,this);
          this.var_1329.width = 120;
          this.var_1328.width = 120;
          ClanActionsManager.name_1931(this.var_1329);

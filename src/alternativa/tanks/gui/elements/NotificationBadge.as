@@ -1,22 +1,22 @@
-package package_212
+package alternativa.tanks.gui.elements
 {
    import controls.base.LabelBase;
    import flash.display.Bitmap;
    import flash.display.BitmapData;
    import flash.display.Sprite;
    
-   public class name_2772 extends Sprite
+   public class NotificationBadge extends Sprite
    {
       
-      private static var var_3371:Class = name_3344;
+      private static var var_3371:Class = NotificationBadgeLeftAsset;
       
       private static var var_3378:BitmapData = Bitmap(new var_3371()).bitmapData;
       
-      private static var var_3372:Class = name_3343;
+      private static var var_3372:Class = NotificationBadgeCenterAsset;
       
       private static var var_3374:BitmapData = Bitmap(new var_3372()).bitmapData;
       
-      private static var var_3377:Class = name_3345;
+      private static var var_3377:Class = NotificationBadgeRightAsset;
       
       private static var var_3373:BitmapData = Bitmap(new var_3377()).bitmapData;
        
@@ -31,7 +31,7 @@ package package_212
       
       private var _count:int = 0;
       
-      public function name_2772()
+      public function NotificationBadge()
       {
          super();
          this.var_3375 = new Bitmap(var_3378);

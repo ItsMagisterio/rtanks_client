@@ -1,6 +1,6 @@
 package package_26
 {
-   import alternativa.tanks.gui.clanmanagement.name_563;
+   import alternativa.tanks.gui.clanmanagement.ClanManagementPanel;
    import alternativa.tanks.gui.notinclan.name_568;
    import flash.events.IEventDispatcher;
    import package_13.Long;
@@ -46,7 +46,7 @@ package package_26
       
       function objectUnloaded() : void;
       
-      function get clanManagementPanel() : name_563;
+      function get clanManagementPanel() : ClanManagementPanel;
       
       function get membersCount() : int;
       

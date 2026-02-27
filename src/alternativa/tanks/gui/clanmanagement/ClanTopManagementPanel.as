@@ -228,12 +228,12 @@ package alternativa.tanks.gui.clanmanagement
          this.var_1185.text = localeService.getText(name_390.const_671) + " " + _loc1_.toString();
       }
       
-      public function name_1875() : void
+      public function incrementMembersCount() : void
       {
          this.method_1433();
       }
       
-      public function name_1874() : void
+      public function decrementMembersCount() : void
       {
          this.method_1433();
       }

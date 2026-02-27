@@ -1,6 +1,6 @@
 package package_191
 {
-   import alternativa.tanks.gui.clanmanagement.name_563;
+   import alternativa.tanks.gui.clanmanagement.ClanManagementPanel;
    import package_13.Long;
    import package_220.ClanAcceptedModelBase;
    import package_220.name_626;
@@ -21,7 +21,7 @@ package package_191
       {
          if(this.method_1605() != null)
          {
-            this.method_1605().method_1426(param1);
+            this.method_1605().addMemberToClan(param1);
          }
       }
       
@@ -29,7 +29,7 @@ package package_191
       {
          if(this.method_1605() != null)
          {
-            this.method_1605().method_1425(param1);
+            this.method_1605().removeMemberFromClan(param1);
          }
       }
       
@@ -38,7 +38,7 @@ package package_191
          return method_771().objects;
       }
       
-      private function method_1605() : name_563
+      private function method_1605() : ClanManagementPanel
       {
          return clanService.clanManagementPanel;
       }

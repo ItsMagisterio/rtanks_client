@@ -1,6 +1,6 @@
 package package_26
 {
-   import alternativa.tanks.gui.clanmanagement.name_563;
+   import alternativa.tanks.gui.clanmanagement.ClanManagementPanel;
    import alternativa.tanks.gui.notinclan.name_568;
    import flash.events.EventDispatcher;
    import package_13.Long;
@@ -33,7 +33,7 @@ package package_26
       
       private var var_253:name_568;
       
-      private var var_242:name_563;
+      private var var_242:ClanManagementPanel;
       
       private var var_245:int;
       
@@ -101,7 +101,7 @@ package package_26
       public function set clanObject(param1:name_70) : void
       {
          this.var_241 = param1;
-         this.var_242 = new name_563(this.var_241);
+         this.var_242 = new ClanManagementPanel(this.var_241);
       }
       
       public function objectUnloaded() : void
@@ -115,7 +115,7 @@ package package_26
          this.var_242.maxMembers();
       }
       
-      public function get clanManagementPanel() : name_563
+      public function get clanManagementPanel() : ClanManagementPanel
       {
          return this.var_242;
       }

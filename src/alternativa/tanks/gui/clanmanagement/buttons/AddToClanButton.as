@@ -1,11 +1,12 @@
-package package_212
+package alternativa.tanks.gui.clanmanagement.buttons
 {
    import alternativa.tanks.gui.clanmanagement.ClanUsersWindow;
    import alternativa.tanks.gui.class_144;
+   import alternativa.tanks.gui.elements.NotificationBadge;
    import package_228.ClanAction;
    import package_26.ClanNotificationsManager;
    
-   public class name_2029 extends name_587 implements class_144
+   public class AddToClanButton extends ClanUsersActionButton implements class_144
    {
       
       private static const const_422:int = 11;
@@ -13,15 +14,15 @@ package package_212
       private static const const_1529:int = 7;
        
       
-      private var var_1329:name_587;
+      private var var_1329:ClanUsersActionButton;
       
       private var var_1331:ClanUsersWindow;
       
-      private var var_2636:name_2772;
+      private var var_2636:NotificationBadge;
       
-      public function name_2029(param1:name_587, param2:ClanUsersWindow)
+      public function AddToClanButton(param1:ClanUsersActionButton, param2:ClanUsersWindow)
       {
-         this.var_2636 = new name_2772();
+         this.var_2636 = new NotificationBadge();
          super(ClanAction.ADDING_TO_CLAN);
          this.var_1329 = param1;
          this.var_1331 = param2;

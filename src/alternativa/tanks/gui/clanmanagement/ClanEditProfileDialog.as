@@ -64,9 +64,9 @@ package alternativa.tanks.gui.clanmanagement
       
       private var var_1274:ClanInfoUpdateEvent;
       
-      private var var_1284:name_566;
+      private var var_1284:ClanInfoPanel;
       
-      public function ClanEditProfileDialog(param1:name_571, param2:ClanInfoUpdateEvent, param3:name_566)
+      public function ClanEditProfileDialog(param1:name_571, param2:ClanInfoUpdateEvent, param3:ClanInfoPanel)
       {
          super();
          this.var_1282 = param1;
@@ -310,7 +310,7 @@ package alternativa.tanks.gui.clanmanagement
          _loc2_.name_1957 = _loc4_;
          _loc2_.name_1929 = this.var_1273.text;
          clanService.method_353(this.var_1273.text,_loc4_,_loc3_,this.var_1275.selectedItem.id == 0);
-         this.var_1284.method_1468(_loc2_);
+         this.var_1284.applyClanInfoUpdate(_loc2_);
          destroy();
       }
       

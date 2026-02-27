@@ -6,7 +6,7 @@ package forms.friends
    import flash.events.MouseEvent;
    import flash.text.TextFieldAutoSize;
    import flash.text.TextFormatAlign;
-   import package_461.name_2772;
+   import package_461.NotificationBadge;
    
    public class FriendsWindowStateBigButton extends class_196 implements name_2308
    {
@@ -40,13 +40,13 @@ package forms.friends
       
       public var type:name_2301;
       
-      private var var_3003:name_2772;
+      private var var_3003:NotificationBadge;
       
       private var icon:Bitmap;
       
       public function FriendsWindowStateBigButton(param1:name_2301)
       {
-         this.var_3003 = new name_2772();
+         this.var_3003 = new NotificationBadge();
          this.icon = new Bitmap();
          super();
          this.type = param1;

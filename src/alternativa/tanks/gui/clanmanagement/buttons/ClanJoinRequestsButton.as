@@ -1,17 +1,18 @@
-package package_212
+package alternativa.tanks.gui.clanmanagement.buttons
 {
    import alternativa.tanks.gui.clanmanagement.ClanStateButton;
    import alternativa.tanks.gui.class_144;
+   import alternativa.tanks.gui.elements.NotificationDotAsset;
    import flash.display.Bitmap;
    import package_25.RestrictionJoinClanEvent;
    import package_25.name_52;
    import package_26.ClanNotificationsManager;
    import package_26.name_62;
    
-   public class name_604 extends ClanStateButton implements class_144
+   public class ClanJoinRequestsButton extends ClanStateButton implements class_144
    {
       
-      public static var var_1309:Class = name_1998;
+      public static var var_1309:Class = NotificationDotAsset;
       
       public static var clanService:name_62;
       
@@ -20,7 +21,7 @@ package package_212
       
       private var var_1308:Bitmap;
       
-      public function name_604()
+      public function ClanJoinRequestsButton()
       {
          this.var_1308 = new var_1309() as Bitmap;
          super();

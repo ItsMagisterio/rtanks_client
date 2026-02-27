@@ -5,7 +5,7 @@ package package_461
    import flash.display.BitmapData;
    import flash.display.Sprite;
    
-   public class name_2772 extends Sprite
+   public class NotificationBadge extends Sprite
    {
       
       private static var var_3371:Class = name_3344;
@@ -33,7 +33,7 @@ package package_461
       
       private var var_3541:int = 0;
       
-      public function name_2772()
+      public function NotificationBadge()
       {
          super();
          this.init();

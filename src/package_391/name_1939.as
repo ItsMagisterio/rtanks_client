@@ -2,18 +2,18 @@ package package_391
 {
    import alternativa.tanks.gui.class_144;
    import controls.base.name_1940;
-   import package_212.name_2772;
+   import alternativa.tanks.gui.elements.NotificationBadge;
    import package_26.ClanUserNotificationsManager;
    
    public class name_1939 extends name_1940 implements class_144
    {
        
       
-      private var var_2636:name_2772;
+      private var var_2636:NotificationBadge;
       
       public function name_1939()
       {
-         this.var_2636 = new name_2772();
+         this.var_2636 = new NotificationBadge();
          super();
          ClanUserNotificationsManager.name_1878(this);
          addChild(this.var_2636);
