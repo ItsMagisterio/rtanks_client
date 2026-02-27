@@ -145,7 +145,11 @@ public class ProtocolTransfer {
             case 5:
             case 6:
             case 7:
-                this.lobby.executeCommand(cmd);
+                if (this.lobby != null) {
+                    this.lobby.executeCommand(cmd);
+                } else {
+                    Logger.log("Lobby manager is null for command: " + cmd);
+                }
                 break;
             case 9:
                 Logger.log("User " + this.channel + " send unknown request: " + cmd);
