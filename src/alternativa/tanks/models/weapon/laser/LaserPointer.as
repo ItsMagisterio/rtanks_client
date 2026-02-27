@@ -1,9 +1,9 @@
-package package_71
+package alternativa.tanks.models.weapon.laser
 {
    import alternativa.tanks.vehicles.tanks.Tank;
    import package_37.Vector3;
    
-   public interface name_277
+   public interface LaserPointer
    {
        
       

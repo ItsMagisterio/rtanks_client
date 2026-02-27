@@ -1,4 +1,4 @@
-package package_71
+package alternativa.tanks.models.weapon.laser
 {
    import alternativa.engine3d.core.Object3D;
    import alternativa.engine3d.core.RayIntersectionData;
@@ -30,7 +30,7 @@ package package_71
    public class LaserPointerEffect implements name_657, AutoClosable
    {
       
-      private static const const_1839:Class = name_2501;
+      private static const const_1839:Class = LaserPointerEffect_EmbedLaserSpot;
       
       public static var name_1330:BitmapData = new const_1839().bitmapData;
       

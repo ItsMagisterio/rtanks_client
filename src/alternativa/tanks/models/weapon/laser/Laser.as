@@ -1,4 +1,4 @@
-package package_71
+package alternativa.tanks.models.weapon.laser
 {
    import alternativa.engine3d.core.Face;
    import alternativa.engine3d.core.Sorting;
@@ -14,9 +14,9 @@ package package_71
    public final class Laser extends Mesh implements AutoClosable
    {
       
-      private static const const_2341:Class = name_3075;
+      private static const const_2341:Class = Laser_EmbedLaserRay;
       
-      private static const const_2340:Class = name_3076;
+      private static const const_2340:Class = Laser_EmbedLaserRayBegin;
       
       private static const const_2337:BitmapData = new const_2341().bitmapData;
       

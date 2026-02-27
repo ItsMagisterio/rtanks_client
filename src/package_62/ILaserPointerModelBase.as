@@ -3,7 +3,7 @@ package package_62
    import package_67.Vector3d;
    import platform.client.fp10.core.type.name_70;
    
-   public interface name_317
+   public interface ILaserPointerModelBase
    {
        
       

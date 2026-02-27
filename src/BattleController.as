@@ -107,7 +107,7 @@ package
    import package_67.Vector3d;
    import package_7.name_32;
    import package_70.name_301;
-   import package_71.name_286;
+   import alternativa.tanks.models.weapon.laser.LaserPointerModel;
    import package_74.name_272;
    import package_79.CTFModel;
    import package_86.ServerBattleMinesModel;
@@ -551,7 +551,7 @@ package
                            if(td != null)
                            {
                               Model.object = td.object;
-                              name_286(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).updateRemoteDirection(data.name_319[2]);
+                              LaserPointerModel(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).updateRemoteDirection(data.name_319[2]);
                               Model.method_38();
                            }
                         }
@@ -564,7 +564,7 @@ package
                            if(td != null)
                            {
                               Model.object = td.object;
-                              name_286(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).hideRemote();
+                              LaserPointerModel(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).hideRemote();
                               Model.method_38();
                            }
                         }
@@ -580,7 +580,7 @@ package
                               parser = JSON.parse(data.name_319[3]);
                               _loc1 = new package_67.Vector3d(parser.x,parser.y,parser.z);
                               Model.object = td.object;
-                              name_286(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).aimRemoteAtTank(target.object,_loc1);
+                              LaserPointerModel(modelRegistry.getModel(Long.getLong(1691794381,-1794202080))).aimRemoteAtTank(target.object,_loc1);
                               Model.method_38();
                            }
                         }

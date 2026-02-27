@@ -1,4 +1,4 @@
-package package_71
+package alternativa.tanks.models.weapon.laser
 {
    import alternativa.tanks.battle.BattleUtils;
    import alternativa.tanks.models.tank.class_12;
@@ -9,17 +9,17 @@ package package_71
    import package_37.Vector3;
    import package_47.BattleTeamType;
    import package_62.LaserPointerModelBase;
-   import package_62.name_317;
+   import package_62.ILaserPointerModelBase;
    import package_67.Vector3d;
    import platform.client.fp10.core.type.name_70;
    
-   public class name_286 extends LaserPointerModelBase implements name_277, name_317
+   public class LaserPointerModel extends LaserPointerModelBase implements LaserPointer, ILaserPointerModelBase
    {
       
       public static var localTankInfoService:class_12;
        
       
-      public function name_286()
+      public function LaserPointerModel()
       {
          super();
       }

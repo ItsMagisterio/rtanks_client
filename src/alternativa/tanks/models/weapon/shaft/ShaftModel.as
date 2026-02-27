@@ -45,7 +45,7 @@ package alternativa.tanks.models.weapon.shaft
    import package_52.WeaponsManager;
    import package_61.RayHit;
    import package_7.name_32;
-   import package_71.name_277;
+   import alternativa.tanks.models.weapon.laser.LaserPointer;
    import package_76.name_735;
    import package_78.name_281;
    import package_92.name_1188;
@@ -731,9 +731,9 @@ package alternativa.tanks.models.weapon.shaft
          return false;
       }
       
-      public function method_2197() : name_277
+      public function method_2197(): LaserPointer
       {
-         return name_277(this.name_106.object.name_176(name_277));
+         return LaserPointer(this.name_106.object.name_176(LaserPointer));
       }
       
       private function method_2206() : void

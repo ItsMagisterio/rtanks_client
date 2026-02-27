@@ -1,6 +1,6 @@
 package package_62
 {
-   public class name_137
+   public class LaserPointerCC
    {
        
       
@@ -12,7 +12,7 @@ package package_62
       
       private var var_472:Boolean;
       
-      public function name_137(param1:int = 0, param2:String = null, param3:String = null, param4:Boolean = false)
+      public function LaserPointerCC(param1:int = 0, param2:String = null, param3:String = null, param4:Boolean = false)
       {
          super();
          this.var_470 = param1;

@@ -1,19 +1,19 @@
-package package_71
+package alternativa.tanks.models.weapon.laser
 {
    import alternativa.tanks.vehicles.tanks.Tank;
    import package_37.Vector3;
    import package_39.Model;
    import platform.client.fp10.core.type.name_70;
    
-   public class name_299 implements name_277
+   public class LaserPointerAdapt implements LaserPointer
    {
        
       
       private var object:name_70;
       
-      private var impl:name_277;
+      private var impl:LaserPointer;
       
-      public function name_299(param1:name_70, param2:name_277)
+      public function LaserPointerAdapt(param1:name_70, param2:LaserPointer)
       {
          super();
          this.object = param1;
