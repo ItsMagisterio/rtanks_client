@@ -55,14 +55,7 @@ package alternativa.tanks.models.battlefield
       private function method_827() : void
       {
          this.stage.frameRate = this.var_604;
-         if(GPUCapabilities.method_95)
-         {
-            this.stage.quality = StageQuality.MEDIUM;
-         }
-         else
-         {
-            this.stage.quality = StageQuality.LOW;
-         }
+         this.stage.quality = StageQuality.HIGH;
       }
       
       public function name_766() : void
