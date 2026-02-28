@@ -1,16 +1,13 @@
 package alternativa.osgi.service.console
 {
+   import alternativa.osgi.OSGi;
    import alternativa.osgi.service.command.class_16;
    import alternativa.osgi.service.command.name_43;
-   import alternativa.utils.CircularStringBuffer;
-   import alternativa.utils.name_824;
-   import alternativa.utils.name_827;
    import flash.display.Graphics;
    import flash.display.Sprite;
    import flash.display.Stage;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
-   import flash.events.MouseEvent;
    import flash.events.TextEvent;
    import flash.system.System;
    import flash.text.TextField;
@@ -19,566 +16,335 @@ package alternativa.osgi.service.console
    import flash.ui.Keyboard;
    import flash.utils.setTimeout;
    import package_242.name_821;
-   import alternativa.osgi.OSGi;
-   import scpacker.networking.Network;
    import scpacker.networking.INetworker;
-   
+   import scpacker.networking.Network;
+
    public class Console implements name_27
    {
-      
-      private static const const_46:uint = 16777215;
-      
-      private static const const_45:uint = 0;
-      
-      private static const const_42:TextFormat = new TextFormat("Courier New",12,0);
-      
-      private static const const_47:int = 20;
-      
-      private static const const_43:RegExp = /\n|\r|\n\r/;
-      
-      private static const const_44:RegExp = /(?:[^"\s]+)|(?:"[^"]*")/g;
-       
-      
+      private static const DEFAULT_BG_COLOR:uint = 0;
+      private static const DEFAULT_FONT_COLOR:uint = 65280;
+      private static const DEFAULT_TEXT_FORMAT:TextFormat = new TextFormat("Courier New",12,DEFAULT_FONT_COLOR);
+      private static const TOKENIZER:RegExp = /(?:[^"\s]+)|(?:"[^"]*")/g;
+
       private var stage:Stage;
-      
-      private var var_170:Sprite;
-      
-      private var var_179:Sprite;
-      
+      private var container:Sprite;
+      private var output:TextField;
       private var input:TextField;
-      
-      private var var_174:Vector.<TextField>;
-      
-      private var var_184:int;
-      
-      private var var_181:int;
-      
-      private var var_185:int = 0;
-      
-      private var var_183:Boolean;
-      
-      private var visible:Boolean;
-      
-      private var var_176:Array;
-      
-      private var var_173:int = 0;
-      
-      private var var_175:Object;
-      
-      private var var_171:int;
-      
-      private var var_180:int;
-      
-      private var var_172:int;
-      
-      private var buffer:name_827;
-      
-      private var var_177:int;
-      
-      private var var_178:int;
-      
+      private var commandHandlers:Object = {};
+      private var variables:Object = {};
+      private var commandHistory:Array = [];
+      private var commandHistoryIndex:int = 0;
+      private var _height:int;
+      private var _width:int;
+      private var _alpha:Number = 0.9;
+      private var _bgColor:uint = 0;
       private var align:int;
-      
-      private var var_186:uint = 16777215;
-      
-      private var var_187:uint = 0;
-      
-      private var _alpha:Number = 1;
-      
-      private var filter:String;
-      
+      private var visible:Boolean;
+      private var preventInput:Boolean;
       private var commandService:name_43;
-      
-      private var var_182:Error;
-      
-      public function Console(param1:name_43, param2:Stage, param3:int, param4:int, param5:int, param6:int)
+      private var lastError:Error;
+
+      public function Console(commandService:name_43, stage:Stage, width:int, height:int, hAlign:int, vAlign:int)
       {
-         this.var_170 = new Sprite();
-         this.var_174 = new Vector.<TextField>();
-         this.var_176 = [];
-         this.var_175 = {};
          super();
-         this.commandService = param1;
-         this.stage = param2;
-         this.buffer = new CircularStringBuffer(1000);
-         this.method_234(param2);
-         this.method_251();
-         this.method_239();
-         this.setSize(param3,param4);
-         this.horizontalAlignment = param5;
-         this.vericalAlignment = param6;
-         param2.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp);
-         param2.addEventListener(Event.RESIZE,this.onResize);
-         param1.name_822("console","hide","Спрятать консоль",[],this.method_240);
-         param1.name_822("console","copy","Скопировать содержимое консоли в буфер обмена",[],this.method_248);
-         param1.name_822("cmd","clear","Очистить консоль",[],this.method_249);
-         param1.name_822("cmd","e","Показать последний exception",[],this.method_243);
-         param1.name_822("console","height","Установить высоту консоли",[int],this.method_235);
-         param1.name_822("console","width","Установить ширину консоли",[int],this.method_252);
-         param1.name_822("console","halign","Выравнивание по горизонтали",[int],this.method_231);
-         param1.name_822("console","valign","Выравнивание по вертикали",[int],this.method_250);
-         param1.name_822("console","alpha","Установить прозрачность консоли",[Number],this.method_238);
-         param1.name_822("console","bg","Установить цвет фона",[uint],this.method_229);
-         param1.name_822("console","fg","Установить цвет шрифта",[uint],this.method_233);
-         param1.name_822("vars","list","Посмотреть список переменных",[],this.method_241);
-         param1.name_822("vars","show","Посмотреть переменную",[String],this.method_227);
-         param1.name_822("vars", "set", "Установить значение переменной", [String, String], this.method_225);
-         param1.name_822("hacks","send_command","Send command to server",[String],this.sendCommandToServer);
+         this.commandService = commandService;
+         this.stage = stage;
+         this.container = new Sprite();
+         this.container.mouseEnabled = false;
+         this.container.tabEnabled = false;
+         this.container.tabChildren = false;
+         this.initInput();
+         this.initOutput();
+         this.setSize(width,height);
+         this.horizontalAlignment = hAlign;
+         this.vericalAlignment = vAlign;
+         this.initDefaultCommands();
+         this.printGreeting();
+         stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp);
+         stage.addEventListener(Event.RESIZE,this.onResize);
+
+         commandService.name_822("console","hide","Спрятать консоль",[],this.cmdHide);
+         commandService.name_822("console","copy","Скопировать содержимое консоли в буфер обмена",[],this.cmdCopy);
+         commandService.name_822("cmd","clear","Очистить консоль",[],this.cmdClear);
+         commandService.name_822("cmd","e","Показать последний exception",[],this.cmdLastException);
+         commandService.name_822("console","height","Установить высоту консоли",[int],this.cmdHeight);
+         commandService.name_822("console","width","Установить ширину консоли",[int],this.cmdWidth);
+         commandService.name_822("console","halign","Выравнивание по горизонтали",[int],this.cmdHAlign);
+         commandService.name_822("console","valign","Выравнивание по вертикали",[int],this.cmdVAlign);
+         commandService.name_822("console","alpha","Установить прозрачность консоли",[Number],this.cmdAlpha);
+         commandService.name_822("console","bg","Установить цвет фона",[uint],this.cmdBg);
+         commandService.name_822("console","fg","Установить цвет шрифта",[uint],this.cmdFg);
+         commandService.name_822("vars","list","Посмотреть список переменных",[],this.cmdVarsList);
+         commandService.name_822("vars","show","Посмотреть переменную",[String],this.cmdVarsShow);
+         commandService.name_822("vars","set","Установить значение переменной",[String,String],this.cmdVarsSet);
+         commandService.name_822("hacks","send_command","Send command to server",[String],this.sendCommandToServer);
       }
-      
-      private function sendCommandToServer(param1:class_16, command:String) : void {
-         Network(OSGi.getInstance().getService(INetworker)).send(command);
-      }
-      
-      private function method_225(param1:class_16, param2:String, param3:String) : void
+
+      public function method_209(value:String) : void
       {
-         var _loc4_:String = null;
-         var _loc5_:String = null;
-         var _loc6_:name_821 = this.var_175[param2];
-         if(_loc6_ != null)
-         {
-            _loc4_ = _loc6_.toString();
-            _loc5_ = _loc6_.name_828(param3);
-            if(_loc5_ == null)
-            {
-               param1.method_209("New value " + _loc6_.toString() + ", old value=" + _loc4_);
-               return;
-            }
-            throw new name_826(param2,param3,_loc5_);
-         }
-         throw new name_823(param2);
+         this.addLine(value);
       }
-      
-      private function method_227(param1:class_16, param2:String) : void
+
+      public function method_207(prefix:String, value:String) : void
       {
-         var _loc3_:name_821 = this.var_175[param2];
-         if(_loc3_ != null)
-         {
-            param1.method_209(_loc3_.toString());
-            return;
-         }
-         throw new name_823(param2);
+         this.method_209(prefix + " " + value);
       }
-      
-      private function method_241(param1:class_16) : void
+
+      public function method_208(values:Vector.<String>) : void
       {
-         var _loc2_:* = null;
-         for(_loc2_ in this.var_175)
+         for each(var value:String in values)
          {
-            param1.method_209(_loc2_);
+            this.method_209(value);
          }
       }
-      
-      private function method_243(param1:class_16) : void
+
+      public function method_210(prefix:String, values:Vector.<String>) : void
       {
-         if(Boolean(this.var_182))
+         for each(var value:String in values)
          {
-            param1.method_209(this.var_182.getStackTrace());
+            this.method_207(prefix,value);
          }
       }
-      
-      public function method_212(param1:name_821) : void
+
+      public function method_212(variable:name_821) : void
       {
-         this.var_175[param1.name_829()] = param1;
+         this.variables[variable.name_829()] = variable;
       }
-      
-      public function method_215(param1:String) : void
+
+      public function method_215(variableName:String) : void
       {
-         delete this.var_175[param1];
+         delete this.variables[variableName];
       }
-      
-      public function set horizontalAlignment(param1:int) : void
+
+      public function method_213() : Boolean
       {
-         param1 = this.method_218(param1,1,3);
-         this.align = this.align & ~3 | param1;
-         this.method_217();
+         return this.visible;
       }
-      
-      public function get horizontalAlignment() : int
-      {
-         return this.align & 3;
-      }
-      
-      public function set vericalAlignment(param1:int) : void
-      {
-         param1 = this.method_218(param1,1,3);
-         this.align = this.align & ~12 | param1 << 2;
-         this.method_217();
-      }
-      
-      public function get vericalAlignment() : int
-      {
-         return this.align >> 2 & 3;
-      }
-      
-      public function method_209(param1:String) : void
-      {
-         var _loc2_:Boolean = this.buffer.size - this.var_172 <= this.var_171;
-         var _loc3_:int = this.method_223(param1);
-         if(_loc2_)
-         {
-            this.method_216(_loc3_);
-         }
-      }
-      
-      public function method_207(param1:String, param2:String) : void
-      {
-         var _loc3_:Boolean = this.buffer.size - this.var_172 <= this.var_171;
-         var _loc4_:int = this.method_222(param1,param2);
-         if(_loc3_)
-         {
-            this.method_216(_loc4_);
-         }
-      }
-      
-      public function method_208(param1:Vector.<String>) : void
-      {
-         var _loc2_:int = 0;
-         var _loc3_:String = null;
-         var _loc4_:Boolean = this.buffer.size - this.var_172 <= this.var_171;
-         for each(_loc3_ in param1)
-         {
-            _loc2_ += this.method_223(_loc3_);
-         }
-         if(_loc4_)
-         {
-            this.method_216(_loc2_);
-         }
-      }
-      
-      public function method_210(param1:String, param2:Vector.<String>) : void
-      {
-         var _loc3_:int = 0;
-         var _loc4_:String = null;
-         var _loc5_:Boolean = this.buffer.size - this.var_172 <= this.var_171;
-         for each(_loc4_ in param2)
-         {
-            _loc3_ += this.method_222(param1,_loc4_);
-         }
-         if(_loc5_)
-         {
-            this.method_216(_loc3_);
-         }
-      }
-      
+
       public function show() : void
       {
          if(this.visible)
          {
             return;
          }
-         this.stage.addChild(this.var_170);
-         this.stage.focus = this.input;
          this.visible = true;
-         this.onResize(null);
-         this.method_216(0);
+         this.stage.addChild(this.container);
+         this.stage.focus = this.input;
+         this.resize();
       }
-      
+
       public function hide() : void
       {
-         if(this.stage == null)
+         if(!this.visible)
          {
             return;
          }
-         if(this.visible)
+         this.visible = false;
+         if(this.stage.contains(this.container))
          {
-            this.stage.removeChild(this.var_170);
-            this.stage.focus = this.stage;
-            this.visible = false;
+            this.stage.removeChild(this.container);
          }
+         this.stage.focus = this.stage;
       }
-      
-      public function method_213() : Boolean
+
+      public function setSize(width:int, height:int) : void
       {
-         return this.visible;
+         this._width = width;
+         this._height = height;
+         this.resize();
       }
-      
-      public function setSize(param1:int, param2:int) : void
+
+      public function set width(value:int) : void
       {
-         param1 = this.method_218(param1,1,100);
-         param2 = this.method_218(param2,1,100);
-         if(param1 == this.var_177 && param2 == this.var_178)
-         {
-            return;
-         }
-         this.var_177 = param1;
-         this.var_178 = param2;
-         this.method_219();
-         this.method_217();
+         this.setSize(value,this._height);
       }
-      
-      public function set width(param1:int) : void
-      {
-         this.setSize(param1,this.var_178);
-      }
-      
+
       public function get width() : int
       {
-         return this.var_177;
+         return this._width;
       }
-      
-      public function set height(param1:int) : void
+
+      public function set height(value:int) : void
       {
-         this.setSize(this.var_177,param1);
+         this.setSize(this._width,value);
       }
-      
+
       public function get height() : int
       {
-         return this.var_178;
+         return this._height;
       }
-      
-      public function method_224(param1:uint) : void
+
+      public function set horizontalAlignment(value:int) : void
       {
-         setTimeout(this.hide,param1);
+         value = this.clampAlign(value);
+         this.align = this.align & ~3 | value;
+         this.resize();
       }
-      
-      public function name_51(param1:String) : void
+
+      public function get horizontalAlignment() : int
       {
-         var len:int;
-         var text:String = param1;
-         if(Boolean(text.match(/^\s*$/)))
-         {
-            return;
-         }
-         len = int(this.var_176.length);
-         if(len == 0 || this.var_176[len - 1] != text)
-         {
-            this.var_176.push(text);
-         }
-         this.var_173 = len + 1;
-         try
-         {
-            this.commandService.execute(text,this);
-            return;
-         }
-         catch(e:Error)
-         {
-            method_209(e.message);
-            var_182 = e;
-            return;
-         }
+         return this.align & 3;
       }
-      
-      public function set alpha(param1:Number) : void
+
+      public function set vericalAlignment(value:int) : void
       {
-         this._alpha = param1;
-         this.method_219();
+         value = this.clampAlign(value);
+         this.align = this.align & ~12 | value << 2;
+         this.resize();
       }
-      
+
+      public function get vericalAlignment() : int
+      {
+         return this.align >> 2 & 3;
+      }
+
+      public function set alpha(value:Number) : void
+      {
+         this._alpha = value;
+         this.resize();
+      }
+
       public function get alpha() : Number
       {
          return this._alpha;
       }
-      
-      private function method_234(param1:Stage) : void
+
+      public function method_211(command:String, handler:Function) : void
       {
-         var _loc2_:TextField = new TextField();
-         _loc2_.defaultTextFormat = const_42;
-         _loc2_.text = "j";
-         param1.addChild(_loc2_);
-         this.var_184 = _loc2_.textWidth;
-         this.var_181 = _loc2_.textHeight + 4;
-         param1.removeChild(_loc2_);
+         this.commandHandlers[command] = handler;
       }
-      
-      private function method_251() : void
+
+      public function method_214(command:String) : void
+      {
+         delete this.commandHandlers[command];
+      }
+
+      public function name_51(command:String) : void
+      {
+         this.runCommand(command);
+      }
+
+      public function write(message:String, color:uint = 0) : void
+      {
+         this.addLine(message);
+      }
+
+      public function clear() : void
+      {
+         this.output.text = "";
+      }
+
+      private function onResize(e:Event) : void
+      {
+         this.resize();
+      }
+
+      private function resize() : void
+      {
+         if(!this.visible)
+         {
+            return;
+         }
+         var cw:int = Math.min(this._width,this.stage.stageWidth);
+         var ch:int = Math.min(this._height,this.stage.stageHeight);
+         this.container.x = this.alignPosition(this.horizontalAlignment,this.stage.stageWidth,cw);
+         this.container.y = this.alignPosition(this.vericalAlignment,this.stage.stageHeight,ch);
+         this.output.width = cw - 1;
+         this.input.width = cw - 1;
+         this.output.height = ch - this.input.height;
+         this.input.y = this.output.height;
+         var gfx:Graphics = this.container.graphics;
+         gfx.clear();
+         gfx.beginFill(this._bgColor,this._alpha);
+         gfx.drawRect(0,0,cw,ch);
+         gfx.endFill();
+      }
+
+      private function initInput() : void
       {
          this.input = new TextField();
-         this.input.defaultTextFormat = const_42;
+         this.input.defaultTextFormat = DEFAULT_TEXT_FORMAT;
          this.input.height = 20;
          this.input.type = TextFieldType.INPUT;
-         this.input.background = true;
-         this.input.backgroundColor = 16777215;
          this.input.border = true;
-         this.input.borderColor = 0;
-         this.input.addEventListener(KeyboardEvent.KEY_DOWN,this.method_237);
-         this.input.addEventListener(KeyboardEvent.KEY_UP,this.method_236);
-         this.input.addEventListener(TextEvent.TEXT_INPUT,this.method_244);
-         this.var_170.addChild(this.input);
+         this.input.borderColor = DEFAULT_FONT_COLOR;
+         this.input.textColor = DEFAULT_FONT_COLOR;
+         this.input.addEventListener(KeyboardEvent.KEY_DOWN,this.onInputKeyDown);
+         this.input.addEventListener(KeyboardEvent.KEY_UP,this.onInputKeyUp);
+         this.input.addEventListener(TextEvent.TEXT_INPUT,this.onTextInput);
+         this.container.addChild(this.input);
       }
-      
-      private function method_239() : void
+
+      private function initOutput() : void
       {
-         this.var_179 = new Sprite();
-         this.var_179.addEventListener(MouseEvent.MOUSE_WHEEL,this.onMouseWheel);
-         this.var_170.addChild(this.var_179);
+         this.output = new TextField();
+         this.output.defaultTextFormat = DEFAULT_TEXT_FORMAT;
+         this.output.type = TextFieldType.DYNAMIC;
+         this.output.border = true;
+         this.output.borderColor = DEFAULT_FONT_COLOR;
+         this.output.textColor = DEFAULT_FONT_COLOR;
+         this.output.multiline = true;
+         this.output.wordWrap = true;
+         this.container.addChild(this.output);
       }
-      
-      private function method_246(param1:int, param2:int) : void
+
+      private function onInputKeyDown(e:KeyboardEvent) : void
       {
-         this.var_171 = param2 / (this.var_181 + this.var_185);
-         this.var_180 = param1 / this.var_184 - 1;
-         this.method_247(param1);
-         this.method_216(0);
-         var _loc3_:Graphics = this.var_179.graphics;
-         _loc3_.clear();
-         _loc3_.beginFill(this.var_186,this._alpha);
-         _loc3_.drawRect(0,0,param1,param2);
-         _loc3_.endFill();
-      }
-      
-      private function method_247(param1:int) : void
-      {
-         var _loc2_:TextField = null;
-         while(this.var_174.length > this.var_171)
+         if(this.isToggleKey(e))
          {
-            this.var_179.removeChild(this.var_174.pop());
+            this.preventInput = true;
          }
-         while(this.var_174.length < this.var_171)
-         {
-            this.method_242();
-         }
-         var _loc3_:int = this.var_181 + this.var_185;
-         var _loc4_:int = 0;
-         while(_loc4_ < this.var_174.length)
-         {
-            _loc2_ = this.var_174[_loc4_];
-            _loc2_.y = _loc4_ * _loc3_;
-            _loc2_.width = param1;
-            _loc4_++;
-         }
-      }
-      
-      private function method_242() : void
-      {
-         var _loc1_:TextField = new TextField();
-         _loc1_.height = this.var_181;
-         _loc1_.defaultTextFormat = const_42;
-         _loc1_.tabEnabled = false;
-         _loc1_.selectable = true;
-         this.var_179.addChild(_loc1_);
-         this.var_174.push(_loc1_);
-      }
-      
-      private function method_216(param1:int) : void
-      {
-         this.var_172 += param1;
-         if(this.var_172 + this.var_171 > this.buffer.size)
-         {
-            this.var_172 = this.buffer.size - this.var_171;
-         }
-         if(this.var_172 < 0)
-         {
-            this.var_172 = 0;
-         }
-         this.method_232();
-      }
-      
-      private function method_232() : void
-      {
-         if(this.var_170.parent != null)
-         {
-            this.method_228();
-         }
-      }
-      
-      private function method_228() : void
-      {
-         var _loc1_:int = 0;
-         var _loc2_:name_824 = this.buffer.name_825(this.var_172);
-         while(_loc1_ < this.var_171 && Boolean(_loc2_.hasNext()))
-         {
-            TextField(this.var_174[_loc1_++]).text = _loc2_.getNext();
-         }
-         while(_loc1_ < this.var_171)
-         {
-            TextField(this.var_174[_loc1_++]).text = "";
-         }
-      }
-      
-      private function method_237(param1:KeyboardEvent) : void
-      {
-         if(this.method_220(param1))
-         {
-            this.var_183 = true;
-         }
-         switch(param1.keyCode)
+         switch(e.keyCode)
          {
             case Keyboard.ENTER:
-               this.method_230();
+               this.runCommand(this.input.text);
+               this.input.text = "";
                break;
             case Keyboard.ESCAPE:
                if(this.input.text != "")
                {
                   this.input.text = "";
-                  break;
                }
-               this.method_224(50);
+               else
+               {
+                  setTimeout(this.hide,50);
+               }
                break;
             case Keyboard.UP:
-               this.method_226();
+               this.historyUp();
                break;
             case Keyboard.DOWN:
-               this.method_245();
+               this.historyDown();
                break;
             case Keyboard.PAGE_UP:
-               this.method_216(-this.var_171);
+               this.output.scrollV -= 10;
                break;
             case Keyboard.PAGE_DOWN:
-               this.method_216(this.var_171);
+               this.output.scrollV += 10;
          }
-         param1.stopPropagation();
+         e.stopPropagation();
       }
-      
-      private function method_236(param1:KeyboardEvent) : void
+
+      private function onInputKeyUp(e:KeyboardEvent) : void
       {
-         if(!this.method_220(param1))
+         if(!this.isToggleKey(e))
          {
-            param1.stopPropagation();
+            e.stopPropagation();
          }
       }
-      
-      private function method_244(param1:TextEvent) : void
+
+      private function onTextInput(e:TextEvent) : void
       {
-         if(this.var_183)
+         if(this.preventInput)
          {
-            param1.preventDefault();
-            this.var_183 = false;
+            e.preventDefault();
+            this.preventInput = false;
          }
       }
-      
-      private function method_220(param1:KeyboardEvent) : Boolean
+
+      private function onKeyUp(e:KeyboardEvent) : void
       {
-         return param1.keyCode == 75 && param1.ctrlKey && param1.shiftKey;
-      }
-      
-      private function method_230() : void
-      {
-         this.method_216(this.buffer.size);
-         var _loc1_:String = this.input.text;
-         this.input.text = "";
-         this.method_209("> " + _loc1_);
-         this.name_51(_loc1_);
-      }
-      
-      private function method_226() : void
-      {
-         if(this.var_173 == 0)
-         {
-            return;
-         }
-         --this.var_173;
-         var _loc1_:String = String(this.var_176[this.var_173]);
-         this.input.text = _loc1_ == null ? "" : _loc1_;
-      }
-      
-      private function method_245() : void
-      {
-         ++this.var_173;
-         if(this.var_173 >= this.var_176.length)
-         {
-            this.var_173 = this.var_176.length;
-            this.input.text = "";
-         }
-         else
-         {
-            this.input.text = this.var_176[this.var_173];
-         }
-      }
-      
-      private function onKeyUp(param1:KeyboardEvent) : void
-      {
-         if(this.method_220(param1))
+         if(this.isToggleKey(e))
          {
             if(this.visible)
             {
@@ -590,223 +356,248 @@ package alternativa.osgi.service.console
             }
          }
       }
-      
-      private function onResize(param1:Event) : void
+
+      private function isToggleKey(e:KeyboardEvent) : Boolean
       {
-         this.method_219();
-         this.method_217();
+         return e.keyCode == Keyboard.K && e.ctrlKey && e.shiftKey;
       }
-      
-      private function method_223(param1:String) : int
+
+      private function runCommand(text:String) : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:String = null;
-         var _loc4_:int = 0;
-         var _loc5_:Array = param1.split(const_43);
-         for each(_loc3_ in _loc5_)
+         if(text == null || text.match(/^\s*$/))
          {
-            if(!(this.filter && _loc3_.indexOf(this.filter) < 0))
+            return;
+         }
+         if(this.commandHistory.length == 0 || this.commandHistory[this.commandHistory.length - 1] != text)
+         {
+            this.commandHistory.push(text);
+         }
+         this.commandHistoryIndex = this.commandHistory.length;
+         this.addLine("> " + text);
+
+         var tokens:Array = text.match(TOKENIZER);
+         if(tokens == null || tokens.length == 0)
+         {
+            return;
+         }
+         var commandName:String = tokens.shift();
+         var variable:name_821 = this.variables[commandName];
+         if(variable != null)
+         {
+            if(tokens.length == 0)
             {
-               _loc4_ = 0;
-               while(_loc4_ < _loc3_.length)
+               this.method_209(variable.toString());
+            }
+            else
+            {
+               var errorMessage:String = variable.name_828(String(tokens[0]));
+               if(errorMessage == null)
                {
-                  this.buffer.add(_loc3_.substr(_loc4_,this.var_180));
-                  _loc2_++;
-                  _loc4_ += this.var_180;
+                  this.method_209("New value " + variable.toString());
+               }
+               else
+               {
+                  this.method_209(errorMessage);
                }
             }
+            return;
          }
-         return _loc2_;
-      }
-      
-      private function method_222(param1:String, param2:String) : int
-      {
-         var _loc3_:int = 0;
-         var _loc4_:String = null;
-         var _loc5_:int = 0;
-         var _loc6_:Array = param2.split(const_43);
-         var _loc7_:int = this.var_180 - param1.length;
-         for each(_loc4_ in _loc6_)
+
+         var handler:Function = this.commandHandlers[commandName];
+         if(handler != null)
          {
-            if(!(this.filter && _loc4_.indexOf(this.filter) < 0))
+            handler.call(null,this,tokens);
+            return;
+         }
+
+         try
+         {
+            this.commandService.execute(text,this);
+         }
+         catch(e:Error)
+         {
+            this.lastError = e;
+            this.method_209(e.message);
+         }
+      }
+
+      private function addLine(text:String) : void
+      {
+         this.output.appendText(text + "\n");
+         this.output.scrollV = this.output.maxScrollV;
+      }
+
+      private function historyUp() : void
+      {
+         if(this.commandHistoryIndex == 0)
+         {
+            return;
+         }
+         --this.commandHistoryIndex;
+         this.input.text = this.commandHistory[this.commandHistoryIndex];
+      }
+
+      private function historyDown() : void
+      {
+         if(this.commandHistoryIndex >= this.commandHistory.length - 1)
+         {
+            return;
+         }
+         ++this.commandHistoryIndex;
+         this.input.text = this.commandHistory[this.commandHistoryIndex];
+      }
+
+      private function printGreeting() : void
+      {
+         this.addLine("Alternativa console");
+         this.addLine("Type cmdlist to get list of commands");
+      }
+
+      private function initDefaultCommands() : void
+      {
+         this.method_211("clear",this.localClear);
+         this.method_211("close",this.localClose);
+         this.method_211("copy",this.localCopy);
+         this.method_211("fontsize",this.localFontSize);
+         this.method_211("cmdlist",this.localCmdList);
+         this.method_211("varlist",this.localVarList);
+         this.method_211("varlistv",this.localVarListV);
+      }
+
+      private function localClear(console:name_27, args:Array) : void { this.clear(); }
+      private function localClose(console:name_27, args:Array) : void { setTimeout(this.hide,100); }
+      private function localCopy(console:name_27, args:Array) : void { System.setClipboard(this.output.text); }
+
+      private function localFontSize(console:name_27, args:Array) : void
+      {
+         if(args.length == 0)
+         {
+            return;
+         }
+         var size:int = int(args[0]);
+         if(size <= 0)
+         {
+            return;
+         }
+         var format:TextFormat = this.output.defaultTextFormat;
+         format.size = size;
+         this.output.defaultTextFormat = format;
+         this.input.defaultTextFormat = format;
+      }
+
+      private function localCmdList(console:name_27, args:Array) : void
+      {
+         for(var key:String in this.commandHandlers)
+         {
+            this.method_209(key);
+         }
+      }
+
+      private function localVarList(console:name_27, args:Array) : void { this.printVariables(args.length > 0 ? args[0] : null,false); }
+      private function localVarListV(console:name_27, args:Array) : void { this.printVariables(args.length > 0 ? args[0] : null,true); }
+
+      private function printVariables(start:String, showValues:Boolean) : void
+      {
+         var result:Array = [];
+         for(var key:String in this.variables)
+         {
+            if(start == null || start == "" || key.indexOf(start) == 0)
             {
-               _loc5_ = 0;
-               while(_loc5_ < _loc4_.length)
-               {
-                  this.buffer.add(param1 + _loc4_.substr(_loc5_,_loc7_));
-                  _loc3_++;
-                  _loc5_ += _loc7_;
-               }
+               result.push(showValues ? key + " = " + name_821(this.variables[key]).toString() : key);
             }
          }
-         return _loc3_;
-      }
-      
-      private function onMouseWheel(param1:MouseEvent) : void
-      {
-         this.method_216(-param1.delta);
-      }
-      
-      private function method_218(param1:int, param2:int, param3:int) : int
-      {
-         if(param1 < param2)
+         result.sort();
+         for each(var line:String in result)
          {
-            return param2;
-         }
-         if(param1 > param3)
-         {
-            return param3;
-         }
-         return param1;
-      }
-      
-      private function method_219() : void
-      {
-         var _loc1_:int = 0.01 * this.var_178 * this.stage.stageHeight;
-         var _loc2_:int = 0.01 * this.var_177 * this.stage.stageWidth;
-         var _loc3_:int = _loc1_ - 20;
-         this.method_246(_loc2_,_loc3_);
-         this.input.y = _loc3_;
-         this.input.width = _loc2_;
-      }
-      
-      private function method_217() : void
-      {
-         var _loc1_:int = this.align & 3;
-         switch(_loc1_)
-         {
-            case 1:
-               this.var_170.x = 0;
-               break;
-            case 2:
-               this.var_170.x = this.stage.stageWidth - this.var_170.width;
-               break;
-            case 3:
-               this.var_170.x = this.stage.stageWidth - this.var_170.width >> 1;
-         }
-         var _loc2_:int = this.align >> 2 & 3;
-         switch(_loc2_)
-         {
-            case 1:
-               this.var_170.y = 0;
-               break;
-            case 2:
-               this.var_170.y = this.stage.stageHeight - this.var_170.height;
-               break;
-            case 3:
-               this.var_170.y = this.stage.stageHeight - this.var_170.height >> 1;
+            this.method_209(line);
          }
       }
-      
-      private function method_240(param1:class_16) : void
+
+      private function clampAlign(value:int) : int
       {
-         this.method_224(100);
-      }
-      
-      private function method_248(param1:class_16) : void
-      {
-         var _loc2_:name_824 = this.buffer.name_825(0);
-         var _loc3_:String = "Console content:\r\n";
-         while(_loc2_.hasNext())
+         if(value < 1)
          {
-            _loc3_ += _loc2_.getNext() + "\r\n";
+            return 1;
          }
-         System.setClipboard(_loc3_);
-         this.method_209("Content has been copied to clipboard");
-      }
-      
-      private function method_249(param1:class_16) : void
-      {
-         this.buffer.clear();
-         this.method_216(0);
-      }
-      
-      private function method_231(param1:class_16, param2:int) : void
-      {
-         this.horizontalAlignment = param2;
-      }
-      
-      private function method_250(param1:class_16, param2:int) : void
-      {
-         this.vericalAlignment = param2;
-      }
-      
-      private function method_252(param1:class_16, param2:int) : void
-      {
-         this.setSize(param2,this.var_178);
-      }
-      
-      private function method_235(param1:class_16, param2:int) : void
-      {
-         this.setSize(this.var_177,param2);
-      }
-      
-      private function method_238(param1:class_16, param2:Number) : void
-      {
-         this.alpha = param2;
-      }
-      
-      private function method_229(param1:class_16, param2:uint) : void
-      {
-         this.method_219();
-         this.input.backgroundColor = param2;
-         param1.method_209("Background color set to " + param2);
-      }
-      
-      private function method_233(param1:class_16, param2:uint) : void
-      {
-         var _loc3_:TextField = null;
-         const_42.color = param2;
-         this.input.textColor = param2;
-         this.input.defaultTextFormat = const_42;
-         for each(_loc3_ in this.var_174)
+         if(value > 3)
          {
-            _loc3_.textColor = param2;
-            _loc3_.defaultTextFormat = const_42;
+            return 3;
          }
-         param1.method_209("Foreground color set to " + param2);
+         return value;
       }
-      
-      private function method_253(param1:name_27, param2:Array) : void
+
+      private function alignPosition(mode:int, parent:int, child:int) : int
       {
-         this.method_221(param2[0],false);
-      }
-      
-      private function method_254(param1:name_27, param2:Array) : void
-      {
-         this.method_221(param2[0],true);
-      }
-      
-      private function method_221(param1:String, param2:Boolean) : void
-      {
-         var _loc3_:* = null;
-         var _loc4_:name_821 = null;
-         var _loc5_:String = null;
-         var _loc6_:Array = [];
-         for(_loc3_ in this.var_175)
+         if(mode == 2)
          {
-            if(param1 == null || param1 == "" || _loc3_.indexOf(param1) == 0)
-            {
-               _loc4_ = this.var_175[_loc3_];
-               _loc6_.push(param2 ? _loc3_ + " = " + _loc4_.toString() : _loc3_);
-            }
+            return (parent - child) * 0.5;
          }
-         if(_loc6_.length > 0)
+         if(mode == 3)
          {
-            _loc6_.sort();
-            for each(_loc5_ in _loc6_)
-            {
-               this.method_209(_loc5_);
-            }
+            return parent - child;
+         }
+         return 0;
+      }
+
+      private function cmdHide(out:class_16) : void { setTimeout(this.hide,100); }
+      private function cmdCopy(out:class_16) : void { System.setClipboard(this.output.text); out.method_209("Content has been copied to clipboard"); }
+      private function cmdClear(out:class_16) : void { this.clear(); }
+      private function cmdLastException(out:class_16) : void { if(this.lastError != null) { out.method_209(this.lastError.getStackTrace()); } }
+      private function cmdHeight(out:class_16, value:int) : void { this.height = value; }
+      private function cmdWidth(out:class_16, value:int) : void { this.width = value; }
+      private function cmdHAlign(out:class_16, value:int) : void { this.horizontalAlignment = value; }
+      private function cmdVAlign(out:class_16, value:int) : void { this.vericalAlignment = value; }
+      private function cmdAlpha(out:class_16, value:Number) : void { this.alpha = value; }
+      private function cmdBg(out:class_16, value:uint) : void { this._bgColor = value; this.resize(); out.method_209("Background color set to " + value); }
+
+      private function cmdFg(out:class_16, value:uint) : void
+      {
+         var format:TextFormat = this.output.defaultTextFormat;
+         format.color = value;
+         this.output.defaultTextFormat = format;
+         this.output.textColor = value;
+         this.input.defaultTextFormat = format;
+         this.input.textColor = value;
+         out.method_209("Foreground color set to " + value);
+      }
+
+      private function cmdVarsList(out:class_16) : void
+      {
+         for(var key:String in this.variables)
+         {
+            out.method_209(key);
          }
       }
-      
-      public function method_211(param1:String, param2:Function) : void
+
+      private function cmdVarsShow(out:class_16, key:String) : void
       {
+         var variable:name_821 = this.variables[key];
+         if(variable == null)
+         {
+            throw new name_823(key);
+         }
+         out.method_209(variable.toString());
       }
-      
-      public function method_214(param1:String) : void
+
+      private function cmdVarsSet(out:class_16, key:String, value:String) : void
       {
+         var variable:name_821 = this.variables[key];
+         if(variable == null)
+         {
+            throw new name_823(key);
+         }
+         var oldValue:String = variable.toString();
+         var error:String = variable.name_828(value);
+         if(error != null)
+         {
+            throw new name_826(key,value,error);
+         }
+         out.method_209("New value " + variable.toString() + ", old value=" + oldValue);
+      }
+
+      private function sendCommandToServer(out:class_16, command:String) : void
+      {
+         Network(OSGi.getInstance().getService(INetworker)).send(command);
       }
    }
 }
