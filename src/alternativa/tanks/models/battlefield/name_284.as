@@ -2,7 +2,6 @@ package alternativa.tanks.models.battlefield
 {
    import alternativa.tanks.models.battlefield.logic.class_23;
    import flash.display.Stage;
-   import flash.display.StageQuality;
    import package_12.name_24;
    import package_3.GPUCapabilities;
    
@@ -55,7 +54,7 @@ package alternativa.tanks.models.battlefield
       private function method_827() : void
       {
          this.stage.frameRate = this.var_604;
-         this.stage.quality = StageQuality.HIGH;
+         this.stage.quality = this.var_607;
       }
       
       public function name_766() : void
