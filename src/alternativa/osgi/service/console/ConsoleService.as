@@ -38,6 +38,7 @@ package alternativa.osgi.service.console
                param2 = param2.replace("%" + (_loc4_ + 1),rest[_loc4_]);
                _loc4_++;
             }
+            this.var_1088.write("[" + param1 + "] " + param2,0);
          }
       }
       
