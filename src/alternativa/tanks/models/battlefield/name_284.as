@@ -5,37 +5,37 @@ package alternativa.tanks.models.battlefield
    import flash.display.StageQuality;
    import package_12.name_24;
    import package_3.GPUCapabilities;
-   
+
    public class name_284 implements class_23
    {
-      
+
       public static var battleService:IBattleField;
-      
+
       public static var display:name_24;
-      
+
       private static const const_410:Number = 60;
-      
+
       private static const const_411:Number = 40;
-      
+
       private static const const_409:int = 10;
-      
+
       private static const const_412:int = 30;
-       
-      
+
+
       private var stage:Stage;
-      
+
       private var var_606:name_668;
-      
+
       private var var_604:int;
-      
+
       private var frameCounter:int;
-      
+
       private var var_608:Number;
-      
+
       private var var_607:String;
-      
+
       private var var_605:Boolean;
-      
+
       public function name_284(param1:Stage, param2:name_668)
       {
          super();
@@ -45,32 +45,39 @@ package alternativa.tanks.models.battlefield
          this.method_825();
          this.method_827();
       }
-      
+
       private function method_825() : void
       {
          this.var_608 = this.stage.frameRate;
          this.var_607 = this.stage.quality;
       }
-      
+
       private function method_827() : void
       {
          this.stage.frameRate = this.var_604;
-         if(GPUCapabilities.method_95)
-         {
-            this.stage.quality = StageQuality.MEDIUM;
-         }
-         else
-         {
-            this.stage.quality = StageQuality.LOW;
-         }
+         this.stage.quality = this.method_833(this.var_607);
       }
-      
+
       public function name_766() : void
       {
          this.stage.frameRate = this.var_608;
          this.stage.quality = this.var_607;
       }
-      
+
+      private function method_833(param1:String) : String
+      {
+         if(param1 == null)
+         {
+            return StageQuality.HIGH;
+         }
+         var _loc2_:String = param1.toLowerCase();
+         if(_loc2_ == StageQuality.LOW || _loc2_ == StageQuality.MEDIUM)
+         {
+            return StageQuality.HIGH;
+         }
+         return param1;
+      }
+
       private function method_831() : void
       {
          if(GPUCapabilities.method_95)
@@ -82,7 +89,7 @@ package alternativa.tanks.models.battlefield
             this.var_604 = 40;
          }
       }
-      
+
       public function name_674(param1:Boolean) : void
       {
          if(param1)
@@ -94,7 +101,7 @@ package alternativa.tanks.models.battlefield
             this.method_829();
          }
       }
-      
+
       private function method_826() : void
       {
          if(!this.var_605)
@@ -103,7 +110,7 @@ package alternativa.tanks.models.battlefield
             this.var_605 = true;
          }
       }
-      
+
       private function method_829() : void
       {
          if(this.var_605)
@@ -113,7 +120,7 @@ package alternativa.tanks.models.battlefield
             this.stage.frameRate = this.var_604;
          }
       }
-      
+
       public function method_504(param1:int, param2:int) : void
       {
          ++this.frameCounter;
@@ -130,17 +137,17 @@ package alternativa.tanks.models.battlefield
             }
          }
       }
-      
+
       private function method_832() : Boolean
       {
          return this.var_606.fps < display.stage.frameRate - 1;
       }
-      
+
       private function method_828() : void
       {
          display.stage.frameRate = this.var_606.fps < 10 ? Number(10) : Number(this.var_606.fps);
       }
-      
+
       private function method_830() : void
       {
          var _loc1_:Number = display.stage.frameRate + 1;
