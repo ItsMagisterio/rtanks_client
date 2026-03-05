@@ -7,7 +7,7 @@
     <copyright>Copyright (c) 2023 RTanks Online</copyright>
     <initialWindow>
         <title>RTanks</title>
-        <content>StandaloneLoader-2.0.swf?prelauncher=/Prelauncher.swf&amp;swf=/RTanksLoader.swf&amp;balancer=/socket.cfg&amp;resources=http://127.0.0.1:8080/resources&amp;chinese=false&amp;locale=ru</content>
+        <content>StandaloneLoader-2.0.swf?prelauncher=/Prelauncher.swf&amp;swf=/RTanksLoader.swf&amp;config=/config.xml&amp;resources=http://127.0.0.1:8080/resources&amp;chinese=false&amp;locale=ru</content>
 		<visible>true</visible>
 		<renderMode>direct</renderMode>
 		<depthAndStencil>true</depthAndStencil>
