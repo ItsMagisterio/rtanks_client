@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.shaft
    import flash.utils.Dictionary;
    import package_37.Matrix3;
    import package_37.Vector3;
-   import package_71.LaserPointerEffect;
+   import alternativa.tanks.models.weapon.laser.LaserPointerEffect;
    import package_76.name_735;
    
    use namespace alternativa3d;

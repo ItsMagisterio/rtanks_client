@@ -7,7 +7,7 @@ package package_52
    import flash.utils.Dictionary;
    import package_1.Main;
    import package_13.Long;
-   import package_149.FreezeSFXModel;
+   import alternativa.tanks.models.weapon.freeze.FreezeSFXModel;
    import package_152.RicochetSFXModel;
    import package_153.PlasmaSFXModel;
    import package_155.FlamethrowerSFXModel;
@@ -20,9 +20,9 @@ package package_52
    import package_301.SnowmanSFXModel;
    import package_4.ClientObject;
    import package_6.ClientClass;
-   import package_73.name_296;
-   import package_92.WeaponCommonModel;
-   import package_92.name_1188;
+   import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunSFXModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
    import platform.client.fp10.core.registry.ResourceRegistry;
    import platform.client.fp10.core.registry.name_29;
    import platform.client.fp10.core.resource.types.ImageResource;
@@ -76,11 +76,11 @@ package package_52
       
       public static function name_231(param1:ClientObject, param2:ClientObject, param3:Number, param4:Number, param5:Number, param6:Number) : name_213
       {
-         var _loc7_:WeaponCommonModel = Main.osgi.getService(name_1188) as WeaponCommonModel;
+         var _loc7_:WeaponCommonModel = Main.osgi.getService(IWeaponCommonModel) as WeaponCommonModel;
          if(_loc7_ == null)
          {
             _loc7_ = new WeaponCommonModel();
-            Main.osgi.registerService(name_1188,_loc7_);
+            Main.osgi.registerService(IWeaponCommonModel,_loc7_);
          }
          _loc7_.initObject(param2,param3,param4,param5,param6);
          _loc7_.objectLoaded(param2);
@@ -119,10 +119,10 @@ package package_52
          return _loc3_;
       }
       
-      public static function createShotGunSFXModel(param1:ClientObject, param2:Object = null) : name_296
+      public static function createShotGunSFXModel(param1:ClientObject, param2:Object = null): ShotgunSFXModel
       {
-         var _loc3_:name_296 = null;
-         _loc3_ = name_296(modelRegister.getModel(Long.getLong(179431987,214974876)));
+         var _loc3_:ShotgunSFXModel = null;
+         _loc3_ = ShotgunSFXModel(modelRegister.getModel(Long.getLong(179431987,214974876)));
          var _loc4_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunSmokeTexture)));
          var _loc5_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunShotAlongTexture)));
          var _loc6_:MultiframeImageResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotgunShotAcrossTexture)));

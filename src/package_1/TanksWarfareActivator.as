@@ -4,8 +4,8 @@ package package_1
    import alternativa.osgi.OSGi;
    import alternativa.tanks.models.weapon.healing.HealingGunModel;
    import alternativa.tanks.models.weapon.machinegun.MachineGunModel;
-   import package_149.FreezeModel;
-   import package_149.FreezeSFXModel;
+   import alternativa.tanks.models.weapon.freeze.FreezeModel;
+   import alternativa.tanks.models.weapon.freeze.FreezeSFXModel;
    import package_150.LongTermBonusModel;
    import package_151.RicochetModel;
    import package_152.RicochetSFXModel;
@@ -25,7 +25,7 @@ package package_1
    import package_166.HealingGunSFXModel;
    import package_167.ShotModel;
    import package_168.SmokyModel;
-   import package_92.WeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
    import package_97.BonusCommonModel;
    
    public class TanksWarfareActivator extends CommonBundleActivator

@@ -101,7 +101,7 @@ package alternativa.tanks.models.tank
    import package_6.ObjectRegister;
    import package_60.TextConst;
    import package_61.RayHit;
-   import package_62.name_137;
+   import package_62.LaserPointerCC;
    import package_63.name_162;
    import package_64.name_154;
    import package_65.name_160;
@@ -657,7 +657,7 @@ package alternativa.tanks.models.tank
                Model.object = param1.object;
                if(_loc4_.name == "laser")
                {
-                  _loc3_.method_18(new name_137(500,"30719","16711684",false));
+                  _loc3_.method_18(new LaserPointerCC(500,"30719","16711684",false));
                }
                else if(_loc4_.name == "shotgunAiming")
                {

@@ -26,8 +26,8 @@ package package_166
    import package_4.ClientObject;
    import package_52.WeaponsManager;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    
    public class HealingGunSFXModel extends class_102 implements class_100, class_101
    {
@@ -41,7 +41,7 @@ package package_166
       
       private var battlefield:IBattleField;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       public function HealingGunSFXModel()
       {
@@ -89,7 +89,7 @@ package package_166
          {
             _loc9_ = name_32(Main.osgi.getService(name_32));
             this.battlefield = IBattleField(Main.osgi.getService(IBattleField));
-            this.var_728 = name_1188(_loc9_.getModelsByInterface(name_1188)[0]);
+            this.var_728 = IWeaponCommonModel(_loc9_.getModelsByInterface(IWeaponCommonModel)[0]);
          }
          var _loc10_:name_1772 = new name_1772();
          var _loc11_:TextureMaterial = method_1277(param5,method_1276(param1.id,"hs"));
@@ -144,7 +144,7 @@ package package_166
          var _loc6_:Vector3 = null;
          var _loc7_:ClientObject = param1.turret;
          var _loc8_:name_1772 = name_1772(_loc7_.method_16(HealingGunSFXModel));
-         var _loc9_:name_1451 = this.var_728.name_1457(_loc7_);
+         var _loc9_:WeaponCommonData = this.var_728.name_1457(_loc7_);
          var _loc10_:Object3D = param1.tank.skin.name_144();
          var _loc11_:Vector3 = _loc9_.muzzles[0];
          var _loc12_:Object3D = param3 == null ? null : param3.tank.skin.name_123;

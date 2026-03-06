@@ -27,9 +27,9 @@ package package_168
    import package_41.Vector3dData;
    import package_52.WeaponsManager;
    import package_7.name_32;
-   import package_92.name_1188;
-   import package_92.name_1451;
-   import package_92.name_1699;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
+   import alternativa.tanks.models.weapon.common.HitInfo;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -51,7 +51,7 @@ package package_168
       
       private var var_13:TankModel;
       
-      private var var_728:name_1188;
+      private var var_728:IWeaponCommonModel;
       
       private var var_730:IWeaponWeakeningModel;
       
@@ -59,11 +59,11 @@ package package_168
       
       private var var_733:name_1454;
       
-      private var var_727:name_1451;
+      private var var_727:WeaponCommonData;
       
       private var targetSystem:CommonTargetSystem;
       
-      private var hitInfo:name_1699;
+      private var hitInfo:HitInfo;
       
       private var var_1016:name_911;
       
@@ -97,7 +97,7 @@ package package_168
       
       public function SmokyModel()
       {
-         this.hitInfo = new name_1699();
+         this.hitInfo = new HitInfo();
          this.var_1016 = name_911.getInstance();
          this.nextReadyTime = new name_1288("smoky_next_ready_time");
          this.var_1003 = new Vector3();
@@ -128,7 +128,7 @@ package package_168
          this.modelService = name_32(Main.osgi.getService(name_32));
          this.var_11 = Main.osgi.getService(IBattleField) as IBattleField;
          this.var_13 = Main.osgi.getService(ITank) as TankModel;
-         this.var_728 = Main.osgi.getService(name_1188) as name_1188;
+         this.var_728 = Main.osgi.getService(IWeaponCommonModel) as IWeaponCommonModel;
          this.var_730 = IWeaponWeakeningModel(this.modelService.getModelsByInterface(IWeaponWeakeningModel)[0]);
          if(var_1001 == null)
          {
@@ -159,7 +159,7 @@ package package_168
             }
          }
          var _loc7_:TankData = this.var_13.getTankData(_loc6_);
-         var _loc8_:name_1451 = this.var_728.name_1457(_loc7_.turret);
+         var _loc8_:WeaponCommonData = this.var_728.name_1457(_loc7_.turret);
          this.var_1016.name_1702(_loc7_.tank.skin.name_200,_loc8_.muzzles[0],this.var_1007,this.var_1004);
          this.var_728.name_1249(_loc7_.turret,_loc7_.tank,0,this.var_1007,this.var_1004);
          if(param3 == null || isNaN(param3.x) || isNaN(param3.y))

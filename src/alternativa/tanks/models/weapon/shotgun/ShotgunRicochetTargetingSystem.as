@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.shotgun
    import package_61.RayHit;
    import package_63.name_162;
    import package_67.Vector3d;
-   import projects.tanks.client.battlefield.models.tankparts.weapons.common.name_1378;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.TargetPosition;
    
    public class ShotgunRicochetTargetingSystem implements name_1160
    {
@@ -55,7 +55,7 @@ package alternativa.tanks.models.weapon.shotgun
       
       private var var_2189:int;
       
-      private var var_2178:Vector.<name_2504>;
+      private var var_2178:Vector.<ShotgunTargetingDirection>;
       
       private var var_2190:PelletDirectionCalculator;
       
@@ -83,7 +83,7 @@ package alternativa.tanks.models.weapon.shotgun
          this.var_2190 = param2;
          this.var_2189 = 1;
          this.var_2187 = method_2238(this.var_2181.name_1618.value,param1) + method_2238(this.var_2181.name_1614.value,param1) + 1;
-         this.var_2178 = new Vector.<name_2504>(this.var_2187);
+         this.var_2178 = new Vector.<ShotgunTargetingDirection>(this.var_2187);
          this.var_2182 = (this.var_2181.name_1618.value + this.var_2181.name_1614.value) / (method_2238(this.var_2181.name_1618.value,param1) + method_2238(this.var_2181.name_1614.value,param1));
          this.var_2188 = param3.coneVerticalAngle / this.var_2182;
          this.var_2186 = new Vector.<int>(this.var_2188);
@@ -104,10 +104,10 @@ package alternativa.tanks.models.weapon.shotgun
          return this.var_2183 != param1 || this.var_2185 > 0;
       }
       
-      public function name_1453(param1:name_903, param2:Body, param3:Vector3) : Vector.<name_1378>
+      public function name_1453(param1:name_903, param2:Body, param3:Vector3) : Vector.<TargetPosition>
       {
          var _loc4_:Number = NaN;
-         var _loc5_:name_2504 = null;
+         var _loc5_:ShotgunTargetingDirection = null;
          param3.copy(param1.direction);
          this.var_2183 = param2;
          var _loc6_:int = 0;
@@ -122,7 +122,7 @@ package alternativa.tanks.models.weapon.shotgun
             _loc5_ = this.var_2178[_loc6_];
             if(_loc5_ == null)
             {
-               _loc5_ = new name_2504(direction,_loc4_);
+               _loc5_ = new ShotgunTargetingDirection(direction,_loc4_);
             }
             else
             {
@@ -134,7 +134,7 @@ package alternativa.tanks.models.weapon.shotgun
             direction.transform3(matrix);
          }
          this.method_2244(param3);
-         var _loc8_:Vector.<name_1378> = new Vector.<name_1378>();
+         var _loc8_:Vector.<TargetPosition> = new Vector.<TargetPosition>();
          this.method_2242(param3,param1,_loc8_);
          return _loc8_;
       }
@@ -230,14 +230,14 @@ package alternativa.tanks.models.weapon.shotgun
             }
             _loc8_++;
          }
-         var _loc9_:name_2504 = this.var_2178[this.var_2186[_loc7_ >> 1]];
+         var _loc9_:ShotgunTargetingDirection = this.var_2178[this.var_2186[_loc7_ >> 1]];
          if(_loc9_.name_2507() > 0)
          {
             param1.copy(_loc9_.name_1755());
          }
       }
       
-      private function method_2242(param1:Vector3, param2:name_903, param3:Vector.<name_1378>) : void
+      private function method_2242(param1:Vector3, param2:name_903, param3:Vector.<TargetPosition>) : void
       {
          var _loc4_:Vector3 = null;
          var _loc5_:Vector.<Vector3> = this.var_2190.method_2237(param2.const_1614,param1.clone());
@@ -257,7 +257,7 @@ package alternativa.tanks.models.weapon.shotgun
          }
       }
       
-      private function method_2239(param1:Vector3, param2:Vector3, param3:Number, param4:Vector.<name_1378>) : Boolean
+      private function method_2239(param1:Vector3, param2:Vector3, param3:Number, param4:Vector.<TargetPosition>) : Boolean
       {
          var _loc5_:Vector3 = null;
          var _loc6_:Vector3d = null;
@@ -273,7 +273,7 @@ package alternativa.tanks.models.weapon.shotgun
                _loc5_.copy(var_397.position);
                BattleUtils.globalToLocal(var_397.var_81.name_787,_loc5_);
                BattleUtils.copyToVector3d(_loc5_,_loc6_);
-               param4.push(new name_1378(param2.toVector3d(),_loc7_.state.position.toVector3d(),_loc7_,_loc7_.turretDir,_loc6_));
+               param4.push(new TargetPosition(param2.toVector3d(),_loc7_.state.position.toVector3d(),_loc7_,_loc7_.turretDir,_loc6_));
                return true;
             }
          }

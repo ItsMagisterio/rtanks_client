@@ -14,16 +14,16 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun
       
       private var var_531:name_840;
       
-      protected var server:name_1396;
+      protected var server:ShotgunHittingModelServer;
       
-      private var client:name_289;
+      private var client:IShotgunHittingModelBase;
       
       private var var_25:Long;
       
       public function ShotgunHittingModelBase()
       {
          this.var_531 = name_840(OSGi.getInstance().getService(name_840));
-         this.client = name_289(this);
+         this.client = IShotgunHittingModelBase(this);
          this.var_25 = Long.getLong(1519945329,-715940911);
          super();
          this.method_770();
@@ -31,7 +31,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun
       
       protected function method_770() : void
       {
-         this.server = new name_1396(name_66(this));
+         this.server = new ShotgunHittingModelServer(name_66(this));
       }
       
       protected function method_771() : name_162

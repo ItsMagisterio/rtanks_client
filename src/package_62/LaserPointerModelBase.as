@@ -18,7 +18,7 @@ package package_62
       
       protected var server:LaserPointerModelServer;
       
-      private var client:name_317;
+      private var client:ILaserPointerModelBase;
       
       private var var_25:Long;
       
@@ -37,7 +37,7 @@ package package_62
       public function LaserPointerModelBase()
       {
          this.var_531 = name_840(OSGi.getInstance().getService(name_840));
-         this.client = name_317(this);
+         this.client = ILaserPointerModelBase(this);
          this.var_25 = Long.getLong(1691794381,-1794202080);
          this.var_695 = Long.getLong(2087187664,-1594727181);
          this.var_696 = Long.getLong(1056602643,1332983261);
@@ -51,9 +51,9 @@ package package_62
          this.server = new LaserPointerModelServer(name_66(this));
       }
       
-      protected function method_771() : name_137
+      protected function method_771() : LaserPointerCC
       {
-         return name_137(var_19[Model.object]);
+         return LaserPointerCC(var_19[Model.object]);
       }
       
       override public function invoke(param1:Long, param2:name_69) : void

@@ -45,8 +45,8 @@ package alternativa.tanks.models.weapon.healing
    import package_7.name_32;
    import package_84.IsisDirectionCalculator;
    import package_84.name_300;
-   import package_92.name_1188;
-   import package_92.name_1451;
+   import alternativa.tanks.models.weapon.common.IWeaponCommonModel;
+   import alternativa.tanks.models.weapon.common.WeaponCommonData;
    import scpacker.networking.Network;
    import scpacker.networking.INetworker;
    
@@ -72,7 +72,7 @@ package alternativa.tanks.models.weapon.healing
       
       private var var_123:TankModel;
       
-      private var var_1069:name_1188;
+      private var var_1069:IWeaponCommonModel;
       
       private var var_564:HealingGunSFXModel;
       
@@ -84,7 +84,7 @@ package alternativa.tanks.models.weapon.healing
       
       private var name_106:TankData;
       
-      private var var_766:name_1451;
+      private var var_766:WeaponCommonData;
       
       private var var_1058:name_1413;
       
@@ -135,7 +135,7 @@ package alternativa.tanks.models.weapon.healing
             this.modelService = Main.osgi.getService(name_32) as name_32;
             this.var_1067 = Main.osgi.getService(IBattleField) as IBattleField;
             this.var_123 = Main.osgi.getService(ITank) as TankModel;
-            this.var_1069 = this.modelService.getModelsByInterface(name_1188)[0] as name_1188;
+            this.var_1069 = this.modelService.getModelsByInterface(IWeaponCommonModel)[0] as IWeaponCommonModel;
             this.var_564 = WeaponsManager.createIsidaSFXModel(param1);
             _loc11_ = ITankEventDispatcher(Main.osgi.getService(ITankEventDispatcher));
             _loc11_.name_718(name_77.name_192,this);
